@@ -1,0 +1,1717 @@
+# -*- coding: utf-8 -*-
+"""UNIT 6 – A VISIT TO A SCHOOL  (Periods 38–44)"""
+from curriculum.schema import *
+from curriculum.audio_sources import AUDIO
+
+UNIT = Unit(
+    number=6, title="A Visit to a School",
+    theme="School life, subjects, facilities, schools in other countries",
+    can_do=["name school subjects, places and facilities",
+            "describe what is happening now with the present continuous",
+            "talk about arrangements for next week (present continuous for the future)",
+            "choose correctly between the present simple and the present continuous",
+            "read about a school in another country and compare it with mine",
+            "write an email describing my school to a foreign pen friend (90–110 words)"],
+    grammar_focus=["Present continuous (now)", "Present continuous for future arrangements",
+                   "Present simple vs present continuous"],
+    pron_focus="Word endings -tion /ʃn/ and -sion /ʒn/; stress before the ending",
+    vocab_focus="School subjects, places and facilities; school-day verbs",
+    project={"name": "Our Dream School",
+             "goal": "Groups design and present their ideal school.",
+             "steps": ["Draw a simple plan of your dream school (rooms, garden, sports area).",
+                       "Write six sentences: three about what the school HAS, three about what "
+                       "students DO there (present simple).",
+                       "Add two sentences with the present continuous: 'In this picture, students are…'",
+                       "Add one sentence about the future: 'Next year we are opening a…'",
+                       "Present for two minutes. Everyone speaks. The class votes."],
+             "marking": "Content 3 – Language 3 – Plan/design 2 – Presentation 2 (total 10)"})
+
+L1 = Lesson(
+    code="U6L1", unit=6, number=1, period=38,
+    lesson_type="Getting Started", title="Welcome to our school",
+    objectives=["name ten school places and facilities",
+                "understand a conversation between a student and a visitor",
+                "describe what people are doing in a picture",
+                "write three sentences about their own school"],
+    recycled=["Unit 4 comparatives; Unit 5 quantities; Unit 1 present simple and frequency"],
+    vocab=[V("classroom", "n", "/ˈklɑːsruːm/", "phòng học", "Our classroom is on the second floor."),
+           V("library", "n", "/ˈlaɪbrəri/", "thư viện", "The library has 4,000 books."),
+           V("laboratory (lab)", "n", "/ləˈbɒrətri/", "phòng thí nghiệm", "We do experiments in the lab."),
+           V("playground", "n", "/ˈpleɪɡraʊnd/", "sân chơi", "The playground is behind the school."),
+           V("staff room", "n", "/ˈstɑːf ruːm/", "phòng giáo viên", "The teachers meet in the staff room."),
+           V("canteen", "n", "/kænˈtiːn/", "căng tin", "We buy lunch at the canteen."),
+           V("gym", "n", "/dʒɪm/", "phòng tập thể dục", "We have PE in the gym when it rains."),
+           V("notice board", "n", "/ˈnəʊtɪs bɔːd/", "bảng thông báo", "The timetable is on the notice board."),
+           V("uniform", "n", "/ˈjuːnɪfɔːm/", "đồng phục", "We wear a white uniform on Mondays."),
+           V("break time", "n", "/ˈbreɪk taɪm/", "giờ ra chơi", "Break time is at half past nine.")],
+    phrases=["Welcome to our school.", "This way, please.", "On your left / right you can see…",
+             "Let me show you…", "Here we are."],
+    grammar=G("Present continuous — first look (what is happening now)",
+              use=["We use the present continuous for actions happening NOW, at this moment.",
+                   "Form: am / is / are + verb-ING.",
+                   "Time words: now, at the moment, at present, look!, listen!"],
+              form=[["Subject", "Form", "Example"],
+                    ["I", "am + V-ing", "I am writing."],
+                    ["He / She / It", "is + V-ing", "She is reading."],
+                    ["You / We / They", "are + V-ing", "They are playing football."]],
+              examples=["Look! The students are playing in the playground.",
+                        "She is talking to the head teacher at the moment.",
+                        "We are studying English now."],
+              pitfall="Two errors: (1) forgetting BE — *He playing football*; "
+                      "(2) using the present simple for now — *Look! He plays football*. "
+                      "Vietnamese uses 'đang' as a separate word, so students forget the -ing or the be.",
+              note="BE + ING is one unit: two parts, both needed. Write 'am/is/are + V-ing' in a box."),
+    pron=P("Word stress in school words",
+           "Most of these words stress the FIRST part: CLASSroom, PLAYground, LIbrary, NOtice board. "
+           "But canTEEN and laBORatory are different — learn them separately.",
+           items=["'classroom (Oo)", "'library (Ooo)", "'playground (Oo)", "can'teen (oO)",
+                  "la'boratory (oOooo)", "'uniform (Ooo)"],
+           drill=["The LIbrary is next to the CLASSroom.",
+                  "We eat in the canTEEN at BREAK time."],
+           vn_note="Compound words (classroom, playground, notice board) always stress the first part — "
+                   "the same rule as Unit 1 (BIRD-watching)."),
+    listening=AUDIO['U6L1'],
+    reading=T("Our school in numbers",
+              ["Le Loi Secondary School opened in 1998. Today it has 900 students, 46 teachers and "
+               "24 classrooms.",
+               "The school day starts at seven o'clock and finishes at half past eleven for the "
+               "morning shift, and at half past twelve for the afternoon shift. There are five lessons "
+               "in a shift and each lesson is 45 minutes.",
+               "The most popular place is not the library or the gym — it is the canteen, where about "
+               "300 students buy something every break time. The most popular thing to buy is banh mi.",
+               "The newest part of the school is the computer room, which opened last year with "
+               "thirty computers. The oldest part is the front building, which is nearly thirty years old."],
+              tasks=[EX("U6.1-R1", "Read and complete", "Complete with a number.",
+                        items=["1. Students: ______", "2. Teachers: ______", "3. Classrooms: ______",
+                               "4. Lesson length: ______ minutes", "5. Computers: ______"],
+                        answers=["1. 900", "2. 46", "3. 24", "4. 45", "5. 30"],
+                        level="E", kind="reading"),
+                     EX("U6.1-R2", "Read and answer", "Answer the questions.",
+                        items=["1. When did the school open?", "2. What time does the morning shift finish?",
+                               "3. Which is the most popular place, and why?",
+                               "4. Which part of the school is the newest?"],
+                        answers=["1. In 1998.", "2. At half past eleven.",
+                                 "3. The canteen, because about 300 students buy something every break "
+                                 "time.", "4. The computer room, which opened last year."],
+                        level="M", kind="reading")]),
+    speaking=[EX("U6.1-S1", "What are they doing?", "Look at the picture of a school. "
+                 "Say what people are doing.",
+                 items=["Model: 'In the playground, some students are playing football. "
+                        "In the library, a girl is reading.'"],
+                 answers=["Insist on am/is/are + V-ing every time."], level="M", kind="speaking")],
+    writing=[EX("U6.1-W1", "Sentence writing", "Write three sentences about your school.",
+                items=["1. My school has ______ .", "2. My favourite place is ______ because ______ .",
+                       "3. Right now, in my school, ______ (present continuous)."],
+                answers=["Model: My school has 24 classrooms, a library and a big playground. "
+                         "My favourite place is the library because it is quiet. Right now, in my "
+                         "school, the other classes are having their lessons."],
+                level="M", kind="writing", lines=4)],
+    communication={"function": "Welcoming and showing someone around",
+                   "phrases": ["Welcome to…", "Let me show you around.", "This way, please.",
+                               "On your left / right you can see…", "Here we are.",
+                               "Would you like…?", "Thank you for showing me around."],
+                   "roleplay": "A is a student guide, B is a visitor from another school. "
+                               "Show four places and say what is happening in each.",
+                   "real_life": "Showing a visitor round your school, your house or your town."},
+    guided=[EX("U6.1-G1", "Where are they?", "Write the place.",
+               items=["1. They are doing an experiment. → the ______",
+                      "2. They are borrowing books. → the ______",
+                      "3. They are buying banh mi. → the ______",
+                      "4. They are playing football. → the ______",
+                      "5. The teachers are drinking tea. → the ______"],
+               answers=["1. laboratory", "2. library", "3. canteen", "4. playground", "5. staff room"],
+               level="E", kind="vocab"),
+            EX("U6.1-G2", "am / is / are + V-ing", "Complete the sentences.",
+               items=["1. Look! The students ______ (play) football.",
+                      "2. I ______ (write) an email now.",
+                      "3. She ______ (talk) to the head teacher at the moment.",
+                      "4. We ______ (study) English.",
+                      "5. Listen! Someone ______ (sing) in the next room."],
+               answers=["1. are playing", "2. am writing", "3. is talking", "4. are studying",
+                        "5. is singing"], level="E", kind="grammar")],
+    independent=[EX("U6.1-I1", "Describe the picture", "Write five sentences about what is happening "
+                    "in your classroom right now.",
+                    items=["Look around you! Use am/is/are + V-ing."],
+                    answers=["Model: Our teacher is standing near the board. Two students are writing "
+                             "in their notebooks. Nam is looking out of the window. Nobody is talking. "
+                             "I am writing this sentence!"], level="M", kind="writing"),
+                 EX("U6.1-I2", "School tour role play", "Do the tour role play in pairs.", items=[],
+                    answers=["See communication section."], level="D", kind="speaking")],
+    review=["10 school places", "Present continuous: am/is/are + V-ing",
+            "Stress on the first part of compound words"],
+    homework=[EX("U6.1-H1", "Vocabulary", "Write the place.",
+                 items=["1. where you do experiments: ______", "2. where you borrow books: ______",
+                        "3. where you buy food: ______", "4. where teachers work between lessons: ______",
+                        "5. where you play at break time: ______", "6. what you wear to school: ______"],
+                 answers=["1. the laboratory / lab", "2. the library", "3. the canteen",
+                          "4. the staff room", "5. the playground", "6. a uniform"],
+                 level="E", kind="vocab"),
+              EX("U6.1-H2", "Grammar", "Write the present continuous.",
+                 items=["1. He (read) ______ a book now.", "2. They (have) ______ lunch.",
+                        "3. I (do) ______ my homework.", "4. The teacher (write) ______ on the board.",
+                        "5. We (not watch) ______ TV.", "6. She (run) ______ in the playground."],
+                 answers=["1. is reading", "2. are having", "3. am doing", "4. is writing",
+                          "5. are not watching / aren't watching", "6. is running"],
+                 level="M", kind="grammar"),
+              EX("U6.1-H3", "Writing", "Write 4 sentences describing your school to a foreign friend.",
+                 items=["Number of students / places / uniform / one thing you like."],
+                 answers=["Model: My school has about 900 students and 24 classrooms. There is a "
+                          "library, a canteen and a big playground. We wear a white uniform with a "
+                          "red scarf. I like the library best because it is quiet and cool."],
+                 level="M", kind="writing", lines=5),
+              EX("U6.1-H4", "Pronunciation", "Say these words with the correct stress five times: "
+                 "CLASSroom, LIbrary, PLAYground, canTEEN, UNiform.",
+                 items=["Clap on the capitals."], answers=["Spot-check in Lesson 2."],
+                 level="E", kind="pron")],
+    workbook=[EX("U6.1-P1", "Complete the words", "Write the missing letters.",
+                 items=["1. l _ b r a r y", "2. c a n t _ e n", "3. p l a y g r _ u n d",
+                        "4. u n _ f o r m", "5. l a b o r a t _ r y"],
+                 answers=["1. library", "2. canteen", "3. playground", "4. uniform", "5. laboratory"],
+                 level="E", kind="vocab"),
+              EX("U6.1-P2", "Present continuous forms", "Write the -ing form.",
+                 items=["1. write → ", "2. run → ", "3. study → ", "4. sit → ", "5. have → ",
+                        "6. play → ", "7. swim → ", "8. take → "],
+                 answers=["1. writing", "2. running", "3. studying", "4. sitting", "5. having",
+                          "6. playing", "7. swimming", "8. taking"], level="E", kind="grammar"),
+              EX("U6.1-P3", "Complete the sentences", "Use the present continuous.",
+                 items=["1. Look! It (rain) ______ .", "2. The students (not listen) ______ .",
+                        "3. What ______ you (do) ______ ?", "4. My brother (sleep) ______ now.",
+                        "5. We (wait) ______ for the bus."],
+                 answers=["1. is raining", "2. aren't listening", "3. are … doing", "4. is sleeping",
+                          "5. are waiting"], level="M", kind="grammar"),
+              EX("U6.1-P4", "Correct the mistakes", "One mistake in each sentence.",
+                 items=["1. He playing football now.", "2. Look! She read a book.",
+                        "3. They is studying English.", "4. I am go to school now.",
+                        "5. We are eat lunch."],
+                 answers=["1. He is playing football now.", "2. Look! She is reading a book.",
+                          "3. They are studying English.", "4. I am going to school now.",
+                          "5. We are eating lunch."], level="D", kind="grammar",
+                 note="BE + V-ing: both parts are needed, every time."),
+              EX("U6.1-P5", "Writing", "Write 6 sentences about what different people in your family "
+                 "are doing right now.",
+                 items=[], answers=["Model: It is seven o'clock in the evening. My mother is cooking "
+                                    "dinner in the kitchen. My father is watching the news. "
+                                    "My little sister is doing her homework at the table. "
+                                    "My grandmother is drinking tea. Our dog is sleeping under the "
+                                    "chair. And I am writing this exercise!"],
+                 level="D", kind="writing", lines=8)],
+    procedure=[ST("Warm-up: Where am I?", 5,
+                  ["Describe a place ('I can smell food and I can hear plates'); students guess "
+                   "(the canteen). Five rounds."],
+                  "Guess the school places.", "Whole class", "Slide 2"),
+               ST("Presentation: 10 school places", 9,
+                  ["Draw a simple school plan on the board and label it with the class.",
+                   "Drill with stress marks: CLASSroom, canTEEN.",
+                   "Concept check: 'Where do you do an experiment?'"],
+                  "Label the plan; repeat with stress.", "Whole class", "Slides 3–5"),
+               ST("Presentation: present continuous", 10,
+                  ["Mime an action: 'What am I doing?' Elicit 'You are writing.'",
+                   "Build the form on the board: am/is/are + V-ing, in a box.",
+                   "Drill with three students miming at the same time: 'They are…'",
+                   "Warn about the two errors: missing BE, missing ING."],
+                  "Mime, guess, produce sentences.", "Whole class", "Slides 6–8"),
+               ST("Listening: the school tour", 8,
+                  ['Play the recording “Lesson 50: Back to School” twice (three times if the class asks); students do the listening tasks; students do the listening tasks; note the present continuous sentences in the script.'],
+                  "Listen and answer; find the -ing sentences.", "Individual → pairs", "Slide 9"),
+               ST("Speaking: describe the picture", 8,
+                  ["Show a busy school picture (or Slide 10). Pairs describe six actions.",
+                   "Then the school tour role play."],
+                  "Describe actions; do the tour.", "Pairs", "Slides 10–11"),
+               ST("Wrap-up and homework", 5, ["'Freeze!' game: students mime; class describes. "
+                                              "Set H1–H4."],
+                  "Mime and describe.", "Whole class", "Slide 12")],
+    teacher_talk=[TK("Presenting the present continuous",
+                     ["(Start writing on the board.) What am I doing? Not 'you write' — that is every "
+                      "day, that is a habit.",
+                      "Right now, at this second: I AM WRITING. Two parts! AM plus WRITING.",
+                      "In Vietnamese you add one small word: tôi ĐANG viết. The verb doesn't change.",
+                      "In English you need BOTH: the be verb AND the -ing. If you forget one, the "
+                      "sentence is broken."]),
+                  TK("Managing a school tour role play",
+                     ["Guides, stand up. Visitors, follow your guide.",
+                      "You must show FOUR places and at each one say what people are doing — even if "
+                      "you imagine it. 'On your left is the library. Some students are reading.'",
+                      "Visitors, ask ONE question at each place. Three minutes, then swap."])],
+    support=["Give a labelled school plan.", "Provide the -ing forms of six verbs on the board.",
+             "Allow one-sentence descriptions before longer ones."],
+    challenge=["Ask for two actions per place in the tour.",
+               "Ask them to add numbers and comparatives from Unit 4.",
+               "Ask them to be the visitor and ask four questions."],
+    assessment=["Names 7 of 10 school places", "Uses am/is/are + V-ing in 4 of 5 sentences",
+                "Correct stress on compound school words"],
+    board_plan=["LEFT: school plan with labels", "CENTRE: am/is/are + V-ing box",
+                "RIGHT: tour phrases; Homework H1–H4"],
+    materials=["School plan or picture", 'Recording: Lesson 50: Back to School — VOA Learning English — Let’s Learn English, Level 1 (3:22)'],
+)
+
+L2 = Lesson(
+    code="U6L2", unit=6, number=2, period=39,
+    lesson_type="A Closer Look 1", title="School subjects and the endings -tion / -sion",
+    objectives=["name ten school subjects and say which they like and why",
+                "pronounce the endings -tion /ʃn/ and -sion /ʒn/ and place the stress correctly",
+                "describe a school timetable",
+                "compare subjects using comparatives from Unit 4"],
+    recycled=["U6L1 school places, present continuous; Unit 1 verbs of liking + V-ing; "
+              "Unit 4 comparatives"],
+    vocab=[V("subject", "n", "/ˈsʌbdʒɪkt/", "môn học", "My favourite subject is history."),
+           V("timetable", "n", "/ˈtaɪmteɪbl/", "thời khóa biểu", "Look at the timetable on the wall."),
+           V("physics", "n", "/ˈfɪzɪks/", "vật lý", "We have physics on Tuesday."),
+           V("chemistry", "n", "/ˈkemɪstri/", "hóa học", "Chemistry is in the laboratory."),
+           V("geography", "n", "/dʒiˈɒɡrəfi/", "địa lý", "In geography we study maps."),
+           V("history", "n", "/ˈhɪstri/", "lịch sử", "History is my best subject."),
+           V("literature", "n", "/ˈlɪtrətʃə/", "ngữ văn", "We read poems in literature."),
+           V("education", "n", "/ˌedʒuˈkeɪʃn/", "giáo dục", "Physical education is on Friday."),
+           V("revision", "n", "/rɪˈvɪʒn/", "ôn tập", "We do revision before every test."),
+           V("break", "n", "/breɪk/", "giờ nghỉ", "There is a twenty-minute break at 9.30.")],
+    phrases=["My favourite subject is…", "I'm good at / bad at…", "We have … on Monday.",
+             "double maths", "after break"],
+    grammar=G("Talking about a timetable: prepositions of time",
+              use=["ON + day: on Monday, on Friday morning.",
+                   "AT + clock time: at seven o'clock, at half past nine.",
+                   "IN + part of the day / month / year: in the morning, in September.",
+                   "No preposition with 'every': every day, every Monday."],
+              form=[["Preposition", "Use", "Example"],
+                    ["on", "days", "We have PE on Wednesday."],
+                    ["at", "clock times", "School starts at seven."],
+                    ["in", "parts of the day, months", "In the afternoon we have two lessons."],
+                    ["—", "every…", "We have maths every day."]],
+              examples=["We have double physics on Tuesday morning at half past nine.",
+                        "In September the new timetable starts."],
+              pitfall="*in Monday*, *on the morning*, *at September* — Vietnamese uses 'vào' for all of "
+                      "them. Learn the three-word rule: ON days, AT times, IN longer periods.",
+              note="Memory aid: the smaller the time, the smaller the word — AT (a moment), "
+                   "ON (a day), IN (a long period)."),
+    pron=P("The endings -tion /ʃn/ and -sion /ʒn/",
+           "-TION is /ʃn/: educa-TION, informa-TION. -SION after a vowel is /ʒn/: revi-SION, "
+           "televi-SION, deci-SION. The stress ALWAYS falls on the syllable just before the ending.",
+           items=["/ʃn/: education, information, question, competition, attention",
+                  "/ʒn/: revision, television, decision, division",
+                  "Stress: edu'CA-tion, re'VI-sion, informa'TION → infor'MA-tion"],
+           drill=["Pay atTENtion during the reviSION lesson.",
+                  "The informaTION about the compeTItion is on the notice board."],
+           vn_note="Two problems: (1) students stress the first syllable (EDucation) instead of the "
+                   "one before -tion; (2) /ʒ/ does not exist in Vietnamese, so 'revision' becomes "
+                   "'revi-shion'. Teach /ʒ/ as a 'buzzing /ʃ/'."),
+    listening=AUDIO['U6L2'],
+    reading=T("The school day in three countries",
+              ["In Viet Nam, most secondary schools work in two shifts. The morning shift starts at "
+               "seven and finishes at half past eleven; the afternoon shift runs from one to half past "
+               "five. Students have five lessons of 45 minutes and a twenty-minute break.",
+               "In Japan, school usually starts at half past eight and finishes at half past three. "
+               "There is a long lunch break, and after the last lesson every student helps to clean "
+               "the school for fifteen minutes — there are no cleaners.",
+               "In Finland, school often starts at nine. Lessons are 45 minutes and after every lesson "
+               "there is a 15-minute break outside, even in winter. Students have no uniform and very "
+               "little homework, and the school day is one of the shortest in Europe."],
+              tasks=[EX("U6.2-R1", "Read and complete the table", "Write the information.",
+                        items=["Country | Start | Finish | Special feature",
+                               "Viet Nam | ___ | ___ | ___",
+                               "Japan | ___ | ___ | ___",
+                               "Finland | ___ | ___ | ___"],
+                        answers=["Viet Nam | 7.00 (morning shift) | 11.30 | two shifts; "
+                                 "45-minute lessons",
+                                 "Japan | 8.30 | 15.30 | students clean the school themselves",
+                                 "Finland | 9.00 | (short day) | 15-minute break after every lesson, "
+                                 "no uniform, little homework"],
+                        level="M", kind="reading"),
+                     EX("U6.2-R2", "Compare", "Write three comparative sentences using the table.",
+                        items=["1. (start early) ______", "2. (long day) ______",
+                               "3. (homework) ______"],
+                        answers=["Model: 1. Vietnamese schools start earlier than Finnish schools. "
+                                 "2. The Japanese school day is longer than the Finnish one. "
+                                 "3. Finnish students have less homework than Vietnamese students."],
+                        level="D", kind="reading")]),
+    speaking=[EX("U6.2-S1", "My timetable", "Tell your partner about your Tuesday. "
+                 "Use on, at and in correctly.",
+                 items=["Model: 'On Tuesday we start at seven with maths. After break we have "
+                        "two lessons of literature.'"],
+                 answers=["Monitor the prepositions."], level="M", kind="speaking"),
+              EX("U6.2-S2", "Which subject and why?", "In groups of four, rank five subjects from "
+                 "the most to the least interesting. You must all agree.",
+                 items=["Language: 'I think … is more interesting than … because…' "
+                        "'I agree, but…' 'For me the most difficult is…'"],
+                 answers=["Report: 'For our group, the most interesting subject is geography, because "
+                          "we learn about other countries.'"], level="D", kind="speaking")],
+    writing=[EX("U6.2-W1", "Prepositions", "Complete with on, at, in or – (no preposition).",
+                items=["1. We have PE ______ Friday.", "2. School starts ______ seven o'clock.",
+                       "3. ______ the afternoon we have two lessons.",
+                       "4. We have maths ______ every day.", "5. The new term starts ______ September.",
+                       "6. There is a break ______ half past nine."],
+                answers=["1. on", "2. at", "3. In", "4. – (no preposition)", "5. in", "6. at"],
+                level="E", kind="writing")],
+    communication={"function": "Talking about school life with a foreign friend",
+                   "phrases": ["What time does school start in your country?",
+                               "How many lessons do you have a day?", "Do you wear a uniform?",
+                               "What's your favourite subject?", "That's very different from here!"],
+                   "roleplay": "You are chatting online with a student from another country. "
+                               "Ask and answer five questions about school life.",
+                   "real_life": "Talking about your school with an exchange student or a pen friend."},
+    guided=[EX("U6.2-G1", "Which subject?", "Write the subject.",
+               items=["1. You study maps, rivers and countries: ______",
+                      "2. You study the past: ______", "3. You do experiments with chemicals: ______",
+                      "4. You study forces and electricity: ______",
+                      "5. You read poems and stories: ______", "6. You run and play sport: ______"],
+               answers=["1. geography", "2. history", "3. chemistry", "4. physics", "5. literature",
+                        "6. PE (physical education)"], level="E", kind="vocab"),
+            EX("U6.2-G2", "-tion or -sion?", "Write the stress pattern and the sound.",
+               items=["1. education → stress on ___ ; sound ___",
+                      "2. revision → stress on ___ ; sound ___",
+                      "3. information → stress on ___ ; sound ___",
+                      "4. television → stress on ___ ; sound ___",
+                      "5. competition → stress on ___ ; sound ___"],
+               answers=["1. edu'CA-tion; /ʃn/", "2. re'VI-sion; /ʒn/", "3. infor'MA-tion; /ʃn/",
+                        "4. 'TE-le-vi-sion (also tele'VI-sion); /ʒn/", "5. compe'TI-tion; /ʃn/"],
+               level="D", kind="pron")],
+    independent=[EX("U6.2-I1", "Complete the timetable text", "Use on, at, in and the subjects.",
+                    items=["______ Monday our first lesson is ______ ______ seven o'clock. "
+                           "______ the morning we have four lessons. There is a break ______ half past "
+                           "nine. ______ the afternoon we go home."],
+                    answers=["On Monday our first lesson is maths at seven o'clock. In the morning we "
+                             "have four lessons. There is a break at half past nine. In the afternoon "
+                             "we go home. (subjects will vary)"], level="M", kind="grammar"),
+                 EX("U6.2-I2", "Subject ranking", "Do U6.2-S2 in your group and report.", items=[],
+                    answers=["See U6.2-S2."], level="D", kind="speaking")],
+    review=["10 school subjects", "on / at / in for time", "-tion /ʃn/ and -sion /ʒn/ with stress"],
+    homework=[EX("U6.2-H1", "Vocabulary", "Write the subject for each description.",
+                 items=["1. numbers and equations: ______", "2. the past: ______",
+                        "3. countries and maps: ______", "4. experiments with chemicals: ______",
+                        "5. poems and stories: ______", "6. sport: ______"],
+                 answers=["1. maths", "2. history", "3. geography", "4. chemistry", "5. literature",
+                          "6. PE"], level="E", kind="vocab"),
+              EX("U6.2-H2", "Grammar", "Complete with on, at, in or –.",
+                 items=["1. We have English ______ Monday and Thursday.",
+                        "2. The lesson finishes ______ half past ten.",
+                        "3. ______ the morning I feel more awake.",
+                        "4. We have a test ______ every Friday.",
+                        "5. The school year starts ______ September."],
+                 answers=["1. on", "2. at", "3. In", "4. – ", "5. in"], level="M", kind="grammar"),
+              EX("U6.2-H3", "Writing", "Write about your Monday timetable (5 sentences).",
+                 items=["Use on, at, in and at least four subjects."],
+                 answers=["Model: On Monday school starts at seven o'clock. Our first lesson is "
+                          "literature and the second is maths. We have a break at half past nine. "
+                          "In the third and fourth lessons we have physics and English. "
+                          "We finish at half past eleven."], level="M", kind="writing", lines=6),
+              EX("U6.2-H4", "Pronunciation", "Say these words five times with the stress just before "
+                 "the ending: education, information, competition, revision, television.",
+                 items=[], answers=["Spot-check in Lesson 3."], level="M", kind="pron")],
+    workbook=[EX("U6.2-P1", "Match", "Match the subject with what you do.",
+                 items=["1. geography", "2. chemistry", "3. literature", "4. history", "5. physics",
+                        "a. read novels and poems", "b. study maps and climates",
+                        "c. learn about forces and light", "d. study the past",
+                        "e. mix substances in a laboratory"],
+                 answers=["1–b", "2–e", "3–a", "4–d", "5–c"], level="E", kind="vocab"),
+              EX("U6.2-P2", "on / at / in", "Complete.",
+                 items=["1. ______ Friday afternoon", "2. ______ eight o'clock", "3. ______ the evening",
+                        "4. ______ Sunday", "5. ______ July", "6. ______ half past six"],
+                 answers=["1. On", "2. at", "3. in", "4. On", "5. in", "6. at"],
+                 level="E", kind="grammar"),
+              EX("U6.2-P3", "Stress marking", "Underline the stressed syllable.",
+                 items=["1. e-du-ca-tion", "2. ge-o-gra-phy", "3. li-te-ra-ture", "4. re-vi-sion",
+                        "5. com-pe-ti-tion", "6. la-bo-ra-to-ry"],
+                 answers=["1. edu-CA-tion", "2. ge-O-graphy", "3. LI-terature", "4. re-VI-sion",
+                          "5. compe-TI-tion", "6. la-BO-ratory"], level="D", kind="pron"),
+              EX("U6.2-P4", "Reading", "Read and answer.",
+                 text=["In many Vietnamese schools, students stay in the same classroom all day and "
+                       "the teachers move from room to room. In Britain, it is the opposite: students "
+                       "move to a different room for each subject, so they carry all their books in a "
+                       "bag. British students say this is tiring; Vietnamese students say it must be "
+                       "interesting to change rooms."],
+                 items=["1. Who moves in Vietnamese schools — students or teachers?",
+                        "2. What do British students carry?",
+                        "3. What do British students say about their system?",
+                        "4. Which system do you prefer? Why?"],
+                 answers=["1. The teachers move.", "2. All their books in a bag.",
+                          "3. That it is tiring.", "4. Students' own answer with a reason."],
+                 level="M", kind="reading"),
+              EX("U6.2-P5", "Writing", "Write 6 sentences comparing your timetable with a friend's.",
+                 items=["Use comparatives and on/at/in."],
+                 answers=["Model: On Tuesday I start at seven, but my cousin starts at half past seven. "
+                          "My day is longer than hers because we have five lessons and she has four. "
+                          "We both have a break at half past nine. She has PE on Tuesday, while I have "
+                          "PE on Friday. Her school is more modern than mine, but my teachers are "
+                          "stricter!"], level="D", kind="writing", lines=8)],
+    procedure=[ST("Warm-up: Freeze and describe", 5,
+                  ["Students mime a school action; the class describes with the present continuous. "
+                   "Recycles Lesson 1."],
+                  "Mime and describe.", "Whole class", "Slide 2"),
+               ST("Presentation: 10 subjects", 8,
+                  ["Elicit subjects from the class timetable on the wall; drill with stress.",
+                   "Mark the -tion / -sion words in a different colour."],
+                  "Repeat; copy with stress marks.", "Whole class", "Slides 3–5"),
+               ST("Pronunciation: -tion / -sion", 10,
+                  ["Write 'educa___' and add -tion. Say it wrong first (EDucation) and let the class "
+                   "correct you.",
+                   "State the rule: stress the syllable BEFORE the ending. Practise with six words.",
+                   "Then /ʃn/ vs /ʒn/: revision buzzes, education doesn't. Hand on throat."],
+                  "Repeat, mark stress, feel the buzz.", "Whole class", "Slides 6–7"),
+               ST("Grammar: on / at / in", 7,
+                  ["Three circles on the board: AT (a point), ON (a day), IN (a long period).",
+                   "Sort ten time expressions into the circles; then U6.2-W1."],
+                  "Sort and complete.", "Whole class → pairs", "Slide 8"),
+               ST("Listening + speaking", 10,
+                  ['Play the recording “The present continuous for future arrangements” twice (three times if the class asks); students do the listening tasks; students do the listening tasks; complete both tasks.',
+                   "Then pairs describe their own Tuesday, and groups rank five subjects."],
+                  "Listen, then talk about timetables and subjects.", "Individual → pairs → fours",
+                  "Slides 9–11"),
+               ST("Wrap-up and homework", 5, ["Class vote: the most useful subject. Set H1–H4."],
+                  "Vote; note homework.", "Whole class", "Slide 12")],
+    teacher_talk=[TK("The -tion stress rule",
+                     ["Here is a rule that fixes fifty words at once. Ready?",
+                      "Any word ending in -TION or -SION: the strong syllable is the one immediately "
+                      "BEFORE the ending.",
+                      "eduCAtion. informAtion. compeTItion. reVIsion. Never EDucation.",
+                      "Write it in your notebook with a star. Then find five more -tion words in your "
+                      "other subjects and mark the stress."]),
+                  TK("Teaching /ʒ/",
+                     ["Say /ʃ/ — like 'suỵt', asking for quiet. No voice, just air.",
+                      "Now put your fingers on your throat and BUZZ the same sound: /ʒ/. "
+                      "Like a bee: revi-ZHON.",
+                      "Vietnamese does not have this sound, so it takes practice. Words: revision, "
+                      "television, decision, usually, measure."])],
+    support=["Give the subject words with pictures.", "Provide the three time circles half-filled.",
+             "Reduce the stress task to four words."],
+    challenge=["Ask them to find five more -tion words from other subjects.",
+               "Ask for a full comparison of two timetables.",
+               "Ask them to lead the group ranking discussion."],
+    assessment=["Names 8 of 10 subjects", "5 of 6 correct prepositions",
+                "Correct stress in 4 of 5 -tion/-sion words"],
+    board_plan=["LEFT: 10 subjects with stress marks", "CENTRE: AT / ON / IN circles",
+                "RIGHT: -tion /ʃn/ | -sion /ʒn/ + stress rule; Homework H1–H4"],
+    materials=["Class timetable", 'Recording: The present continuous for future arrangements — ELLLO — Sound Grammar (1:07)'],
+)
+
+L3 = Lesson(
+    code="U6L3", unit=6, number=3, period=40,
+    lesson_type="A Closer Look 2", title="Present simple or present continuous?",
+    objectives=["choose correctly between the present simple and the present continuous",
+                "use the present continuous for future arrangements",
+                "explain the difference between the two tenses in their own words",
+                "talk about their week: habits and arrangements"],
+    recycled=["U6L1–L2: school vocabulary, present continuous, prepositions of time; "
+              "Unit 1 present simple and frequency"],
+    vocab=[V("arrangement", "n", "/əˈreɪndʒmənt/", "sự sắp xếp, hẹn", "We have an arrangement for Friday."),
+           V("exchange student", "n", "/ɪksˈtʃeɪndʒ ˌstjuːdnt/", "học sinh trao đổi", "An exchange student is visiting our class."),
+           V("visit", "v/n", "/ˈvɪzɪt/", "thăm", "They are visiting our school next Monday."),
+           V("prepare", "v", "/prɪˈpeə/", "chuẩn bị", "We are preparing a welcome show."),
+           V("welcome", "v/n", "/ˈwelkəm/", "chào đón", "We are going to welcome them at the gate."),
+           V("host", "v/n", "/həʊst/", "tiếp đón; chủ nhà", "Our class is hosting three students.")],
+    phrases=["at the moment", "these days", "next Monday", "this weekend", "every day"],
+    grammar=G("Present simple vs present continuous (including the future use)",
+              use=["PRESENT SIMPLE = habits, routines, timetables, facts. Time words: every day, "
+                   "usually, always, on Mondays, never.",
+                   "PRESENT CONTINUOUS = (1) actions happening NOW: Look! He is running. "
+                   "(2) temporary situations these days: I am studying hard this month. "
+                   "(3) FUTURE ARRANGEMENTS that are already fixed: We are visiting the museum "
+                   "on Friday.",
+                   "STATE verbs (like, know, want, need, understand, have = own) are NOT normally "
+                   "used in the continuous: *I am liking it* → I like it."],
+              form=[["Meaning", "Tense", "Example"],
+                    ["habit", "present simple", "We have English every Tuesday."],
+                    ["now", "present continuous", "We are having English now."],
+                    ["these days (temporary)", "present continuous", "I am studying a lot this term."],
+                    ["fixed future plan", "present continuous", "We are visiting Hue next Friday."],
+                    ["state verb", "present simple", "I know the answer. (NOT I am knowing)"]],
+              examples=["I usually walk to school, but this week I am going by bus because of the rain.",
+                        "What are you doing on Saturday? – I'm meeting my cousin at ten.",
+                        "She wants a new bag. (NOT: She is wanting)"],
+              pitfall="THE key confusion of Grade 7. Vietnamese uses 'đang' only for 'now', so students "
+                      "never use the continuous for the future: *I go to Hanoi next week.* "
+                      "Teach the future use as a separate, memorable rule: FIXED PLAN = -ing.",
+              note="Test question: is there a TIME WORD? 'every day' → simple. 'now / at the moment' → "
+                   "continuous. 'next Friday' + already arranged → continuous."),
+    pron=P("Contractions in the continuous",
+           "In speech we almost always contract: I'm going, he's coming, they're visiting, "
+           "we aren't staying. Full forms sound formal or strange.",
+           items=["I'm /aɪm/", "he's /hiːz/", "we're /wɪə/", "they're /ðeə/", "isn't /ˈɪznt/",
+                  "aren't /ɑːnt/"],
+           drill=["I'm meeting my friend at four.", "They're visiting our school on Monday.",
+                  "She isn't coming today."],
+           vn_note="Students say 'I am going' with two clear words. Contractions are not lazy English — "
+                   "they are normal English. Drill them until they feel natural."),
+    listening=AUDIO['U6L3'],
+    reading=T("An email about next week",
+              ["Hi Kevin,",
+               "Thanks for your message. Yes, everything is ready for your visit!",
+               "Normally our school day starts at seven, but next Monday we are starting at half past "
+               "eight, because you are arriving on the early bus.",
+               "Here is the plan. In the morning we are showing you the school and you are joining our "
+               "English lesson. My friend Mai usually sits next to me, but on Monday you are sitting "
+               "there — she doesn't mind!",
+               "In the afternoon we are going to the water puppet theatre. It opens at two and the "
+               "show lasts one hour.",
+               "One question: what do you usually eat for breakfast? My mother is worried because we "
+               "eat pho or rice, and she thinks you eat bread and milk. Please tell her the truth!",
+               "See you on Monday.",
+               "Nam"],
+              tasks=[EX("U6.3-R1", "Read and answer", "Answer the questions.",
+                        items=["1. What time does the school day normally start?",
+                               "2. What time is it starting next Monday? Why?",
+                               "3. Where is Kevin sitting in the English lesson?",
+                               "4. What are they doing in the afternoon?",
+                               "5. Why is Nam's mother worried?"],
+                        answers=["1. At seven.", "2. At half past eight, because Kevin is arriving on "
+                                 "the early bus.", "3. Next to Nam (in Mai's usual seat).",
+                                 "4. They are going to the water puppet theatre.",
+                                 "5. Because she thinks Kevin eats bread and milk for breakfast, "
+                                 "not pho or rice."], level="M", kind="reading"),
+                     EX("U6.3-R2", "Find the tenses", "Find in the email:",
+                        items=["1. two present simple sentences about habits",
+                               "2. three present continuous sentences about next Monday",
+                               "3. one present simple sentence about a timetable (the theatre)"],
+                        answers=["1. 'our school day starts at seven', 'Mai usually sits next to me', "
+                                 "'we eat pho or rice' (any two)",
+                                 "2. 'we are starting at half past eight', 'you are arriving on the "
+                                 "early bus', 'we are showing you the school', 'you are joining our "
+                                 "English lesson', 'you are sitting there', 'we are going to the water "
+                                 "puppet theatre' (any three)",
+                                 "3. 'It opens at two.'"], level="D", kind="reading")]),
+    speaking=[EX("U6.3-S1", "Habit or now?", "Look at the prompts and make two sentences: one habit, "
+                 "one happening now.",
+                 items=["1. our teacher / write", "2. we / study English", "3. I / sit",
+                        "4. the students / play football"],
+                 answers=["Model: 1. Our teacher writes on the board every lesson. Right now she is "
+                          "writing the date."], level="M", kind="speaking"),
+              EX("U6.3-S2", "What are you doing this weekend?", "Ask five classmates about their "
+                 "arrangements. Write the name and the plan.",
+                 items=["A: What are you doing on Saturday evening?  B: I'm visiting my grandmother."],
+                 answers=["Report: 'Three students are visiting their grandparents this weekend.' "
+                          "Insist on the continuous for arranged plans."], level="D", kind="speaking")],
+    writing=[EX("U6.3-W1", "Choose the tense", "Complete with the present simple or present continuous.",
+                items=["1. We usually (start) ______ at seven, but tomorrow we (start) ______ at eight.",
+                       "2. Look! The head teacher (come) ______ .",
+                       "3. She (not like) ______ chemistry.",
+                       "4. What you (do) ______ next Saturday?",
+                       "5. My father (work) ______ in a factory. He (work) ______ at the moment.",
+                       "6. The museum (open) ______ at nine every day."],
+                answers=["1. start / are starting", "2. is coming", "3. doesn't like",
+                         "4. are … doing", "5. works / is working", "6. opens"],
+                level="D", kind="writing")],
+    communication={"function": "Making and confirming arrangements",
+                   "phrases": ["What are you doing on…?", "I'm meeting… at…", "Are you free on…?",
+                               "So we're meeting at… , right?", "See you then!"],
+                   "roleplay": "You and a partner are planning the exchange students' afternoon. "
+                               "Agree on three activities with times, then confirm the plan.",
+                   "real_life": "Arranging to meet someone; confirming a plan so nobody is confused."},
+    guided=[EX("U6.3-G1", "Which tense?", "Write PS (present simple) or PC (present continuous).",
+               items=["1. I go to school by bike every day. ___",
+                      "2. Look! It is raining. ___",
+                      "3. We are visiting the museum next Friday. ___",
+                      "4. She usually has lunch at home. ___",
+                      "5. They are studying hard this month. ___",
+                      "6. Water boils at 100 degrees. ___"],
+               answers=["1. PS", "2. PC", "3. PC", "4. PS", "5. PC", "6. PS"],
+               level="E", kind="grammar"),
+            EX("U6.3-G2", "Time word → tense", "Write the tense you need.",
+               items=["1. every Monday → ______", "2. at the moment → ______", "3. now → ______",
+                      "4. usually → ______", "5. next Friday (fixed plan) → ______",
+                      "6. these days → ______"],
+               answers=["1. present simple", "2. present continuous", "3. present continuous",
+                        "4. present simple", "5. present continuous", "6. present continuous"],
+               level="E", kind="grammar")],
+    independent=[EX("U6.3-I1", "Error clinic", "Correct one mistake in each sentence.",
+                    items=["1. Look! The teacher comes.", "2. I am liking English very much.",
+                           "3. Every day I am going to school by bike.",
+                           "4. What you are doing now?", "5. We visit the museum next Monday. "
+                           "(the tickets are booked)", "6. She is having a new bike."],
+                    answers=["1. Look! The teacher is coming.", "2. I like English very much.",
+                             "3. Every day I go to school by bike.", "4. What are you doing now?",
+                             "5. We are visiting the museum next Monday.", "6. She has a new bike."],
+                    level="D", kind="grammar",
+                    note="Items 2 and 6 are STATE verbs (like, have = own): never continuous."),
+                 EX("U6.3-I2", "Weekend survey", "Do U6.3-S2 and report two arrangements.", items=[],
+                    answers=["See U6.3-S2."], level="D", kind="speaking")],
+    review=["present simple = habits and facts", "present continuous = now / these days / fixed future",
+            "state verbs are not used in the continuous"],
+    homework=[EX("U6.3-H1", "Grammar", "Complete with the present simple or continuous.",
+                 items=["1. My sister (study) ______ English every evening.",
+                        "2. Be quiet! The baby (sleep) ______ .",
+                        "3. We (have) ______ a test next Tuesday. (already fixed)",
+                        "4. He (not understand) ______ the question.",
+                        "5. What time (start) ______ your school every day?",
+                        "6. Look, it (snow) ______ in the film!"],
+                 answers=["1. studies", "2. is sleeping", "3. are having", "4. doesn't understand",
+                          "5. does … start", "6. is snowing"], level="M", kind="grammar"),
+              EX("U6.3-H2", "Grammar", "Write two sentences for each prompt: one habit, one arrangement.",
+                 items=["1. play football", "2. visit grandparents", "3. go to the library"],
+                 answers=["Model: 1. I play football every Sunday. This Sunday I'm playing football "
+                          "with my cousin's team."], level="D", kind="grammar"),
+              EX("U6.3-H3", "Writing", "Write an email (70–80 words) to a friend about your plans for "
+                 "next weekend.",
+                 items=["Use at least four present continuous sentences for arrangements and two "
+                        "present simple sentences for habits."],
+                 answers=["Model: Hi Linh, What are you doing this weekend? I'm quite busy. "
+                          "On Saturday morning I'm helping my mother at the market — we always go "
+                          "early. In the afternoon I'm meeting Nam at the library because we're "
+                          "preparing our geography project. On Sunday my family is visiting my "
+                          "grandmother in the countryside. We usually go once a month. Are you free on "
+                          "Sunday evening? Write back soon. Mai (76 words)"],
+                 level="D", kind="writing", lines=10),
+              EX("U6.3-H4", "Pronunciation", "Say these contractions five times: I'm meeting, "
+                 "he's coming, they're visiting, we aren't staying, she isn't going.",
+                 items=[], answers=["Spot-check in Lesson 4."], level="E", kind="pron")],
+    workbook=[EX("U6.3-P1", "Choose the correct form", "Circle the correct answer.",
+                 items=["1. She (works / is working) in a hospital.",
+                        "2. Listen! Someone (knocks / is knocking) at the door.",
+                        "3. We (go / are going) to Hue next Saturday. (tickets booked)",
+                        "4. I (don't like / am not liking) durian.",
+                        "5. My father usually (drives / is driving) to work.",
+                        "6. What (do you do / are you doing)? — I'm reading."],
+                 answers=["1. works", "2. is knocking", "3. are going", "4. don't like", "5. drives",
+                          "6. are you doing"], level="M", kind="grammar"),
+              EX("U6.3-P2", "Complete the text", "Use the correct tense.",
+                 text=["My name is Trang. I (1. live) ______ in Hue and I (2. go) ______ to Nguyen Hue "
+                       "School. Normally our lessons (3. start) ______ at seven, but this week we "
+                       "(4. start) ______ at eight because the teachers (5. have) ______ a meeting "
+                       "every morning. Right now I (6. sit) ______ in the library and I (7. write) "
+                       "______ to you. Next Sunday my family (8. visit) ______ my aunt in Da Nang."],
+                 items=["Write the eight verbs."],
+                 answers=["1. live", "2. go", "3. start", "4. are starting", "5. have", "6. am sitting",
+                          "7. am writing", "8. is visiting"], level="D", kind="grammar"),
+              EX("U6.3-P3", "Make questions", "Write the question for the answer.",
+                 items=["1. ______ ? – I'm doing my homework.",
+                        "2. ______ ? – I go to school by bike.",
+                        "3. ______ ? – We're meeting at four o'clock.",
+                        "4. ______ ? – She teaches maths."],
+                 answers=["1. What are you doing?", "2. How do you go to school?",
+                          "3. What time are you meeting? / When are you meeting?",
+                          "4. What does she teach?"], level="M", kind="grammar"),
+              EX("U6.3-P4", "Correct the mistakes", "One mistake per sentence.",
+                 items=["1. I am knowing the answer.", "2. Every morning she is having breakfast at six.",
+                        "3. What you do now?", "4. They go to Ha Long Bay next week. (booked)",
+                        "5. He is wanting a new phone."],
+                 answers=["1. I know the answer.", "2. Every morning she has breakfast at six.",
+                          "3. What are you doing now?", "4. They are going to Ha Long Bay next week.",
+                          "5. He wants a new phone."], level="D", kind="grammar"),
+              EX("U6.3-P5", "Writing", "Write 8 sentences about your life: four habits and four "
+                 "arrangements for next week.",
+                 items=[], answers=["Model: I get up at half past five every day. I usually walk to "
+                                    "school with my sister. We have English three times a week. "
+                                    "I never watch TV before dinner. Next Monday I'm taking a maths "
+                                    "test. On Wednesday I'm meeting my English club after school. "
+                                    "On Friday my class is visiting the museum. On Sunday I'm helping "
+                                    "my father in the garden."], level="D", kind="writing", lines=10)],
+    procedure=[ST("Warm-up: Mime and describe", 5,
+                  ["Two students mime; the class describes with the present continuous."],
+                  "Describe the actions.", "Whole class", "Slide 2"),
+               ST("Presentation: two tenses side by side", 12,
+                  ["Draw two columns: EVERY DAY | NOW. Give a pair of sentences for each: "
+                   "'I walk to school every day.' / 'Look! I am walking.'",
+                   "Elicit the difference. Then add a THIRD column: NEXT WEEK (fixed plan).",
+                   "'We are visiting the museum next Friday.' Explain: the plan is already made — "
+                   "tickets, teacher, bus.",
+                   "Add the STATE VERB warning box: like, know, want, need, understand, have (= own)."],
+                  "Copy the three columns; produce one sentence for each.", "Whole class", "Slides 3–7"),
+               ST("Guided practice", 8,
+                  ["U6.3-G1 and G2 (which tense?). Then U6.3-W1 written and checked in pairs."],
+                  "Identify and produce the correct tense.", "Pairs", "Student Book p. U6L3"),
+               ST("Listening: the exchange visit", 8,
+                  ['Play the recording “The present continuous” twice (three times if the class asks); students do the listening tasks; students do the listening tasks; complete the plan and the who-does-what task.',
+                   "Highlight that EVERY future arrangement uses the continuous."],
+                  "Listen and complete the plan.", "Individual → pairs", "Slide 8"),
+               ST("Speaking: weekend arrangements", 9,
+                  ["Model: 'What are you doing on Saturday?' Drill. Mingle: five classmates.",
+                   "Report back with 'X is visiting…'."],
+                  "Ask, answer and report arrangements.", "Mingle", "Slides 9–10"),
+               ST("Wrap-up and homework", 3, ["Error clinic U6.3-I1 orally. Set H1–H4."],
+                  "Correct the six errors.", "Whole class", "Slide 12")],
+    teacher_talk=[TK("The three-column explanation",
+                     ["Column one: EVERY DAY. I walk to school. This is my habit. Present simple.",
+                      "Column two: NOW. (Walk across the room.) I AM WALKING. This second. "
+                      "Present continuous.",
+                      "Column three — and this one is new for you: NEXT FRIDAY. We ARE VISITING the "
+                      "museum. It is the future! But we use -ing. Why? Because the plan is already "
+                      "fixed: the bus is booked, the teacher has told us.",
+                      "In Vietnamese, 'đang' only means NOW, so this third use feels strange. "
+                      "Learn it as a rule: FIXED PLAN = am/is/are + -ing."]),
+                  TK("State verbs",
+                     ["Some verbs describe a state, not an action. You cannot see them happening.",
+                      "Can you see me 'knowing'? Can you watch someone 'liking' something? No.",
+                      "So: I KNOW the answer, not 'I am knowing'. I LIKE English, not 'I am liking'.",
+                      "The six to remember: like, love, know, want, need, understand. And 'have' when "
+                      "it means OWN: I have a bike. (But: I'm having lunch — that's an action!)"])],
+    support=["Give the three-column table with one example in each.",
+             "Colour-code: blue for simple, red for continuous.",
+             "Reduce the error clinic to four sentences."],
+    challenge=["Ask them to explain the three uses in their own words.",
+               "Ask for a paragraph with all three uses.",
+               "Add 'have' as action vs state (I'm having lunch / I have a bike)."],
+    assessment=["6 of 6 correct tense identification", "Uses the continuous for a future arrangement",
+                "No continuous with state verbs"],
+    board_plan=["THREE COLUMNS: EVERY DAY (simple) | NOW (continuous) | NEXT WEEK-FIXED (continuous)",
+                "STATE VERBS box: like, know, want, need, understand, have",
+                "RIGHT: Homework H1–H4"],
+    materials=["Coloured chalk/markers", 'Recording: The present continuous — ELLLO — Sound Grammar (2:23)'],
+)
+
+L4 = Lesson(
+    code="U6L4", unit=6, number=4, period=41,
+    lesson_type="Communication", title="Everyday English: asking about school life",
+    objectives=["ask and answer questions about school life in another country",
+                "use polite question openers and follow-up questions",
+                "take part in an 8-turn exchange conversation",
+                "write five good questions for a visitor"],
+    recycled=["U6L1–L3: school vocabulary, both present tenses, prepositions of time; "
+              "Units 1–5 question forms"],
+    vocab=[V("compulsory", "adj", "/kəmˈpʌlsəri/", "bắt buộc", "English is compulsory in our school."),
+           V("optional", "adj", "/ˈɒpʃənl/", "tự chọn", "Music is optional after Grade 9."),
+           V("term", "n", "/tɜːm/", "học kỳ", "There are two terms in a school year."),
+           V("grade", "n", "/ɡreɪd/", "khối lớp; điểm", "I'm in Grade 7. I got a good grade."),
+           V("club", "n", "/klʌb/", "câu lạc bộ", "I'm in the chess club."),
+           V("strict", "adj", "/strɪkt/", "nghiêm khắc", "Our maths teacher is strict but fair.")],
+    phrases=["Can I ask you something?", "What's it like…?", "Do you have to…?",
+             "How about in your country?", "That's interesting!", "Really? Here we…"],
+    grammar=G("Question forms review: yes/no, Wh- and 'What's it like?'",
+              use=["Yes/no with DO: Do you wear a uniform? – Yes, we do.",
+                   "Yes/no with BE: Are your teachers strict? – Yes, they are.",
+                   "Wh- questions: What time…? How many…? Where…? Why…?",
+                   "'What's it like?' asks for a description: What's your school like? – It's big and "
+                   "modern.",
+                   "'Do you have to…?' asks about rules: Do you have to wear a uniform?"],
+              form=[["Type", "Example", "Answer"],
+                    ["Yes/no (do)", "Do you have homework every day?", "Yes, we do."],
+                    ["Yes/no (be)", "Is your school big?", "No, it isn't."],
+                    ["Wh-", "How many lessons do you have?", "Five."],
+                    ["What's … like?", "What's your school like?", "It's small but friendly."],
+                    ["have to (rules)", "Do you have to wear a uniform?", "Yes, we do."]],
+              examples=["What's your English teacher like? – She's strict but very funny.",
+                        "Do you have to clean the classroom? – Yes, every Friday."],
+              pitfall="*How is your school like?* — the correct form is WHAT'S your school LIKE? "
+                      "Also *You have homework?* without 'do'.",
+              note="'What's he like?' = describe his character. 'What does he like?' = his preferences. "
+                   "One tiny word changes everything."),
+    pron=P("Question intonation",
+           "Yes/no questions go UP at the end. Wh- questions go DOWN. This is one of the most useful "
+           "rules in spoken English.",
+           items=["Do you wear a uniform? ↗", "Is your school big? ↗",
+                  "What time does school start? ↘", "What's your school like? ↘"],
+           drill=["Do you have homework every day? ↗", "How many students are in your class? ↘",
+                  "Are your teachers strict? ↗", "What's your favourite subject? ↘"],
+           vn_note="Vietnamese question particles (không? à?) carry the question, so English intonation "
+                   "is often flat. Use a hand gesture: up for yes/no, down for Wh-."),
+    listening=AUDIO['U6L4'],
+    reading=T("Five questions foreign students always ask",
+              ["Every year our school welcomes visitors from other countries. These are the five "
+               "questions they ask most often — and our answers.",
+               "1. 'Why do you start so early?' Because it is cooler in the morning, and because many "
+               "schools have two shifts.",
+               "2. 'Do you really have school on Saturday?' Some schools do, especially for extra "
+               "lessons. Most students also go to evening classes.",
+               "3. 'What is the ao dai?' It is the traditional Vietnamese dress. In many schools girls "
+               "wear a white ao dai on Monday for the flag ceremony.",
+               "4. 'Do you stand up when the teacher comes in?' Yes, the whole class stands and says "
+               "good morning. Visitors are always surprised.",
+               "5. 'Is the homework really that hard?' Honestly — yes. But we help each other."],
+              tasks=[EX("U6.4-R1", "Read and answer", "Answer the questions.",
+                        items=["1. Why do Vietnamese schools start early? (two reasons)",
+                               "2. When do girls wear the ao dai?",
+                               "3. What do students do when the teacher comes in?",
+                               "4. Which answer surprises visitors most, do you think? Why?"],
+                        answers=["1. Because it is cooler in the morning, and because many schools have "
+                                 "two shifts.",
+                                 "2. On Monday, for the flag ceremony.",
+                                 "3. The whole class stands up and says good morning.",
+                                 "4. Students' own answer with a reason."], level="M", kind="reading")]),
+    speaking=[EX("U6.4-S1", "Ask about school life", "Ask your partner these questions and add one of "
+                 "your own.",
+                 items=["1. What time does school start?", "2. Do you have to wear a uniform?",
+                        "3. How many lessons do you have a day?", "4. What are your teachers like?",
+                        "5. What's your school like?", "6. (your own question)"],
+                 answers=["Watch the intonation: yes/no ↗, Wh- ↘."], level="M", kind="speaking"),
+              EX("U6.4-S2", "Exchange conversation role play", "A is a Vietnamese student, B is a "
+                 "visitor from another country. Ask and answer at least eight turns.",
+                 items=["Checklist: □ opener ('Can I ask you something?') □ 3 questions each "
+                        "□ one 'What's … like?' □ one follow-up question □ a reaction "
+                        "□ a polite ending"],
+                 answers=["See the listening script as a model. Assessment: task 3, fluency 2.5, "
+                          "pronunciation 2.5, accuracy 2."], level="D", kind="speaking")],
+    writing=[EX("U6.4-W1", "Five questions", "Write five good questions to ask a visitor about "
+                "their school.",
+                items=["Include: one yes/no question, two Wh- questions, one 'What's … like?', "
+                       "and one about rules with 'Do you have to…?'"],
+                answers=["Model: 1. Do you wear a uniform? 2. What time does your school finish? "
+                         "3. How many students are in your class? 4. What's your school like? "
+                         "5. Do you have to clean your classroom?"],
+                level="M", kind="writing", lines=6)],
+    communication={"function": "Starting a conversation with someone new and keeping it going",
+                   "phrases": ["Can I ask you something?", "What's it like…?", "How about in your "
+                               "country?", "Really? That's interesting!", "Here we…",
+                               "It was nice talking to you."],
+                   "roleplay": "Speed-friending: two rows facing each other; three minutes per pair, "
+                               "then one row moves along.",
+                   "real_life": "Meeting an exchange student, a tourist or a new classmate."},
+    guided=[EX("U6.4-G1", "Make the questions", "Write the question.",
+               items=["1. (you / wear a uniform?) ______",
+                      "2. (what time / school / finish?) ______",
+                      "3. (your teachers / strict?) ______",
+                      "4. (how many lessons / you / have?) ______",
+                      "5. (what / your school / like?) ______"],
+               answers=["1. Do you wear a uniform?", "2. What time does school finish?",
+                        "3. Are your teachers strict?", "4. How many lessons do you have?",
+                        "5. What's your school like?"], level="M", kind="grammar"),
+            EX("U6.4-G2", "What's he like? or What does he like?", "Choose the correct question.",
+               items=["1. ______ ? – He's friendly and funny.",
+                      "2. ______ ? – He likes football and computer games.",
+                      "3. ______ ? – It's big, old and quite noisy.",
+                      "4. ______ ? – She likes chemistry best."],
+               answers=["1. What's he like?", "2. What does he like?", "3. What's it like?",
+                        "4. What does she like?"], level="D", kind="grammar",
+               note="'What's X like?' = describe. 'What does X like?' = preferences.")],
+    independent=[EX("U6.4-I1", "Complete the conversation", "Write the missing questions.",
+                    items=["A: Can I ______ you something? B: Sure.",
+                           "A: ______ time does your school start? B: At half past eight.",
+                           "A: ______ you have to wear a uniform? B: No, we don't.",
+                           "A: ______ your teachers like? B: They're quite friendly.",
+                           "A: ______ many students are in your class? B: About thirty."],
+                    answers=["A: ask", "A: What", "A: Do", "A: What are", "A: How"],
+                    level="M", kind="mixed"),
+                 EX("U6.4-I2", "Speed-friending", "Do the exchange conversation with three different "
+                    "partners.", items=[], answers=["See U6.4-S2."], level="D", kind="speaking")],
+    review=["Question forms: do/be, Wh-, What's … like?, Do you have to…?",
+            "Yes/no ↗ and Wh- ↘ intonation", "Follow-up questions keep a conversation alive"],
+    homework=[EX("U6.4-H1", "Grammar", "Write the questions.",
+                 items=["1. ______ ? – School starts at seven.",
+                        "2. ______ ? – Yes, we wear a uniform.",
+                        "3. ______ ? – It's big and quite modern.",
+                        "4. ______ ? – We have five lessons a day.",
+                        "5. ______ ? – No, our teachers aren't very strict."],
+                 answers=["1. What time does school start?", "2. Do you wear a uniform?",
+                          "3. What's your school like?", "4. How many lessons do you have a day?",
+                          "5. Are your teachers strict?"], level="M", kind="grammar"),
+              EX("U6.4-H2", "Vocabulary", "Complete with compulsory, optional, term, grade, strict.",
+                 items=["1. English is ______ in Vietnamese schools.",
+                        "2. Music is ______ in some countries.",
+                        "3. There are two ______ in a school year.",
+                        "4. I'm in ______ 7.", "5. Our maths teacher is very ______ ."],
+                 answers=["1. compulsory", "2. optional", "3. terms", "4. Grade", "5. strict"],
+                 level="E", kind="vocab"),
+              EX("U6.4-H3", "Writing", "Write five questions for a visitor and your own answers "
+                 "(10 lines).",
+                 items=[], answers=["See U6.4-W1 model plus students' own answers."],
+                 level="M", kind="writing", lines=10),
+              EX("U6.4-H4", "Speaking", "Practise the questions with the correct intonation: "
+                 "yes/no UP, Wh- DOWN. Five times each.",
+                 items=[], answers=["Spot-check in Lesson 5."], level="E", kind="pron")],
+    workbook=[EX("U6.4-P1", "Match", "Match the question with the answer.",
+                 items=["1. What's your school like?", "2. What time does it start?",
+                        "3. Do you have to wear a uniform?", "4. How many students are in your class?",
+                        "a. Forty-two.", "b. At seven o'clock.", "c. It's big but friendly.",
+                        "d. Yes, we do."],
+                 answers=["1–c", "2–b", "3–d", "4–a"], level="E", kind="mixed"),
+              EX("U6.4-P2", "Intonation", "Write ↗ (rising) or ↘ (falling).",
+                 items=["1. Do you have homework? ___", "2. What's your favourite subject? ___",
+                        "3. Are your teachers strict? ___", "4. Where is your school? ___",
+                        "5. Is it far from your house? ___"],
+                 answers=["1. ↗", "2. ↘", "3. ↗", "4. ↘", "5. ↗"], level="M", kind="pron"),
+              EX("U6.4-P3", "Correct the questions", "One mistake per question.",
+                 items=["1. How is your school like?", "2. You have a uniform?",
+                        "3. What time school starts?", "4. How many student are in your class?",
+                        "5. Do your teachers strict?"],
+                 answers=["1. What's your school like?", "2. Do you have a uniform?",
+                          "3. What time does school start?",
+                          "4. How many students are in your class?", "5. Are your teachers strict?"],
+                 level="D", kind="grammar"),
+              EX("U6.4-P4", "Write a dialogue", "Write a 12-line conversation between a Vietnamese "
+                 "student and a visitor about school life.",
+                 items=["Include six questions, two reactions and a polite ending."],
+                 answers=["Model: A: Can I ask you something about your school? B: Of course. "
+                          "A: What time does it start? B: At half past eight. A: Really? We start at "
+                          "seven! B: That's very early. Do you have to wear a uniform? A: Yes, we do. "
+                          "The girls wear an ao dai on Mondays. B: That's beautiful. What are your "
+                          "teachers like? A: Quite friendly, but our maths teacher is strict. "
+                          "B: The same in my school! It was nice talking to you. A: You too. "
+                          "See you tomorrow!"], level="D", kind="writing", lines=14)],
+    procedure=[ST("Warm-up: Tense race", 5,
+                  ["Teacher says a time word; students shout the tense and make a sentence. "
+                   "Recycles Lesson 3."],
+                  "Identify the tense and produce a sentence.", "Whole class", "Slide 2"),
+               ST("Presentation: question forms", 9,
+                  ["Build the five question types on the board with examples from school life.",
+                   "Contrast 'What's she like?' and 'What does she like?' with two pictures.",
+                   "Drill the intonation with hand gestures."],
+                  "Repeat with gestures; copy the five types.", "Whole class", "Slides 3–5"),
+               ST("Listening: talking to an exchange student", 9,
+                  ['Play the recording “Lesson 19: When Do I Start?” twice (three times if the class asks); students do the listening tasks; students do the listening tasks; read the script in role.'],
+                  "Listen, complete, read in role.", "Individual → pairs", "Slide 6"),
+               ST("Guided practice", 7, ["U6.4-G1, G2 and I1; check in pairs."],
+                  "Write and correct questions.", "Pairs", "Student Book p. U6L4"),
+               ST("Speed-friending", 11,
+                  ["Two rows facing each other. Three minutes per pair, then one row moves.",
+                   "Three rounds. Students must ask at least three questions each round."],
+                  "Ask and answer with three different partners.", "Pairs (rotating)", "Slides 7–9"),
+               ST("Wrap-up and homework", 4, ["Report: 'What did you learn about a classmate?' "
+                                              "Set H1–H4."],
+                  "Report; note homework.", "Whole class", "Slide 12")],
+    teacher_talk=[TK("What's she like? vs What does she like?",
+                     ["Two questions, one small difference, completely different meanings.",
+                      "'What IS she LIKE?' — here 'like' means 'similar to'. Describe her: friendly, "
+                      "tall, strict.",
+                      "'What DOES she LIKE?' — here 'like' is the verb 'to like'. Her preferences: "
+                      "she likes music.",
+                      "Listen for the little word: IS = describe. DOES = preferences. Say both "
+                      "questions with me."]),
+                  TK("Teaching question intonation with gestures",
+                     ["Yes/no question — my hand goes UP at the end: Do you have homework? ↗",
+                      "Wh- question — my hand goes DOWN: What time does school start? ↘",
+                      "Why does it matter? A Wh- question with rising intonation sounds like you did "
+                      "not hear, and the person will repeat everything.",
+                      "Everybody: hands ready. Do you like English? Up! What do you like? Down!"])],
+    support=["Give the five question types printed on a card.",
+             "Allow weaker students to read the questions in the first round of speed-friending.",
+             "Reduce to three questions per round."],
+    challenge=["Ask them to add a follow-up question after every answer.",
+               "Ask them to play the foreign visitor and invent a different school system.",
+               "Ask for ten questions in H3 with answers."],
+    assessment=["Forms 4 of 5 questions correctly", "Correct rising/falling intonation",
+                "Sustains an 8-turn conversation"],
+    board_plan=["LEFT: 5 question types", "CENTRE: What's she LIKE? vs What DOES she like?",
+                "RIGHT: ↗ yes/no ↘ Wh-; Homework H1–H4"],
+    materials=["Question type cards", 'Recording: Lesson 19: When Do I Start? — VOA Learning English — Let’s Learn English, Level 1 (2:50)'],
+)
+
+L5 = Lesson(
+    code="U6L5", unit=6, number=5, period=42,
+    lesson_type="Skills 1", title="Reading: Schools around the world + Speaking: Comparing schools",
+    objectives=["read a 230-word article about unusual schools and answer three types of question",
+                "guess new words from context",
+                "compare two schools in a 90-second talk",
+                "ask two follow-up questions"],
+    recycled=["U6L1–L4: school vocabulary, both present tenses, question forms; "
+              "Unit 4 comparatives and superlatives"],
+    vocab=[V("boarding school", "n", "/ˈbɔːdɪŋ skuːl/", "trường nội trú", "She goes to a boarding school."),
+           V("distance learning", "n", "/ˈdɪstəns ˌlɜːnɪŋ/", "học từ xa", "They use distance learning by radio."),
+           V("pupil", "n", "/ˈpjuːpl/", "học sinh", "The school has only nine pupils."),
+           V("remote", "adj", "/rɪˈməʊt/", "xa xôi, hẻo lánh", "The village is very remote."),
+           V("equipment", "n", "/ɪˈkwɪpmənt/", "thiết bị", "The school has modern equipment."),
+           V("opportunity", "n", "/ˌɒpəˈtjuːnəti/", "cơ hội", "Education gives you opportunities.")],
+    phrases=["get to school", "take part in lessons", "have the chance to…",
+             "compared with…", "on the other hand"],
+    grammar=G("Comparing two things in a talk (recycling Unit 4)",
+              use=["Use comparatives to compare two schools: bigger than, more modern than.",
+                   "Use 'while' and 'However' to organise (Unit 4 Lesson 6).",
+                   "Use 'both' for similarities: Both schools have…",
+                   "New: 'compared with' — Compared with my school, this one is very small."],
+              form=[["Function", "Language", "Example"],
+                    ["similarity", "Both … and …", "Both schools start early."],
+                    ["difference", "…-er / more … than", "Their day is shorter than ours."],
+                    ["contrast", "…, while …", "We have 42 in a class, while they have 12."],
+                    ["contrast", "Compared with …, …", "Compared with our school, theirs is tiny."]],
+              examples=["Both schools use technology, but their classes are much smaller than ours.",
+                        "Compared with a city school, a village school has less equipment."],
+              pitfall="*Compare with my school, it is small.* The correct form is COMPARED WITH.",
+              note="This lesson recycles Unit 4 grammar in a new topic — that is deliberate."),
+    pron=P("Stress in long words and clear phrasing",
+           "Practise: oppor'TU-ni-ty, e'QUIP-ment, 'BOARD-ing school, 'DIS-tance learning. "
+           "Group your words and pause between the groups.",
+           items=["oppor'tunity (ooOoo)", "e'quipment (oOo)", "'boarding school (Oo o)",
+                  "'distance learning (Oo Oo)"],
+           drill=["Education gives every child an oppor-TU-ni-ty.",
+                  "Their school has better e-QUIP-ment / than ours."],
+           vn_note="Long words are where stress errors are most damaging. Break the word into "
+                   "syllables and clap the strong one."),
+    listening=AUDIO['U6L5'],
+    reading=T("Not every school has a classroom",
+              ["When you think of a school, you probably think of a building, a playground and a bell. "
+               "But for millions of children, school looks completely different.",
+              "In the mountains of northern Viet Nam, some children walk two hours to school and stay "
+               "in a boarding school from Monday to Friday. They cook together, study together and "
+               "go home only at the weekend. 'I miss my mother,' says Sung Thi Mai, 12, 'but at home "
+               "there is no electricity, so I cannot study in the evening.'",
+              "In the Australian outback, children who live hundreds of kilometres from any town use "
+               "distance learning. Every morning they sit at a desk at home and meet their teacher on "
+               "a screen. Their 'classmates' may live 300 kilometres away. Once a year the whole school "
+               "meets for a sports day — and for many pupils it is the first time they see each other.",
+              "In Bangladesh, where floods cover the roads for months, engineers built floating schools. "
+               "The boat collects the children, and the lesson happens as it moves along the river.",
+              "These schools have very little equipment. But they exist for one reason: every child "
+               "should have the opportunity to learn, whatever the weather, the distance or the money."],
+              tasks=[EX("U6.5-R1", "Gist", "Choose the best title.",
+                        items=["A. Why schools need better equipment",
+                               "B. Different kinds of school around the world",
+                               "C. Life in the Australian outback"],
+                        answers=["B"], level="E", kind="reading"),
+                     EX("U6.5-R2", "Detail", "Complete the table.",
+                        items=["Place | Kind of school | One detail",
+                               "N. Viet Nam | ___ | ___", "Australia | ___ | ___",
+                               "Bangladesh | ___ | ___"],
+                        answers=["N. Viet Nam | boarding school | children walk two hours and stay "
+                                 "Monday–Friday; no electricity at home",
+                                 "Australia | distance learning | pupils meet the teacher on a screen; "
+                                 "classmates may be 300 km away; one sports day a year",
+                                 "Bangladesh | floating school (on a boat) | the boat collects the "
+                                 "children and the lesson happens as it moves"],
+                        level="M", kind="reading"),
+                     EX("U6.5-R3", "Vocabulary from context", "Find a word or phrase that means:",
+                        items=["1. a school where students live (paragraph 2)",
+                               "2. the far countryside of Australia (paragraph 3)",
+                               "3. people who design and build things (paragraph 4)",
+                               "4. a chance to do something (paragraph 5)"],
+                        answers=["1. boarding school", "2. the outback", "3. engineers",
+                                 "4. opportunity"], level="M", kind="reading"),
+                     EX("U6.5-R4", "Inference", "Answer with your own ideas.",
+                        items=["1. Why does Mai stay at the boarding school, even though she misses "
+                               "her mother?",
+                               "2. Why is the yearly sports day so important for the Australian pupils?",
+                               "3. Which of the three schools would be hardest for you? Why?"],
+                        answers=["1. Because there is no electricity at home, so she cannot study in "
+                                 "the evening.",
+                                 "2. Because it may be the only time they meet their classmates "
+                                 "face to face.",
+                                 "3. Students' own answer with a reason."], level="D", kind="reading")]),
+    speaking=[EX("U6.5-S1", "Prepare your comparison", "Make notes comparing YOUR school with ONE of "
+                 "the schools in the text.",
+                 items=["1. Which school? ______", "2. Two similarities (Both…) ______",
+                        "3. Three differences (…-er than / while) ______",
+                        "4. Which would you prefer and why? ______"],
+                 answers=["Notes only."], level="M", kind="speaking"),
+              EX("U6.5-S2", "Give your comparison", "Speak for 90 seconds in a group of four. "
+                 "Listeners ask one question each.",
+                 items=["Useful language: 'Both schools…', '…is much bigger than…', "
+                        "'We have 42 students in a class, while they have nine.', "
+                        "'Compared with…', 'I would prefer… because…'"],
+                 answers=["Assessment: content 3, comparatives 3, delivery 2, questions 2."],
+                 level="D", kind="speaking")],
+    writing=[EX("U6.5-W1", "Notes to sentences", "Turn your notes into six sentences.",
+                items=[], answers=["Model: The floating school in Bangladesh is very different from "
+                                   "mine. Both schools have computers and a small library, and both "
+                                   "have lessons of about 45 minutes. However, their classroom moves "
+                                   "along a river, while ours stands still! Their classes are much "
+                                   "smaller than ours — about 30 pupils compared with 42 in my class. "
+                                   "They also have far less equipment. I would prefer my school, "
+                                   "because I get seasick easily!"],
+                level="M", kind="writing", lines=8)],
+    communication={"function": "Reacting to surprising information",
+                   "phrases": ["Really?", "That's amazing!", "I can't imagine that.",
+                               "How do they manage?", "That must be difficult.",
+                               "We're lucky, aren't we?"],
+                   "roleplay": "After each talk, listeners must react with one expression and ask one "
+                               "question.",
+                   "real_life": "Reacting naturally when someone tells you something surprising."},
+    guided=[EX("U6.5-G1", "True or false", "Read the text again and write T or F.",
+               items=["1. Some children in northern Viet Nam walk two hours to school.",
+                      "2. Boarding students go home every evening.",
+                      "3. Australian distance-learning pupils meet their teacher on a screen.",
+                      "4. The Australian school meets twice a year.",
+                      "5. Floating schools were built because of floods."],
+               answers=["1. T", "2. F – they go home at the weekend.", "3. T",
+                        "4. F – once a year.", "5. T"], level="E", kind="reading"),
+            EX("U6.5-G2", "Comparing language", "Complete with Both, while, than, Compared with.",
+               items=["1. ______ schools have computers.",
+                      "2. Our classes are bigger ______ theirs.",
+                      "3. We have 42 students, ______ they have nine.",
+                      "4. ______ their school, ours is enormous."],
+               answers=["1. Both", "2. than", "3. while", "4. Compared with"],
+               level="M", kind="grammar")],
+    independent=[EX("U6.5-I1", "Retell", "Close the book. Describe one of the three schools to your "
+                    "partner in five sentences.",
+                    items=["Where / what kind / how pupils get there / one problem / one good thing"],
+                    answers=["Model: In Bangladesh there are floating schools. The classroom is on a "
+                             "boat. The boat collects the children along the river. In the rainy "
+                             "season the roads are under water, so children cannot walk. The good "
+                             "thing is that school comes to them."], level="M", kind="speaking"),
+                 EX("U6.5-I2", "Your comparison", "Do U6.5-S2 in your group.", items=[],
+                    answers=["See U6.5-S2."], level="D", kind="speaking")],
+    review=["Reading: gist → detail → inference", "Comparing with both / than / while / compared with",
+            "Stress in long words"],
+    homework=[EX("U6.5-H1", "Reading", "Answer in full sentences.",
+                 items=["1. Why does Mai stay at a boarding school?",
+                        "2. How far away may an Australian pupil's classmates live?",
+                        "3. Why did engineers build floating schools?",
+                        "4. What is the one reason all these schools exist?"],
+                 answers=["1. Because there is no electricity at home, so she cannot study in the "
+                          "evening.", "2. Up to 300 kilometres away.",
+                          "3. Because floods cover the roads for months.",
+                          "4. So that every child has the opportunity to learn."],
+                 level="M", kind="reading"),
+              EX("U6.5-H2", "Vocabulary", "Complete with boarding school, distance learning, pupil, "
+                 "remote, equipment, opportunity.",
+                 items=["1. The village is very ______ — three hours by motorbike.",
+                        "2. She lives at a ______ during the week.",
+                        "3. The lab has new ______ .", "4. Every ______ in the school knows him.",
+                        "5. ______ uses computers and the internet.",
+                        "6. Education gives children an ______ ."],
+                 answers=["1. remote", "2. boarding school", "3. equipment", "4. pupil",
+                          "5. Distance learning", "6. opportunity"], level="E", kind="vocab"),
+              EX("U6.5-H3", "Writing", "Write your comparison as a paragraph (90–100 words).",
+                 items=["Both … / …-er than … / while … / Compared with … / I would prefer…"],
+                 answers=["See U6.5-W1 model."], level="D", kind="writing", lines=12),
+              EX("U6.5-H4", "Speaking", "Practise your 90-second comparison three times.",
+                 items=["Mark the pauses in your notes."], answers=["Talks in Lesson 6."],
+                 level="M", kind="speaking")],
+    workbook=[EX("U6.5-P1", "Vocabulary match", "Match the word with the meaning.",
+                 items=["1. remote", "2. pupil", "3. equipment", "4. opportunity", "5. boarding school",
+                        "a. a chance to do something", "b. far from towns and people",
+                        "c. a school where students live", "d. a student at school",
+                        "e. the tools and machines you need"],
+                 answers=["1–b", "2–d", "3–e", "4–a", "5–c"], level="E", kind="vocab"),
+              EX("U6.5-P2", "Reading", "Read and answer.",
+                 text=["In Norway, some schools have no walls between the classes and no bell. "
+                       "Students choose where to sit and often work on projects instead of separate "
+                       "subjects. Teachers say students learn to plan their own time. Critics say "
+                       "some students do nothing all day. The truth is probably in the middle: "
+                       "the system works well for organised students and badly for the others."],
+                 items=["1. What two things do these Norwegian schools not have?",
+                        "2. What do students often do instead of separate subjects?",
+                        "3. What do teachers say is the advantage?",
+                        "4. What do critics say?", "5. What is the writer's opinion?"],
+                 answers=["1. Walls between the classes and a bell.", "2. They work on projects.",
+                          "3. Students learn to plan their own time.",
+                          "4. That some students do nothing all day.",
+                          "5. That it works well for organised students and badly for others."],
+                 level="M", kind="reading"),
+              EX("U6.5-P3", "Comparing", "Write one sentence for each pair using the word in brackets.",
+                 items=["1. our class 42 students / their class 12 students (while)",
+                        "2. both schools / start at 7.30 (Both)",
+                        "3. their equipment / better (than)",
+                        "4. their school / very small (Compared with)"],
+                 answers=["1. Our class has 42 students, while their class has 12.",
+                          "2. Both schools start at half past seven.",
+                          "3. Their equipment is better than ours.",
+                          "4. Compared with our school, theirs is very small."],
+                 level="M", kind="writing"),
+              EX("U6.5-P4", "Writing", "Write a paragraph (90–100 words) comparing your school today "
+                 "with your primary school.",
+                 items=["Two similarities, three differences, one opinion."],
+                 answers=["Model: My primary school and my secondary school are both in the same town, "
+                          "and both start at seven o'clock. However, they are very different. "
+                          "My primary school was much smaller — about 300 pupils compared with 900 "
+                          "here. We had one teacher for everything, while now we have a different "
+                          "teacher for each subject. The homework is also much harder than before. "
+                          "I miss my old school sometimes, but I prefer this one, because the library "
+                          "is bigger and I have more friends. (91 words)"],
+                 level="D", kind="writing", lines=12)],
+    procedure=[ST("Warm-up: Question chain", 5,
+                  ["Students ask each other school-life questions along the row. Recycles Lesson 4."],
+                  "Ask and answer.", "Rows", "Slide 2"),
+               ST("Pre-reading", 6,
+                  ["Show three photos (a boat, a computer at home, a mountain school). Ask: "
+                   "'What do these have in common?'",
+                   "Pre-teach: boarding school, distance learning, outback, engineer. "
+                   "Set the gist task."],
+                  "Predict; skim for the title.", "Whole class", "Slides 3–4"),
+               ST("While-reading", 13,
+                  ["R2 table individually, pair-check; R3 words in context; R4 inference in pairs.",
+                   "Feedback with the text on screen."],
+                  "Read and complete all tasks.", "Individual → pairs", "Slides 5–7"),
+               ST("Post-reading: retell", 4, ["Books closed; describe one school in five sentences."],
+                  "Retell.", "Pairs", "Slide 8"),
+               ST("Speaking: comparison talk", 13,
+                  ["Recycle the Unit 4 comparison language on the board.",
+                   "3 minutes to make notes; 90-second talks in groups of four; one question each."],
+                  "Plan, speak, question.", "Individual → groups of 4", "Slides 9–11"),
+               ST("Wrap-up and homework", 4, ["Best talk to the class. Set H1–H4."],
+                  "Listen; note homework.", "Whole class", "Slide 12")],
+    teacher_talk=[TK("Framing the reading",
+                     ["Close your eyes. Picture a school. What do you see? A building, a gate, "
+                      "a playground, a bell. Yes?",
+                      "Now open your eyes. For millions of children, school is a boat. Or a screen. "
+                      "Or a room with nine pupils and four grades at the same time.",
+                      "As you read, keep one question in your head: what do all of these schools have "
+                      "in common? The answer is in the last paragraph."]),
+                  TK("Recycling comparatives deliberately",
+                     ["We learned comparatives in Unit 4 with music. Today we use them with schools.",
+                      "That is not repetition — that is how language sticks. New topic, same grammar.",
+                      "You should be faster now. Give me three comparative sentences about the schools "
+                      "in the text. Go."])],
+    support=["Gloss four words in the margin.", "Give the comparison notes half-completed.",
+             "Let weaker students talk to one partner only."],
+    challenge=["Ask for 'Compared with…' and 'On the other hand…'.",
+               "Ask them to summarise the article in three sentences.",
+               "Ask them to argue which school gives the best education."],
+    assessment=["Table task 6 of 9 cells", "Uses three comparatives in the talk",
+                "Talk lasts about 90 seconds"],
+    board_plan=["LEFT: 4 new words with stress", "CENTRE: comparison language (Unit 4 recycled)",
+                "RIGHT: talk plan; Homework H1–H4"],
+    materials=["Photos of the three schools", 'Recording: What is on your schedule today? — ELLLO — One Minute English (1:00)', "Timer"],
+)
+
+L6 = Lesson(
+    code="U6L6", unit=6, number=6, period=43,
+    lesson_type="Skills 2", title="Listening: A school announcement + Writing: An email about my school",
+    objectives=["listen to an announcement and complete a schedule",
+                "organise an informal email describing a school",
+                "write an email of 90–110 words to a pen friend",
+                "check writing with a checklist"],
+    recycled=["U6L1–L5: school vocabulary, both present tenses, prepositions of time, comparatives; "
+              "Unit 2 email layout"],
+    vocab=[V("announcement", "n", "/əˈnaʊnsmənt/", "thông báo", "Listen to the morning announcement."),
+           V("schedule", "n", "/ˈʃedjuːl/", "lịch trình", "Here is the schedule for Friday."),
+           V("assembly", "n", "/əˈsembli/", "buổi chào cờ, tập trung", "Assembly is at 6.45 on Monday."),
+           V("cancel", "v", "/ˈkænsl/", "hủy", "The trip is cancelled because of the rain."),
+           V("attend", "v", "/əˈtend/", "tham dự", "All students must attend the meeting."),
+           V("facilities", "n", "/fəˈsɪlətiz/", "cơ sở vật chất", "Our school has good sports facilities.")],
+    phrases=["Attention, please!", "There will be…", "All students must…",
+             "…is cancelled / postponed", "Please bring…"],
+    grammar=G("Informal email describing a place (writing focus)",
+              use=["Greeting + thank you for the last message.",
+                   "Paragraph 1: the basic facts (where, how big, when it starts).",
+                   "Paragraph 2: what it looks like and what facilities it has.",
+                   "Paragraph 3: what you do there (present simple) and something happening now or "
+                   "next week (present continuous).",
+                   "Closing: a question for your friend + goodbye."],
+              form=[["Part", "Example"],
+                    ["Greeting", "Hi Kevin,"],
+                    ["Opening", "Thanks for your email. You asked about my school, so here it is."],
+                    ["Facts", "My school is called Le Loi Secondary School. It has about 900 students."],
+                    ["Description", "There is a big playground, a library and a science lab."],
+                    ["Routine + now", "We start at seven. This week we are practising for the "
+                     "sports day."],
+                    ["Closing", "What's your school like? Write soon. Nam"]],
+              examples=["My school isn't very modern, but the teachers are friendly.",
+                        "Next Friday we are having a school festival — I wish you could come!"],
+              pitfall="Students write a list of facts with no paragraphs and no question at the end. "
+                      "An email is a conversation: always ask something back.",
+              note="Use 'There is / There are' for facilities and 'We have' for what the school owns."),
+    pron=P("Reading an announcement clearly",
+           "Announcements need a strong, slow voice, clear final consonants and a pause after each "
+           "piece of information.",
+           items=["Attention, please! /əˈtenʃn pliːz/", "All students / must attend /",
+                  "The trip / is cancelled."],
+           drill=["Attention, please! / There will be an assembly / at half past six / on Monday."],
+           vn_note="Final consonants disappear most when students speak fast. Announcements are a "
+                   "great exercise: slow, loud and every ending clear."),
+    listening=AUDIO['U6L6'],
+    reading=T("Model email",
+              ["Hi Kevin,",
+               "Thanks for your email! You asked about my school, so here it is.",
+               "My school is called Le Loi Secondary School and it is in the centre of our town. "
+               "There are about 900 students and 46 teachers. We start at seven o'clock — I know that "
+               "sounds very early to you! — and we finish at half past eleven.",
+               "The school isn't very modern, but it has everything we need: 24 classrooms, a library "
+               "with 4,000 books, a science laboratory, a gym and a big playground. My favourite place "
+               "is the library, because it is the only quiet place in the school.",
+               "We have five lessons a day and we wear a white uniform. This week we aren't having "
+               "normal lessons in the afternoon, because we are practising for the sports day on "
+               "Friday. My class is doing the relay race and we are practising every day after school.",
+               "What's your school like? Do you have to wear a uniform? Write soon!",
+               "Nam"],
+              tasks=[EX("U6.6-R1", "Analyse the model", "Answer the questions.",
+                        items=["1. How many paragraphs are there (not counting the greeting)?",
+                               "2. What information is in paragraph 1?",
+                               "3. Find two sentences with 'There is / There are'.",
+                               "4. Find two present continuous sentences and say why they are used.",
+                               "5. How does Nam finish the email?"],
+                        answers=["1. Four (opening, facts, facilities, this week + closing questions).",
+                                 "2. The name, the place, the number of students and teachers, "
+                                 "the times.",
+                                 "3. 'There are about 900 students and 46 teachers.' / "
+                                 "'There are 24 classrooms…' (accept 'it has…').",
+                                 "4. 'we are practising for the sports day', 'we are practising every "
+                                 "day after school' — a temporary situation this week.",
+                                 "5. With two questions and 'Write soon!'"],
+                        level="M", kind="reading")]),
+    speaking=[EX("U6.6-S1", "Say it before you write", "Tell your partner four facts about your school "
+                 "before you write them.",
+                 items=["Name and place / size / facilities / what is happening this week"],
+                 answers=["Speaking first improves the writing."], level="M", kind="speaking")],
+    writing=[EX("U6.6-W1", "Plan your email", "Complete the plan.",
+                items=["Greeting: ______", "Opening line: ______",
+                       "Paragraph 1 – facts (name, place, size, times): ______",
+                       "Paragraph 2 – facilities + favourite place and why: ______",
+                       "Paragraph 3 – routine + something happening this week: ______",
+                       "Closing – two questions + goodbye: ______"],
+                answers=["Check every plan before students write."], level="M", kind="writing", lines=8),
+             EX("U6.6-W2", "Write your email", "Write 90–110 words to a foreign pen friend "
+                "describing your school.",
+                items=["Use: There is/are, at least four present simple sentences and two present "
+                       "continuous sentences."],
+                answers=["See the model email in the reading. Marking: content 3, organisation 2, "
+                         "tenses 3, vocabulary 1, length 1."],
+                level="D", kind="writing", lines=16),
+             EX("U6.6-W3", "Peer check", "Swap and tick the checklist.",
+                items=["□ greeting and closing", "□ three paragraphs",
+                       "□ 'There is / There are' used correctly",
+                       "□ present simple for routines", "□ present continuous for this week",
+                       "□ two questions at the end", "□ 90–110 words"],
+                answers=["Write one thing you liked and one to improve."], level="M", kind="writing")],
+    communication={"function": "Making and understanding announcements",
+                   "phrases": ["Attention, please!", "There will be…", "All students must…",
+                               "…is cancelled.", "Please bring…", "Thank you."],
+                   "roleplay": "In pairs, write and read a 40-second school announcement with three "
+                               "pieces of information. The class listens and notes them.",
+                   "real_life": "Understanding announcements at school, at a station or at an airport."},
+    guided=[EX("U6.6-G1", "There is / There are / We have", "Complete the sentences.",
+               items=["1. ______ 24 classrooms in my school.", "2. ______ a big library.",
+                      "3. ______ five lessons a day.", "4. ______ two science laboratories.",
+                      "5. ______ a new computer room."],
+               answers=["1. There are", "2. There is", "3. We have", "4. There are", "5. There is"],
+               level="E", kind="grammar"),
+            EX("U6.6-G2", "Which tense?", "Complete the email extract.",
+               items=["1. We usually (start) ______ at seven.",
+                      "2. This week we (practise) ______ for the sports day.",
+                      "3. My school (have) ______ 900 students.",
+                      "4. Right now I (write) ______ in the library.",
+                      "5. We (wear) ______ a white uniform every day."],
+               answers=["1. start", "2. are practising", "3. has", "4. am writing", "5. wear"],
+               level="M", kind="grammar")],
+    independent=[EX("U6.6-I1", "Write your email", "Do U6.6-W1 and W2.", items=[],
+                    answers=["See the model email."], level="D", kind="writing", lines=16),
+                 EX("U6.6-I2", "Announcement practice", "Write and read a 40-second announcement.",
+                    items=[], answers=["See communication section."], level="M", kind="speaking")],
+    review=["Listening for a schedule: times, days, places",
+            "Email about a place: facts – facilities – this week – questions",
+            "There is / There are"],
+    homework=[EX("U6.6-H1", "Listening / vocabulary", "Complete from the announcement.",
+                 items=["1. Assembly on Monday starts at ______ .",
+                        "2. The science club meeting is ______ .",
+                        "3. The football match is on ______ at ______ .",
+                        "4. The library is closed because it is receiving ______ new books."],
+                 answers=["1. half past six", "2. cancelled (moved to next Wednesday)",
+                          "3. Saturday morning; eight o'clock", "4. 600"],
+                 level="E", kind="listening"),
+              EX("U6.6-H2", "Vocabulary", "Complete with announcement, schedule, assembly, cancel, "
+                 "attend, facilities.",
+                 items=["1. All students must ______ the meeting.",
+                        "2. Our school has good sports ______ .",
+                        "3. They had to ______ the trip because of the storm.",
+                        "4. Listen to the morning ______ .", "5. ______ is at 6.45 on Monday.",
+                        "6. Here is the ______ for Friday."],
+                 answers=["1. attend", "2. facilities", "3. cancel", "4. announcement", "5. Assembly",
+                          "6. schedule"], level="E", kind="vocab"),
+              EX("U6.6-H3", "Writing", "Rewrite your email neatly after correction and hand it in.",
+                 items=["Use the 7-point checklist."],
+                 answers=["Marking: content 3, organisation 2, tenses 3, vocabulary 1, length 1."],
+                 level="D", kind="writing", lines=16),
+              EX("U6.6-H4", "Speaking", "Read your email aloud twice with clear final consonants.",
+                 items=[], answers=["Spot-check in Lesson 7."], level="E", kind="pron")],
+    workbook=[EX("U6.6-P1", "Email parts", "Write G (greeting), F (facts), D (description), "
+                 "N (now/this week) or C (closing).",
+                 items=["1. Hi Kevin, ___", "2. We have 900 students. ___",
+                        "3. There is a big playground. ___",
+                        "4. This week we are practising for the sports day. ___",
+                        "5. What's your school like? Write soon! ___"],
+                 answers=["1. G", "2. F", "3. D", "4. N", "5. C"], level="E", kind="writing"),
+              EX("U6.6-P2", "Complete the email", "Use the words in the box.",
+                 wordbank=["Thanks", "There", "have", "are practising", "What's", "soon"],
+                 items=["Hi Linh, (1) ______ for your email. My school is quite small. "
+                        "(2) ______ are only 400 students. We (3) ______ five lessons a day. "
+                        "This month we (4) ______ for the singing competition. "
+                        "(5) ______ your school like? Write (6) ______ !"],
+                 answers=["1. Thanks", "2. There", "3. have", "4. are practising", "5. What's",
+                          "6. soon"], level="E", kind="writing"),
+              EX("U6.6-P3", "Correct the email", "This paragraph has five mistakes. Correct them.",
+                 text=["My school have 800 students. There is 20 classrooms. We are starting at seven "
+                       "every day. This week we practise for the sports day. What is your school like?"],
+                 items=["Write the five corrections."],
+                 answers=["1. 'have' → 'has'", "2. 'There is 20 classrooms' → 'There are 20 classrooms'",
+                          "3. 'We are starting at seven every day' → 'We start at seven every day'",
+                          "4. 'we practise for the sports day' → 'we are practising for the sports day'",
+                          "5. (accept) add a comma / question mark check — 'What is your school like?' "
+                          "is correct, so the fifth error is the missing greeting/closing."],
+                 level="D", kind="grammar"),
+              EX("U6.6-P4", "Writing", "Write an email (90–110 words) describing your classroom and "
+                 "your class to a pen friend.",
+                 items=["Facts – description – what you are doing this week – two questions."],
+                 answers=["Model: Hi Sam, Thanks for your message! You asked about my class. "
+                          "I'm in class 7A and there are 42 of us — 20 boys and 22 girls. "
+                          "Our classroom is on the second floor and there are six windows, so it is "
+                          "bright but very hot in summer. There is a board at the front and a small "
+                          "bookshelf at the back. We usually have five lessons a day. This week we "
+                          "aren't having normal lessons on Friday, because we are decorating the room "
+                          "for Teachers' Day. How many students are in your class? Do you decorate "
+                          "your classroom too? Write soon! Mai (105 words)"],
+                 level="D", kind="writing", lines=16)],
+    procedure=[ST("Warm-up: Announcement dictation", 5,
+                  ["Read a three-line announcement at normal speed; students note the key information; "
+                   "compare in pairs."],
+                  "Listen and note.", "Individual → pairs", "Slide 2"),
+               ST("Pre-listening", 5,
+                  ["Show the schedule table. Pre-teach: assembly, cancel, deadline, receive."],
+                  "Predict; copy the table.", "Whole class", "Slides 3–4"),
+               ST("Listening", 11,
+                  ['Play the recording “When do you start and finish your day?” twice (three times if the class asks); students do the listening tasks; students do the listening tasks.'],
+                  "Listen and complete the schedule.", "Individual → pairs", "Slide 5"),
+               ST("Writing: analyse the model email", 8,
+                  ["Model email on the slide; colour the parts; elicit why the continuous is used.",
+                   "Do U6.6-G1 and G2."],
+                  "Identify the parts; practise the structures.", "Whole class → pairs", "Slides 6–7"),
+               ST("Writing: plan, say, draft", 12,
+                  ["Plan (check every plan); say four facts to a partner; write 90–110 words."],
+                  "Plan, say, write.", "Individual → pairs → individual", "Slide 8"),
+               ST("Peer check and wrap-up", 4, ["Checklist swap; read one good email. Set H1–H4."],
+                  "Peer-check.", "Pairs", "Slides 9–10")],
+    teacher_talk=[TK("Why an email needs a question at the end",
+                     ["An email is not a report. It is a conversation on paper.",
+                      "If you only give information and then stop, your friend has nothing to answer.",
+                      "So always finish with TWO questions: 'What's your school like? Do you wear a "
+                      "uniform?'",
+                      "That is how a pen-friendship survives past the second letter."]),
+                  TK("Using both tenses in one email",
+                     ["Look at the model. 'We start at seven' — that is every day, present simple.",
+                      "'This week we are practising for the sports day' — temporary, only this week, "
+                      "present continuous.",
+                      "In your email I want at least four simple and two continuous. Mark them with "
+                      "two colours when you check your work."])],
+    support=["Give the schedule table with three answers filled in.",
+             "Provide an email frame with sentence starters.",
+             "Allow 70–80 words."],
+    challenge=["Ask for 120–130 words with a comparison of two schools.",
+               "Ask them to write and perform a 60-second announcement.",
+               "Ask them to write the reply from the pen friend."],
+    assessment=["7 of 10 items in the listening schedule",
+                "Email has three paragraphs and both tenses used correctly",
+                "Two questions at the end"],
+    board_plan=["LEFT: schedule table", "CENTRE: email plan (facts / facilities / this week / questions)",
+                "RIGHT: There is–are; Homework H1–H4"],
+    materials=['Recording: When do you start and finish your day? — ELLLO — One Minute English (1:20)', "Model email slide", "Checklist cards"],
+)
+
+L7 = Lesson(
+    code="U6L7", unit=6, number=7, period=44,
+    lesson_type="Looking Back & Project", title="Unit 6 review and Our Dream School",
+    objectives=["recall the school vocabulary of Unit 6",
+                "choose correctly between the present simple and the present continuous",
+                "correct the six typical mistakes of the unit",
+                "design and present a dream school"],
+    recycled=["ALL of Unit 6 + Units 1–5"],
+    vocab=[V("design", "v/n", "/dɪˈzaɪn/", "thiết kế", "We designed our dream school."),
+           V("ideal", "adj", "/aɪˈdɪəl/", "lý tưởng", "This is our ideal classroom."),
+           V("suggest", "v", "/səˈdʒest/", "đề xuất", "We suggest a garden on the roof.")],
+    phrases=["Our dream school has…", "In our school, students…", "We suggest…",
+             "Next year we are opening…"],
+    grammar=G("Unit 6 grammar in one page",
+              use=["Present simple: habits, routines, facts, timetables",
+                   "Present continuous: now, these days, fixed future arrangements",
+                   "State verbs are not used in the continuous",
+                   "Prepositions of time: on days, at times, in longer periods"],
+              form=[["Structure", "Example", "Common mistake"],
+                    ["simple for habits", "We start at seven every day.", "*We are starting every day."],
+                    ["continuous for now", "Look! He is running.", "*Look! He runs."],
+                    ["continuous for plans", "We are visiting Hue next Friday.", "*We visit Hue next Friday."],
+                    ["state verbs", "I know the answer.", "*I am knowing the answer."],
+                    ["be + -ing (both parts)", "She is reading.", "*She reading."],
+                    ["on / at / in", "on Monday, at seven, in July", "*in Monday, at July"]],
+              examples=["We usually have PE on Friday, but this week we are having it on Wednesday "
+                        "because the gym is closed."],
+              pitfall="Add these six to the classroom wall list."),
+    pron=P("Unit 6 sounds review: -tion/-sion, contractions, question intonation",
+           "Three checks: is the stress before -tion? are contractions used? does the yes/no question "
+           "rise?",
+           items=["edu'CA-tion, re'VI-sion", "I'm, he's, they're, isn't", "Do you…? ↗ / What…? ↘"],
+           drill=["I'm having a revision lesson before the competition. Do you have one too?"],
+           vn_note="Check all three in the Review 2 block."),
+    listening=AUDIO['U6L7'],
+    reading=T("The school that students designed",
+              ["Three years ago, a secondary school in Da Nang did something unusual: it asked the "
+               "students to design the new building.",
+               "More than 200 students sent in ideas. Some were impossible (a swimming pool on the "
+               "roof, a lift for students only). But three ideas became real.",
+               "First, the corridors are wider, because students said the old ones were dangerous at "
+               "break time. Second, every classroom has a small green wall of plants, which keeps the "
+               "room cooler. Third — and this was the most popular idea — the library is open until "
+               "six in the evening, because many students have nowhere quiet to study at home.",
+               "'The students knew things we didn't,' said the head teacher. 'We are teachers, but we "
+               "are not thirteen years old.'"],
+              tasks=[EX("U6.7-R1", "Read and answer", "Answer the questions.",
+                        items=["1. What did the school ask the students to do?",
+                               "2. How many students sent ideas?", "3. Give two impossible ideas.",
+                               "4. Why are the corridors wider now?",
+                               "5. Why is the late library opening the most popular idea?"],
+                        answers=["1. To design the new building.", "2. More than 200.",
+                                 "3. A swimming pool on the roof; a lift for students only.",
+                                 "4. Because students said the old ones were dangerous at break time.",
+                                 "5. Because many students have nowhere quiet to study at home."],
+                        level="M", kind="reading")]),
+    speaking=[EX("U6.7-S1", "Present your dream school", "Present your design for two minutes. "
+                 "Everyone speaks.",
+                 items=["Frame: 'Welcome to our dream school. It has… In our school, students… "
+                        "In this picture, students are… Next year we are opening… Any questions?'"],
+                 answers=["Marking: content 3, language 3, design 2, presentation 2."],
+                 level="D", kind="speaking")],
+    writing=[EX("U6.7-W1", "Dream school text", "Write the sentences for your poster.",
+                items=["3 × 'Our school has…' (present simple)",
+                       "3 × 'Students…' (present simple habits)",
+                       "2 × 'In this picture, students are…' (present continuous)",
+                       "1 × 'Next year we are opening…' (future arrangement)"],
+                answers=["Model: Our school has a garden on the roof and a room for sleeping. "
+                         "Students study only four lessons a day. In this picture, students are "
+                         "growing vegetables. Next year we are opening a music studio."],
+                level="M", kind="writing", lines=10)],
+    communication={"function": "Presenting a design and answering questions",
+                   "phrases": ["Welcome to…", "As you can see…", "We suggest…",
+                               "Our best idea is…", "Any questions?", "That's a good question."],
+                   "roleplay": "Design fair: groups present; the class asks two questions each and "
+                               "votes for the best idea.",
+                   "real_life": "Presenting an idea and defending it with reasons."},
+    guided=[EX("U6.7-G1", "Vocabulary race", "Write the word.",
+               items=["1. where you do experiments: ______", "2. where teachers rest: ______",
+                      "3. the plan of your lessons: ______", "4. what you wear to school: ______",
+                      "5. a school where students live: ______", "6. a subject about the past: ______"],
+               answers=["1. the laboratory", "2. the staff room", "3. the timetable", "4. a uniform",
+                        "5. a boarding school", "6. history"], level="E", kind="vocab"),
+            EX("U6.7-G2", "Error clinic – the six Unit 6 mistakes", "Correct one mistake in each "
+               "sentence.",
+               items=["1. Look! The bus comes.", "2. Every day I am going to school by bike.",
+                      "3. He playing football now.", "4. I am knowing the answer.",
+                      "5. We visit the museum next Friday. (already arranged)",
+                      "6. We have English in Monday."],
+               answers=["1. Look! The bus is coming.", "2. Every day I go to school by bike.",
+                        "3. He is playing football now.", "4. I know the answer.",
+                        "5. We are visiting the museum next Friday.",
+                        "6. We have English on Monday."], level="D", kind="grammar")],
+    independent=[EX("U6.7-I1", "Mixed review", "Complete the text with the correct tense.",
+                    text=["My name is Khanh and I (1. study) ______ at Le Loi School. Normally we "
+                          "(2. have) ______ five lessons a day, but this week we only (3. have) ______ "
+                          "three, because the teachers (4. prepare) ______ for the exams. "
+                          "Right now I (5. sit) ______ in the library with my friend. She (6. read) "
+                          "______ a book about Australia, because next month she (7. visit) ______ her "
+                          "aunt in Sydney. I (8. not want) ______ to go — it is too far!"],
+                    items=["Write the eight verbs."],
+                    answers=["1. study", "2. have", "3. are having", "4. are preparing", "5. am sitting",
+                             "6. is reading", "7. is visiting", "8. don't want"],
+                    level="D", kind="grammar"),
+                 EX("U6.7-I2", "Project work", "Design your dream school and prepare the presentation.",
+                    items=[], answers=["Check the tenses before the poster is finished."],
+                    level="D", kind="mixed")],
+    review=["School vocabulary (26 items)", "Present simple vs present continuous (three uses)",
+            "State verbs", "on / at / in", "Question forms", "Email about a place"],
+    homework=[EX("U6.7-H1", "Vocabulary", "Write 10 words from Unit 6 with Vietnamese meanings.",
+                 items=[], answers=["Any 10 of the unit's items."], level="E", kind="vocab"),
+              EX("U6.7-H2", "Grammar", "Choose the correct answer.",
+                 items=["1. Listen! Someone (knocks / is knocking) at the door.",
+                        "2. We (have / are having) English every Tuesday.",
+                        "3. Next Friday they (visit / are visiting) our school. (arranged)",
+                        "4. I (don't like / am not liking) durian.",
+                        "5. School starts (in / at) seven o'clock.",
+                        "6. We have PE (in / on) Wednesday."],
+                 answers=["1. is knocking", "2. have", "3. are visiting", "4. don't like", "5. at",
+                          "6. on"], level="M", kind="grammar"),
+              EX("U6.7-H3", "Writing", "Write an email (100–110 words) describing your dream school "
+                 "to a friend.",
+                 items=["Facts – facilities – what students do – one future arrangement – two questions."],
+                 answers=["Model: Hi Lan, You asked about my dream school, so here it is! "
+                          "My dream school is small — only 300 students — and it is in the countryside, "
+                          "next to a river. There are twelve classrooms, a huge library, a swimming "
+                          "pool and a garden where students grow vegetables. Lessons start at half past "
+                          "eight, because everybody thinks better after breakfast. Students have only "
+                          "four lessons a day and no homework at the weekend. In my dream school we are "
+                          "opening a cooking club next month. What is your dream school like? Would you "
+                          "come to mine? Write soon! Nam (108 words)"],
+                 level="D", kind="writing", lines=16),
+              EX("U6.7-H4", "Prepare for Unit 7", "Write five kinds of transport and three traffic "
+                 "signs you know, in English or Vietnamese.",
+                 items=[], answers=["Use them to start Unit 7."], level="E", kind="vocab")],
+    workbook=[EX("U6.7-P1", "Crossword clues", "Write the word.",
+                 items=["1. Where you borrow books. (7)", "2. Where you eat at school. (7)",
+                        "3. What you wear to school. (7)", "4. The plan of your lessons. (9)",
+                        "5. A subject with maps. (9)"],
+                 answers=["1. library", "2. canteen", "3. uniform", "4. timetable", "5. geography"],
+                 level="E", kind="vocab"),
+              EX("U6.7-P2", "Mixed grammar", "Put the words in order.",
+                 items=["1. every / school / at / starts / seven / day",
+                        "2. is / look / the / coming / teacher",
+                        "3. visiting / next / are / we / Monday / the museum",
+                        "4. know / I / answer / the", "5. on / PE / have / Friday / we"],
+                 answers=["1. School starts at seven every day.", "2. Look! The teacher is coming.",
+                          "3. We are visiting the museum next Monday.", "4. I know the answer.",
+                          "5. We have PE on Friday."], level="M", kind="grammar"),
+              EX("U6.7-P3", "Reading review", "Read and choose.",
+                 text=["Some schools in Viet Nam are trying a later start. In one school in Hue, "
+                       "lessons now begin at half past seven instead of seven. Teachers report that "
+                       "fewer students arrive late, and that the first lesson is much quieter. "
+                       "Doctors say teenagers naturally sleep later, so an early start is harder for "
+                       "them than for adults. However, some parents do not like the change, because "
+                       "they leave for work at seven."],
+                 items=["1. The text is mainly about A. late students  B. a later school start  "
+                        "C. doctors",
+                        "2. Lessons in the Hue school now begin at A. 7.00  B. 7.30  C. 8.00",
+                        "3. Some parents dislike the change because A. they work early  "
+                        "B. it costs money  C. children sleep too much"],
+                 answers=["1. B", "2. B", "3. A"], level="M", kind="reading"),
+              EX("U6.7-P4", "Unit 6 test yourself (10 marks)", "Answer about yourself (2 marks each).",
+                 items=["1. My school has ______ .", "2. My favourite subject is ______ because ______ .",
+                        "3. Right now, in my classroom, ______ (present continuous).",
+                        "4. Next week I ______ (a fixed arrangement).",
+                        "5. A question to ask a foreign student: ______"],
+                 answers=["Model: 1. My school has 900 students and a big library. 2. My favourite "
+                          "subject is geography because I like learning about other countries. "
+                          "3. Right now my classmates are writing this test. 4. Next week I'm taking "
+                          "part in the English competition. 5. Do you have to wear a uniform?"],
+                 level="D", kind="mixed")],
+    procedure=[ST("Warm-up: Tense tennis", 6,
+                  ["Teacher says a time expression; students shout the tense and a sentence. "
+                   "Fast, 12 rounds."],
+                  "Produce the correct tense.", "Whole class", "Slide 2"),
+               ST("Vocabulary and listening review", 7,
+                  ["U6.7-G1 race; then the listening quiz U6.7-L1."],
+                  "Write words; write verb forms from dictation.", "Pairs", "Slides 3–4"),
+               ST("Grammar review + error clinic", 10,
+                  ["Grammar table; U6.7-G2 in pairs with explanations; add to the wall list."],
+                  "Correct and explain six errors.", "Pairs → whole class", "Slides 5–7"),
+               ST("Mixed practice", 6, ["U6.7-I1 gap-fill; fast finishers do Workbook P2."],
+                  "Complete the text.", "Individual", "Student Book p. U6L7"),
+               ST("Project: Our Dream School", 12,
+                  ["Groups draw the plan and write the nine sentences. Check the tenses.",
+                   "Three groups present; the class asks questions and votes."],
+                  "Design, write, present.", "Groups of 4", "Slides 8–10"),
+               ST("Wrap-up and homework", 4, ["Announce the winning design; display the plans. "
+                                              "Set H1–H4."],
+                  "Vote; note homework.", "Whole class", "Slide 12")],
+    teacher_talk=[TK("The one-question tense test",
+                     ["Before you write any sentence in the test, ask yourself ONE question: "
+                      "is this every day, or is it now / arranged?",
+                      "Every day, usually, always → present simple.",
+                      "Now, at the moment, this week, next Friday (arranged) → am/is/are + -ing.",
+                      "One question, three seconds, and you get the mark."]),
+                  TK("Encouraging imagination in the project",
+                     ["Your dream school can be anything — a school on a boat, a school with a garden "
+                      "on the roof, a school that starts at ten o'clock.",
+                      "But every idea needs a REASON. 'We start at ten because teenagers need more "
+                      "sleep.' That is a good idea. 'We start at ten because I like sleeping' — "
+                      "true, but weaker!",
+                      "Three facts, three habits, two 'now' sentences and one future plan. Go."])],
+    support=["Give the error clinic with the mistakes underlined.",
+             "Provide the nine project sentences as a frame.",
+             "Assign the drawing role plus two sentences."],
+    challenge=["Ask them to add a comparison with a real school.",
+               "Ask them to answer three questions without notes.",
+               "Ask for 120 words in H3."],
+    assessment=["Unit 6 checklist: 5 of 6 'I can' statements", "Error clinic 5 of 6",
+                "Uses both tenses correctly in the presentation"],
+    board_plan=["LEFT: school vocabulary", "CENTRE: three-column tense table + state verbs",
+                "RIGHT: project requirements; Homework H1–H4"],
+    materials=["Poster paper and pens", 'Recording: Looking Back — listen again (replay — see the lesson page)'],
+)
+
+UNIT.lessons = [L1, L2, L3, L4, L5, L6, L7]
+
+UNIT.revision = [
+    EX("R6-1", "Vocabulary", "Complete with a word from Unit 6.",
+       items=["1. We do experiments in the l______ .", "2. We buy lunch at the c______ .",
+              "3. Look at the t______ to see today's lessons.",
+              "4. In g______ we study maps and countries.",
+              "5. All students must wear a u______ .",
+              "6. Our maths teacher is quite s______ but fair."],
+       answers=["1. laboratory", "2. canteen", "3. timetable", "4. geography", "5. uniform",
+                "6. strict"], level="E", kind="vocab"),
+    EX("R6-2", "Grammar: present simple or continuous?", "Complete with the correct form.",
+       items=["1. We (have) ______ English every Tuesday.",
+              "2. Look! It (rain) ______ .",
+              "3. Next Monday the visitors (come) ______ at eight. (arranged)",
+              "4. She (not know) ______ the answer.",
+              "5. This week we (prepare) ______ for the sports day.",
+              "6. My father (work) ______ in a hospital."],
+       answers=["1. have", "2. is raining", "3. are coming", "4. doesn't know", "5. are preparing",
+                "6. works"], level="M", kind="grammar"),
+    EX("R6-3", "Grammar: questions and prepositions", "Write the question or the preposition.",
+       items=["1. ______ ? – School starts at seven.", "2. ______ ? – It's big and quite old.",
+              "3. We have PE ______ Friday.", "4. The lesson finishes ______ half past ten.",
+              "5. The new term starts ______ September."],
+       answers=["1. What time does school start?", "2. What's your school like?", "3. on", "4. at",
+                "5. in"], level="M", kind="grammar"),
+    EX("R6-4", "Reading", "Read and answer.",
+       text=["Nguyen Du Secondary School has 1,200 students, which makes it one of the biggest schools "
+             "in the province. Because of its size, it works in two shifts. The morning shift has "
+             "Grades 6 and 7; the afternoon shift has Grades 8 and 9. The school has 30 classrooms, "
+             "two laboratories and a library with 6,000 books. This term the school is building a new "
+             "sports hall, so PE lessons are taking place in the playground."],
+       items=["1. How many students are there?", "2. Which grades are in the morning shift?",
+              "3. How many books are in the library?", "4. What is the school building this term?",
+              "5. Where are PE lessons taking place, and why?"],
+       answers=["1. 1,200.", "2. Grades 6 and 7.", "3. 6,000.", "4. A new sports hall.",
+                "5. In the playground, because the sports hall is being built."],
+       level="M", kind="reading"),
+    EX("R6-5", "Writing", "Write an email (90–110 words) describing your school to a pen friend.",
+       items=["Greeting – facts – facilities – routine + this week – two questions – closing."],
+       answers=["See the model email in U6L6. Marking: content 3, organisation 2, tenses 3, "
+                "vocabulary 1, length 1."], level="D", kind="writing", lines=16),
+]
