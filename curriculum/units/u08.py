@@ -29,7 +29,7 @@ UNIT = Unit(
              "marking": "Content 3 – Language 3 – Poster 2 – Presentation 2 (total 10)"})
 
 L1 = Lesson(
-    code="U8L1", unit=8, number=1, period=54,
+    code="U8L1", unit=8, number=1, period=56,
     lesson_type="Getting Started", title="What kind of films do you like?",
     objectives=["name eight kinds of film",
                 "ask and answer about film preferences",
@@ -246,7 +246,7 @@ L1 = Lesson(
 )
 
 L2 = Lesson(
-    code="U8L2", unit=8, number=2, period=55,
+    code="U8L2", unit=8, number=2, period=57,
     lesson_type="A Closer Look 1", title="Describing films: bored or boring?",
     objectives=["use ten adjectives to describe films",
                 "explain the difference between -ed and -ing adjectives",
@@ -483,7 +483,7 @@ L2 = Lesson(
 )
 
 L3 = Lesson(
-    code="U8L3", unit=8, number=3, period=56,
+    code="U8L3", unit=8, number=3, period=58,
     lesson_type="A Closer Look 2", title="Although, but and however",
     objectives=["join two contrasting ideas with although, but and however",
                 "punctuate sentences with these three connectors correctly",
@@ -744,7 +744,7 @@ L3 = Lesson(
 )
 
 L4 = Lesson(
-    code="U8L4", unit=8, number=4, period=57,
+    code="U8L4", unit=8, number=4, period=59,
     lesson_type="Communication", title="Everyday English: at the cinema",
     objectives=["buy cinema tickets and ask about times and prices",
                 "recommend a film and give a reason",
@@ -956,7 +956,7 @@ L4 = Lesson(
 )
 
 L5 = Lesson(
-    code="U8L5", unit=8, number=5, period=58,
+    code="U8L5", unit=8, number=5, period=60,
     lesson_type="Skills 1", title="Reading: A film that changed something + Speaking: Recommend a film",
     objectives=["read a 230-word article and answer gist, detail and inference questions",
                 "guess new words from context",
@@ -1210,7 +1210,7 @@ L5 = Lesson(
 )
 
 L6 = Lesson(
-    code="U8L6", unit=8, number=6, period=59,
+    code="U8L6", unit=8, number=6, period=61,
     lesson_type="Skills 2", title="Listening: A film review programme + Writing: Write a review",
     objectives=["listen to two reviews and complete a comparison table",
                 "understand the structure of a written film review",
@@ -1440,7 +1440,7 @@ L6 = Lesson(
 )
 
 L7 = Lesson(
-    code="U8L7", unit=8, number=7, period=60,
+    code="U8L7", unit=8, number=7, period=62,
     lesson_type="Looking Back & Project", title="Unit 8 review and the Class Film Awards",
     objectives=["recall the film vocabulary of Unit 8",
                 "use -ed/-ing adjectives and contrast connectors accurately",

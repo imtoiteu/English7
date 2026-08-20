@@ -234,3 +234,229 @@ class Unit:
     project: Dict[str, Any] = field(default_factory=dict)
     lessons: List[Lesson] = field(default_factory=list)
     revision: List["Ex"] = field(default_factory=list)   # end-of-unit revision set (Homework Book)
+
+
+# ==========================================================================
+# DIAGNOSTIC & ADAPTIVE SYSTEM
+#
+# Added by the diagnostic rebuild.  These types are ADDITIVE: nothing above
+# this line changed, so every existing unit file keeps working unaltered.
+#
+#   Item     one markable question
+#   Task     a group of items sharing one stimulus (a recording, a text…)
+#   Section  one strand of a paper (Listening, Reading, Grammar…)
+#   Paper    a whole diagnostic (initial / mid-year / final)
+#   Criterion / Rubric   how productive work is marked
+#   Band     an ability level the results sort students into
+#   Trigger  a class-level result that CHANGES the teaching programme
+#   Bridge   a prerequisite lesson for students below the expected level
+#   Extension an activity for students above it
+# ==========================================================================
+
+BANDS_OF_DIFFICULTY = ("pre-A1", "A1", "A1+", "A2")
+
+
+@dataclass
+class Item:
+    """One markable test item.
+
+    `band` is the difficulty the item is calibrated at, `tests` names the
+    construct it probes.  Both are what make a diagnostic profile possible:
+    without them a wrong answer is just a lost mark, with them it is evidence.
+    """
+    n: str                            # "1", "2" …
+    prompt: str
+    answer: str
+    marks: float = 1.0
+    band: str = "A1"                  # pre-A1 | A1 | A1+ | A2
+    tests: str = ""                   # "past simple, regular -ed"
+    options: List[str] = field(default_factory=list)   # for multiple choice
+    note: str = ""                    # marking note / why learners fail it
+
+
+def IT(n, prompt, answer, marks=1.0, band="A1", tests="", options=None, note=""):
+    return Item(str(n), prompt, answer, marks, band, tests, options or [], note)
+
+
+@dataclass
+class Task:
+    """A group of items that share one stimulus."""
+    code: str                         # "A-L1"
+    title: str
+    instruction: str
+    items: List[Item] = field(default_factory=list)
+    audio_key: str = ""               # key into curriculum.audio_diagnostic.DIAG_AUDIO
+    audio_part: int = 1
+    excerpt: str = ""                 # "play 0:00–1:20, stop after: …"
+    plays: int = 2
+    text_title: str = ""
+    text: List[str] = field(default_factory=list)      # reading stimulus
+    wordbank: List[str] = field(default_factory=list)
+    lines: int = 0                    # blank writing lines to print
+    rubric: str = ""                  # name of the Rubric that marks it
+    band: str = ""                    # overall calibration of the task
+    note: str = ""
+
+    @property
+    def marks(self):
+        return sum(i.marks for i in self.items)
+
+
+def TA(code, title, instruction, items=None, audio_key="", audio_part=1, excerpt="",
+       plays=2, text_title="", text=None, wordbank=None, lines=0, rubric="", band="", note=""):
+    return Task(code, title, instruction, items or [], audio_key, audio_part, excerpt,
+                plays, text_title, text or [], wordbank or [], lines, rubric, band, note)
+
+
+@dataclass
+class Section:
+    """One strand of a paper."""
+    code: str                         # "A-S1"
+    name: str                         # "Listening"
+    strand: str                       # listening|reading|vocab|grammar|writing|speaking|pron
+    marks: float
+    minutes: int
+    period: int                       # which 45' period it is sat in
+    instruction: str
+    tasks: List[Task] = field(default_factory=list)
+    admin: List[str] = field(default_factory=list)     # how to administer it
+    reads: str = ""                   # what the section actually measures
+
+    @property
+    def counted(self):
+        return sum(t.marks for t in self.tasks)
+
+
+def SEC(code, name, strand, marks, minutes, period, instruction, tasks=None,
+        admin=None, reads=""):
+    return Section(code, name, strand, marks, minutes, period, instruction,
+                   tasks or [], admin or [], reads)
+
+
+@dataclass
+class Paper:
+    code: str                         # "A"
+    name: str
+    when: str                         # "Periods 1–2, first week of the year"
+    total: float
+    sections: List[Section] = field(default_factory=list)
+    purpose: List[str] = field(default_factory=list)
+    admin: List[str] = field(default_factory=list)
+    parallel_to: str = ""             # code of the paper it is a parallel form of
+
+    @property
+    def counted(self):
+        return sum(s.counted for s in self.sections)
+
+    def strand(self, name):
+        return [s for s in self.sections if s.strand == name]
+
+    def all_items(self):
+        return [i for s in self.sections for t in s.tasks for i in t.items]
+
+
+@dataclass
+class Criterion:
+    name: str
+    max: float
+    descriptors: List[List[str]] = field(default_factory=list)   # [marks, descriptor]
+    vn_note: str = ""                 # the L1 interference to expect
+
+
+def CR(name, mx, descriptors=None, vn_note=""):
+    return Criterion(name, mx, descriptors or [], vn_note)
+
+
+@dataclass
+class Rubric:
+    name: str
+    total: float
+    criteria: List[Criterion] = field(default_factory=list)
+    how_to_use: List[str] = field(default_factory=list)
+    diagnostic_use: List[str] = field(default_factory=list)   # what each criterion tells you
+
+    @property
+    def counted(self):
+        return sum(c.max for c in self.criteria)
+
+
+def RB(name, total, criteria=None, how_to_use=None, diagnostic_use=None):
+    return Rubric(name, total, criteria or [], how_to_use or [], diagnostic_use or [])
+
+
+@dataclass
+class Band:
+    key: str                          # foundation | core | extension
+    name: str
+    lo: float                         # inclusive, marks out of 80
+    hi: float                         # inclusive
+    meaning: str
+    looks_like: List[str] = field(default_factory=list)
+    programme: List[str] = field(default_factory=list)
+    never: List[str] = field(default_factory=list)   # what NOT to do with this group
+
+
+@dataclass
+class Trigger:
+    """A class-level diagnostic result that changes the teaching programme.
+
+    Two kinds of change, and keeping them apart is what makes the adapted
+    Teacher's Coursebook readable:
+
+    `insert_at`  explicit lesson codes that get a full ADAPTIVE INSERT box
+                 printed under the procedure.  Use this for a change that
+                 happens in a particular lesson, at a particular moment.
+    `standing`   one line describing a change that runs across the year — a
+                 daily drill, a pairing rule, a marking rule.  Printed ONCE in
+                 the front matter.  Stamping "open every lesson with a
+                 retrieval quiz" onto all ninety-four lesson plans does not
+                 make a teacher more likely to do it; it makes them stop
+                 reading the boxes.
+
+    `affects` stays prose, for the trigger's own page in Book 6.
+    """
+    code: str                         # "T1"
+    name: str
+    fires_when: str
+    evidence: str                     # which items / rubric criteria to total
+    interpretation: str
+    changes: List[str] = field(default_factory=list)
+    resources: List[str] = field(default_factory=list)   # B1…B6 / E1…E6 / audio keys
+    affects: List[str] = field(default_factory=list)     # prose scope, for Book 6
+    retire_when: str = ""             # when to stop doing it
+    insert_at: List[str] = field(default_factory=list)   # lesson codes to stamp
+    standing: str = ""                # always-on change, printed once
+
+
+@dataclass
+class Bridge:
+    """A prerequisite lesson for students below the expected level."""
+    code: str                         # "B1"
+    title: str
+    prerequisite_for: str
+    why: str                          # the Grade 7 content that silently assumes it
+    objectives: List[str] = field(default_factory=list)
+    content: List[str] = field(default_factory=list)
+    procedure: List[Stage] = field(default_factory=list)
+    exercises: List[Ex] = field(default_factory=list)
+    success: str = ""                 # the exit check
+    minutes: int = 45
+
+
+@dataclass
+class Extension:
+    """An activity for students above the expected level.
+
+    The design rule is DIFFERENT COGNITIVE DEMAND, never more of the same
+    exercises.  `demand` says what the activity adds that the core lesson
+    cannot.
+    """
+    code: str                         # "E1"
+    title: str
+    units: str                        # "1–2"
+    demand: str
+    steps: List[str] = field(default_factory=list)
+    output: str = ""
+    assess: str = ""
+    resources: List[str] = field(default_factory=list)
+    minutes: str = ""

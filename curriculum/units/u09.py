@@ -27,7 +27,7 @@ UNIT = Unit(
              "marking": "Content 3 – Language 3 – Display 2 – Presenting/answering 2 (total 10)"})
 
 L1 = Lesson(
-    code="U9L1", unit=9, number=1, period=61,
+    code="U9L1", unit=9, number=1, period=63,
     lesson_type="Getting Started", title="Festivals near and far",
     objectives=["name eight festivals and say when they happen",
                 "understand a conversation about a festival",
@@ -251,7 +251,7 @@ L1 = Lesson(
 )
 
 L2 = Lesson(
-    code="U9L2", unit=9, number=2, period=62,
+    code="U9L2", unit=9, number=2, period=64,
     lesson_type="A Closer Look 1", title="Festival activities and the sounds /θ/ and /ð/",
     objectives=["use eight verbs and phrases for festival activities",
                 "pronounce /θ/ and /ð/ correctly in words and sentences",
@@ -498,7 +498,7 @@ L2 = Lesson(
 )
 
 L3 = Lesson(
-    code="U9L3", unit=9, number=3, period=63,
+    code="U9L3", unit=9, number=3, period=65,
     lesson_type="A Closer Look 2", title="Articles: a, an, the and no article",
     objectives=["use a and an correctly with singular countable nouns",
                 "use the for something specific or already mentioned",
@@ -749,7 +749,7 @@ L3 = Lesson(
 )
 
 L4 = Lesson(
-    code="U9L4", unit=9, number=4, period=64,
+    code="U9L4", unit=9, number=4, period=66,
     lesson_type="Communication", title="Everyday English: asking about a festival",
     objectives=["ask a range of questions about a festival",
                 "answer questions about a Vietnamese festival",
@@ -986,7 +986,7 @@ L4 = Lesson(
 )
 
 L5 = Lesson(
-    code="U9L5", unit=9, number=5, period=65,
+    code="U9L5", unit=9, number=5, period=67,
     lesson_type="Skills 1", title="Reading: An unusual festival + Speaking: Present a festival",
     objectives=["read a 240-word article and answer gist, detail and inference questions",
                 "guess new words from context",
@@ -1265,7 +1265,7 @@ L5 = Lesson(
 )
 
 L6 = Lesson(
-    code="U9L6", unit=9, number=6, period=66,
+    code="U9L6", unit=9, number=6, period=68,
     lesson_type="Skills 2", title="Listening: A festival report + Writing: Describe a festival",
     objectives=["listen to a report and complete a fact file",
                 "organise a festival description in four paragraphs",
@@ -1503,7 +1503,7 @@ L6 = Lesson(
 )
 
 L7 = Lesson(
-    code="U9L7", unit=9, number=7, period=67,
+    code="U9L7", unit=9, number=7, period=69,
     lesson_type="Looking Back & Project", title="Unit 9 review and the Festival Fair",
     objectives=["recall the festival vocabulary of Unit 9",
                 "use articles and question forms accurately",

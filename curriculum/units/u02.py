@@ -34,7 +34,7 @@ UNIT = Unit(
 
 # ==========================================================================
 L1 = Lesson(
-    code="U2L1", unit=2, number=1, period=8,
+    code="U2L1", unit=2, number=1, period=10,
     lesson_type="Getting Started", title="Are you living a healthy life?",
     objectives=[
         "name eight healthy and unhealthy habits",
@@ -270,7 +270,7 @@ L1 = Lesson(
 
 # ==========================================================================
 L2 = Lesson(
-    code="U2L2", unit=2, number=2, period=9,
+    code="U2L2", unit=2, number=2, period=11,
     lesson_type="A Closer Look 1", title="Health problems, and the sounds /f/ and /v/",
     objectives=[
         "name eight common health problems and use the verb 'have' with them",
@@ -517,7 +517,7 @@ L2 = Lesson(
 
 # ==========================================================================
 L3 = Lesson(
-    code="U2L3", unit=2, number=3, period=10,
+    code="U2L3", unit=2, number=3, period=12,
     lesson_type="A Closer Look 2", title="Giving advice: should / shouldn't and imperatives",
     objectives=[
         "give advice with should and shouldn't",
@@ -774,7 +774,7 @@ L3 = Lesson(
 
 # ==========================================================================
 L4 = Lesson(
-    code="U2L4", unit=2, number=4, period=11,
+    code="U2L4", unit=2, number=4, period=13,
     lesson_type="Communication", title="Everyday English: at the doctor's and helping a friend",
     objectives=[
         "use everyday expressions to describe symptoms and ask for help",
@@ -1027,7 +1027,7 @@ L4 = Lesson(
 
 # ==========================================================================
 L5 = Lesson(
-    code="U2L5", unit=2, number=5, period=12,
+    code="U2L5", unit=2, number=5, period=14,
     lesson_type="Skills 1", title="Reading: Screen time + Speaking: A healthier week",
     objectives=[
         "read a 200-word article and find the main idea of each paragraph",
@@ -1286,7 +1286,7 @@ L5 = Lesson(
 
 # ==========================================================================
 L6 = Lesson(
-    code="U2L6", unit=2, number=6, period=13,
+    code="U2L6", unit=2, number=6, period=15,
     lesson_type="Skills 2", title="Listening: The radio doctor + Writing: An email of advice",
     objectives=[
         "listen to a radio programme and complete a table of problems and advice",
@@ -1528,7 +1528,7 @@ L6 = Lesson(
 
 # ==========================================================================
 L7 = Lesson(
-    code="U2L7", unit=2, number=7, period=14,
+    code="U2L7", unit=2, number=7, period=16,
     lesson_type="Looking Back & Project", title="Unit 2 review and the Healthy Class Campaign",
     objectives=[
         "recall the health vocabulary of Unit 2 in a game",

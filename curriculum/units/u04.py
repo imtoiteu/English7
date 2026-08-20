@@ -28,7 +28,7 @@ UNIT = Unit(
              "marking": "Content 3 – Language 3 – Display 2 – Guiding 2 (total 10)"})
 
 L1 = Lesson(
-    code="U4L1", unit=4, number=1, period=24,
+    code="U4L1", unit=4, number=1, period=26,
     lesson_type="Getting Started", title="What kind of music do you like?",
     objectives=["name eight kinds of music and art forms",
                 "ask and answer about musical preferences",
@@ -236,7 +236,7 @@ L1 = Lesson(
 )
 
 L2 = Lesson(
-    code="U4L2", unit=4, number=2, period=25,
+    code="U4L2", unit=4, number=2, period=27,
     lesson_type="A Closer Look 1", title="Art forms and the sounds /ʊ/ and /uː/",
     objectives=["name six Vietnamese and international art forms",
                 "use eight adjectives to describe a performance or a work of art",
@@ -465,7 +465,7 @@ L2 = Lesson(
 )
 
 L3 = Lesson(
-    code="U4L3", unit=4, number=3, period=26,
+    code="U4L3", unit=4, number=3, period=28,
     lesson_type="A Closer Look 2", title="Comparative and superlative adjectives",
     objectives=["form comparatives and superlatives of short and long adjectives",
                 "compare two things with -er/more … than",
@@ -717,7 +717,7 @@ L3 = Lesson(
 )
 
 L4 = Lesson(
-    code="U4L4", unit=4, number=4, period=27,
+    code="U4L4", unit=4, number=4, period=29,
     lesson_type="Communication", title="Everyday English: inviting someone to a show",
     objectives=["invite someone to an event and accept or refuse politely",
                 "make arrangements (day, time, place, price)",
@@ -932,7 +932,7 @@ L4 = Lesson(
 )
 
 L5 = Lesson(
-    code="U4L5", unit=4, number=5, period=28,
+    code="U4L5", unit=4, number=5, period=30,
     lesson_type="Skills 1", title="Reading: A young artist + Speaking: My favourite art form",
     objectives=["read a 220-word interview and answer gist, detail and inference questions",
                 "guess new words from context",
@@ -1173,7 +1173,7 @@ L5 = Lesson(
 )
 
 L6 = Lesson(
-    code="U4L6", unit=4, number=6, period=29,
+    code="U4L6", unit=4, number=6, period=31,
     lesson_type="Skills 2", title="Listening: A radio review + Writing: Comparing two things",
     objectives=["listen to a review and complete a comparison table",
                 "organise a comparison paragraph (introduction – similarities – differences – opinion)",
@@ -1393,7 +1393,7 @@ L6 = Lesson(
 )
 
 L7 = Lesson(
-    code="U4L7", unit=4, number=7, period=30,
+    code="U4L7", unit=4, number=7, period=32,
     lesson_type="Looking Back & Project", title="Unit 4 review and the Class Art Gallery",
     objectives=["recall the music and art vocabulary of Unit 4",
                 "use comparatives and superlatives accurately",

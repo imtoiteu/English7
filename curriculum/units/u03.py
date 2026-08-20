@@ -34,7 +34,7 @@ UNIT = Unit(
 )
 
 L1 = Lesson(
-    code="U3L1", unit=3, number=1, period=15,
+    code="U3L1", unit=3, number=1, period=17,
     lesson_type="Getting Started", title="What can we do for our community?",
     objectives=["name eight community-service activities",
                 "understand a short conversation about volunteering",
@@ -243,7 +243,7 @@ L1 = Lesson(
 )
 
 L2 = Lesson(
-    code="U3L2", unit=3, number=2, period=16,
+    code="U3L2", unit=3, number=2, period=18,
     lesson_type="A Closer Look 1", title="Volunteering words and the -ed ending",
     objectives=["use eight more volunteering words and collocations",
                 "pronounce -ed correctly as /t/, /d/ or /ɪd/ and explain the rule",
@@ -454,7 +454,7 @@ L2 = Lesson(
 )
 
 L3 = Lesson(
-    code="U3L3", unit=3, number=3, period=17,
+    code="U3L3", unit=3, number=3, period=19,
     lesson_type="A Closer Look 2", title="Past simple: negatives, questions and irregular verbs",
     objectives=["make negative sentences with didn't + bare verb",
                 "ask and answer past simple questions (Did you…? What did you…?)",
@@ -694,7 +694,7 @@ L3 = Lesson(
 )
 
 L4 = Lesson(
-    code="U3L4", unit=3, number=4, period=18,
+    code="U3L4", unit=3, number=4, period=20,
     lesson_type="Communication", title="Everyday English: offering help and thanking",
     objectives=["offer help and accept or refuse an offer politely",
                 "thank someone and respond to thanks",
@@ -912,7 +912,7 @@ L4 = Lesson(
 )
 
 L5 = Lesson(
-    code="U3L5", unit=3, number=5, period=19,
+    code="U3L5", unit=3, number=5, period=21,
     lesson_type="Skills 1", title="Reading: Young volunteers + Speaking: Report a past event",
     objectives=["read a 220-word article and answer gist, detail and inference questions",
                 "guess the meaning of new words from context",
@@ -1151,7 +1151,7 @@ L5 = Lesson(
 )
 
 L6 = Lesson(
-    code="U3L6", unit=3, number=6, period=20,
+    code="U3L6", unit=3, number=6, period=22,
     lesson_type="Skills 2", title="Listening: A clean-up day + Writing: A diary entry",
     objectives=["listen to a report and complete a table of facts",
                 "understand the layout and language of a diary entry",
@@ -1375,7 +1375,7 @@ L6 = Lesson(
 )
 
 L7 = Lesson(
-    code="U3L7", unit=3, number=7, period=21,
+    code="U3L7", unit=3, number=7, period=23,
     lesson_type="Looking Back & Project", title="Unit 3 review and Our Community Service Plan",
     objectives=["recall the community vocabulary of Unit 3",
                 "use the past simple accurately in all three forms",

@@ -27,7 +27,7 @@ UNIT = Unit(
              "marking": "Content 3 – Language 3 – Poster/sketch 2 – Delivery 2 (total 10)"})
 
 L1 = Lesson(
-    code="U7L1", unit=7, number=1, period=47,
+    code="U7L1", unit=7, number=1, period=49,
     lesson_type="Getting Started", title="How do you get to school?",
     objectives=["name ten means of transport",
                 "ask and answer 'How do you get to school?'",
@@ -230,7 +230,7 @@ L1 = Lesson(
 )
 
 L2 = Lesson(
-    code="U7L2", unit=7, number=2, period=48,
+    code="U7L2", unit=7, number=2, period=50,
     lesson_type="A Closer Look 1", title="Traffic signs and road vocabulary",
     objectives=["recognise and name ten traffic signs",
                 "explain what a sign means with must / mustn't / can",
@@ -467,7 +467,7 @@ L2 = Lesson(
 )
 
 L3 = Lesson(
-    code="U7L3", unit=7, number=3, period=49,
+    code="U7L3", unit=7, number=3, period=51,
     lesson_type="A Closer Look 2", title="How far is it? It takes… ",
     objectives=["ask and answer How far is it? and How long does it take?",
                 "use 'It is … from … to …' for distance and 'It takes … to …' for time",
@@ -704,7 +704,7 @@ L3 = Lesson(
 )
 
 L4 = Lesson(
-    code="U7L4", unit=7, number=4, period=50,
+    code="U7L4", unit=7, number=4, period=52,
     lesson_type="Communication", title="Everyday English: asking for and giving directions",
     objectives=["ask for directions politely",
                 "give directions using imperatives and prepositions of place",
@@ -929,7 +929,7 @@ L4 = Lesson(
 )
 
 L5 = Lesson(
-    code="U7L5", unit=7, number=5, period=51,
+    code="U7L5", unit=7, number=5, period=53,
     lesson_type="Skills 1", title="Reading: Road safety + Speaking: A safer journey",
     objectives=["read a 230-word article about road safety and answer three types of question",
                 "guess new words from context",
@@ -1177,7 +1177,7 @@ L5 = Lesson(
 )
 
 L6 = Lesson(
-    code="U7L6", unit=7, number=6, period=52,
+    code="U7L6", unit=7, number=6, period=54,
     lesson_type="Skills 2", title="Listening: A traffic report + Writing: Road safety rules",
     objectives=["listen to a traffic report and complete notes",
                 "organise a set of rules with a heading, numbered points and a reason",
@@ -1391,7 +1391,7 @@ L6 = Lesson(
 )
 
 L7 = Lesson(
-    code="U7L7", unit=7, number=7, period=53,
+    code="U7L7", unit=7, number=7, period=55,
     lesson_type="Looking Back & Project", title="Unit 7 review and the Road Safety Campaign",
     objectives=["recall the traffic vocabulary of Unit 7",
                 "use must/mustn't and the distance/time structures accurately",

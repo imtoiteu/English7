@@ -28,7 +28,7 @@ UNIT = Unit(
              "marking": "Content 3 – Language 3 – Presentation of the page 2 – Speaking 2 (total 10)"})
 
 L1 = Lesson(
-    code="U5L1", unit=5, number=1, period=31,
+    code="U5L1", unit=5, number=1, period=33,
     lesson_type="Getting Started", title="What's your favourite food?",
     objectives=["name twelve common foods and drinks",
                 "ask and answer about food preferences",
@@ -235,7 +235,7 @@ L1 = Lesson(
 )
 
 L2 = Lesson(
-    code="U5L2", unit=5, number=2, period=32,
+    code="U5L2", unit=5, number=2, period=34,
     lesson_type="A Closer Look 1", title="Cooking verbs, containers and quantities",
     objectives=["use eight cooking verbs correctly",
                 "use containers and quantities (a bowl of, a bottle of, 200 grams of)",
@@ -452,7 +452,7 @@ L2 = Lesson(
 )
 
 L3 = Lesson(
-    code="U5L3", unit=5, number=3, period=33,
+    code="U5L3", unit=5, number=3, period=35,
     lesson_type="A Closer Look 2", title="Countable and uncountable nouns; some, any, much, many",
     objectives=["decide whether a noun is countable or uncountable",
                 "use some and any correctly in positive, negative and question sentences",
@@ -687,7 +687,7 @@ L3 = Lesson(
 )
 
 L4 = Lesson(
-    code="U5L4", unit=5, number=4, period=34,
+    code="U5L4", unit=5, number=4, period=36,
     lesson_type="Communication", title="Everyday English: ordering food",
     objectives=["order food and drink politely in a restaurant or at a street stall",
                 "ask about a dish and about the price",
@@ -900,7 +900,7 @@ L4 = Lesson(
 )
 
 L5 = Lesson(
-    code="U5L5", unit=5, number=5, period=35,
+    code="U5L5", unit=5, number=5, period=37,
     lesson_type="Skills 1", title="Reading: Vietnamese street food + Speaking: Describe a dish",
     objectives=["read a 230-word article and answer gist, detail and inference questions",
                 "guess new words from context",
@@ -1143,7 +1143,7 @@ L5 = Lesson(
 )
 
 L6 = Lesson(
-    code="U5L6", unit=5, number=6, period=36,
+    code="U5L6", unit=5, number=6, period=38,
     lesson_type="Skills 2", title="Listening: A recipe + Writing: Write a recipe",
     objectives=["listen to a recipe and complete the ingredients and the steps",
                 "understand the structure of a written recipe",
@@ -1370,7 +1370,7 @@ L6 = Lesson(
 )
 
 L7 = Lesson(
-    code="U5L7", unit=5, number=7, period=37,
+    code="U5L7", unit=5, number=7, period=39,
     lesson_type="Looking Back & Project", title="Unit 5 review and Our Class Cookbook",
     objectives=["recall the food vocabulary of Unit 5",
                 "use countable/uncountable nouns and quantifiers accurately",

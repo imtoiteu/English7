@@ -29,7 +29,7 @@ UNIT = Unit(
              "marking": "Content 3 – Language 3 – Poster 2 – Hosting 2 (total 10)"})
 
 L1 = Lesson(
-    code="U12L1", unit=12, number=1, period=84,
+    code="U12L1", unit=12, number=1, period=86,
     lesson_type="Getting Started", title="Where is English spoken?",
     objectives=["name six English-speaking countries and their nationalities",
                 "understand a conversation about a country",
@@ -258,7 +258,7 @@ L1 = Lesson(
 )
 
 L2 = Lesson(
-    code="U12L2", unit=12, number=2, period=85,
+    code="U12L2", unit=12, number=2, period=87,
     lesson_type="A Closer Look 1", title="Landmarks and cultural facts",
     objectives=["name eight landmarks and say where they are",
                 "use superlatives to compare countries",
@@ -508,7 +508,7 @@ L2 = Lesson(
 )
 
 L3 = Lesson(
-    code="U12L3", unit=12, number=3, period=86,
+    code="U12L3", unit=12, number=3, period=88,
     lesson_type="A Closer Look 2", title="Present perfect: Have you ever…?",
     objectives=["form the present perfect with have/has + past participle",
                 "ask and answer 'Have you ever…?' with ever and never",
@@ -785,7 +785,7 @@ L3 = Lesson(
 )
 
 L4 = Lesson(
-    code="U12L4", unit=12, number=4, period=87,
+    code="U12L4", unit=12, number=4, period=89,
     lesson_type="Communication", title="Everyday English: meeting people from other countries",
     objectives=["start and keep a conversation with somebody from another country",
                 "ask and answer 'getting to know you' questions",
@@ -1028,7 +1028,7 @@ L4 = Lesson(
 )
 
 L5 = Lesson(
-    code="U12L5", unit=12, number=5, period=88,
+    code="U12L5", unit=12, number=5, period=90,
     lesson_type="Skills 1", title="Reading: English around the world + Speaking: Present a country",
     objectives=["read a 240-word article and answer gist, detail and inference questions",
                 "guess new words from context",
@@ -1295,7 +1295,7 @@ L5 = Lesson(
 )
 
 L6 = Lesson(
-    code="U12L6", unit=12, number=6, period=89,
+    code="U12L6", unit=12, number=6, period=91,
     lesson_type="Skills 2", title="Listening: A student abroad + Writing: An email to a pen friend",
     objectives=["listen to an interview and complete notes",
                 "organise an informal email in four paragraphs",
@@ -1542,7 +1542,7 @@ L6 = Lesson(
 )
 
 L7 = Lesson(
-    code="U12L7", unit=12, number=7, period=90,
+    code="U12L7", unit=12, number=7, period=92,
     lesson_type="Looking Back & Project", title="Unit 12 review and the Country Corner showcase",
     objectives=["recall the vocabulary of Unit 12",
                 "use the present perfect and superlatives accurately",

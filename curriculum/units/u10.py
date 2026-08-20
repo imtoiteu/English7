@@ -28,7 +28,7 @@ UNIT = Unit(
              "marking": "Content 3 – Language 3 – Poster/numbers 2 – Presentation 2 (total 10)"})
 
 L1 = Lesson(
-    code="U10L1", unit=10, number=1, period=70,
+    code="U10L1", unit=10, number=1, period=72,
     lesson_type="Getting Started", title="Where does our energy come from?",
     objectives=["name eight sources of energy",
                 "say which sources are renewable and which are not",
@@ -260,7 +260,7 @@ L1 = Lesson(
 )
 
 L2 = Lesson(
-    code="U10L2", unit=10, number=2, period=71,
+    code="U10L2", unit=10, number=2, period=73,
     lesson_type="A Closer Look 1", title="Saving energy: verbs and collocations",
     objectives=["use ten verbs and phrases about using and saving energy",
                 "pronounce /tʃ/ and /dʒ/ correctly in sentences",
@@ -510,7 +510,7 @@ L2 = Lesson(
 )
 
 L3 = Lesson(
-    code="U10L3", unit=10, number=3, period=72,
+    code="U10L3", unit=10, number=3, period=74,
     lesson_type="A Closer Look 2", title="The future simple: will and won't",
     objectives=["make predictions about the future with will and won't",
                 "ask questions about the future with will",
@@ -770,7 +770,7 @@ L3 = Lesson(
 )
 
 L4 = Lesson(
-    code="U10L4", unit=10, number=4, period=73,
+    code="U10L4", unit=10, number=4, period=75,
     lesson_type="Communication", title="Everyday English: making promises and offers with will",
     objectives=["make promises and instant decisions with will",
                 "offer help with 'I'll…' and 'Shall I…?'",
@@ -997,7 +997,7 @@ L4 = Lesson(
 )
 
 L5 = Lesson(
-    code="U10L5", unit=10, number=5, period=74,
+    code="U10L5", unit=10, number=5, period=76,
     lesson_type="Skills 1", title="Reading: A village with electricity + Speaking: Energy debate",
     objectives=["read a 240-word article and answer gist, detail and inference questions",
                 "guess new words from context",
@@ -1277,7 +1277,7 @@ L5 = Lesson(
 )
 
 L6 = Lesson(
-    code="U10L6", unit=10, number=6, period=75,
+    code="U10L6", unit=10, number=6, period=77,
     lesson_type="Skills 2", title="Listening: An energy audit + Writing: Energy in 2050",
     objectives=["listen to an audit report and complete a table with numbers",
                 "organise a prediction paragraph (situation now – predictions – conclusion)",
@@ -1508,7 +1508,7 @@ L6 = Lesson(
 )
 
 L7 = Lesson(
-    code="U10L7", unit=10, number=7, period=76,
+    code="U10L7", unit=10, number=7, period=78,
     lesson_type="Looking Back & Project", title="Unit 10 review and Save Energy at School",
     objectives=["recall the energy vocabulary of Unit 10",
                 "use will and won't accurately",

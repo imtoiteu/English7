@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-"""Course-level information: front matter shared by all six books."""
+"""Course-level information: front matter shared by all seven books."""
 
 COURSE = {
     "title": "ENGLISH 7 – A Complete Communicative Course",
     "subtitle": "For Vietnamese Grade 7 students (Tiếng Anh 7 – MOET framework)",
     "level": "CEFR A1+ moving towards A2",
     "year": "Full school year – 2 semesters",
-    "periods": "92 teaching sessions of 45 minutes (12 units × 7 lessons + 4 review & test blocks × 2)",
+    "periods": "94 sessions of 45 minutes (2 diagnostic + 12 units × 7 lessons + 4 review & test blocks × 2)",
     "author_line": "Teacher's edition – complete teaching system",
 }
 

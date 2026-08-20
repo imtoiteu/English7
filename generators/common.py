@@ -124,7 +124,8 @@ def new_doc(title, subtitle, book_name, colour=NAVY):
     r = p.add_run(book_name.upper()); r.font.size = Pt(20); r.bold = True; r.font.color.rgb = BLUE
     doc.add_paragraph()
     p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    r = p.add_run("12 units  ·  92 teaching sessions  ·  four skills  ·  CEFR A1+ → A2")
+    r = p.add_run("12 units  ·  94 teaching sessions  ·  four skills  ·  diagnostic-led  ·  "
+                  "CEFR A1+ → A2")
     r.font.size = Pt(10.5); r.font.color.rgb = GREY
     p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     r = p.add_run("Aligned with the MOET English 7 framework (Tiếng Anh 7)")

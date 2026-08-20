@@ -27,7 +27,7 @@ UNIT = Unit(
              "marking": "Content 3 – Language 3 – Plan/design 2 – Presentation 2 (total 10)"})
 
 L1 = Lesson(
-    code="U6L1", unit=6, number=1, period=38,
+    code="U6L1", unit=6, number=1, period=40,
     lesson_type="Getting Started", title="Welcome to our school",
     objectives=["name ten school places and facilities",
                 "understand a conversation between a student and a visitor",
@@ -245,7 +245,7 @@ L1 = Lesson(
 )
 
 L2 = Lesson(
-    code="U6L2", unit=6, number=2, period=39,
+    code="U6L2", unit=6, number=2, period=41,
     lesson_type="A Closer Look 1", title="School subjects and the endings -tion / -sion",
     objectives=["name ten school subjects and say which they like and why",
                 "pronounce the endings -tion /ʃn/ and -sion /ʒn/ and place the stress correctly",
@@ -481,7 +481,7 @@ L2 = Lesson(
 )
 
 L3 = Lesson(
-    code="U6L3", unit=6, number=3, period=40,
+    code="U6L3", unit=6, number=3, period=42,
     lesson_type="A Closer Look 2", title="Present simple or present continuous?",
     objectives=["choose correctly between the present simple and the present continuous",
                 "use the present continuous for future arrangements",
@@ -744,7 +744,7 @@ L3 = Lesson(
 )
 
 L4 = Lesson(
-    code="U6L4", unit=6, number=4, period=41,
+    code="U6L4", unit=6, number=4, period=43,
     lesson_type="Communication", title="Everyday English: asking about school life",
     objectives=["ask and answer questions about school life in another country",
                 "use polite question openers and follow-up questions",
@@ -969,7 +969,7 @@ L4 = Lesson(
 )
 
 L5 = Lesson(
-    code="U6L5", unit=6, number=5, period=42,
+    code="U6L5", unit=6, number=5, period=44,
     lesson_type="Skills 1", title="Reading: Schools around the world + Speaking: Comparing schools",
     objectives=["read a 230-word article about unusual schools and answer three types of question",
                 "guess new words from context",
@@ -1225,7 +1225,7 @@ L5 = Lesson(
 )
 
 L6 = Lesson(
-    code="U6L6", unit=6, number=6, period=43,
+    code="U6L6", unit=6, number=6, period=45,
     lesson_type="Skills 2", title="Listening: A school announcement + Writing: An email about my school",
     objectives=["listen to an announcement and complete a schedule",
                 "organise an informal email describing a school",
@@ -1456,7 +1456,7 @@ L6 = Lesson(
 )
 
 L7 = Lesson(
-    code="U6L7", unit=6, number=7, period=44,
+    code="U6L7", unit=6, number=7, period=46,
     lesson_type="Looking Back & Project", title="Unit 6 review and Our Dream School",
     objectives=["recall the school vocabulary of Unit 6",
                 "choose correctly between the present simple and the present continuous",

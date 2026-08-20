@@ -28,7 +28,7 @@ UNIT = Unit(
              "marking": "Idea 3 – Language 3 – Design 2 – Pitch 2 (total 10)"})
 
 L1 = Lesson(
-    code="U11L1", unit=11, number=1, period=77,
+    code="U11L1", unit=11, number=1, period=79,
     lesson_type="Getting Started", title="How will we travel?",
     objectives=["name eight means of future transport",
                 "understand a conversation about a future journey",
@@ -251,7 +251,7 @@ L1 = Lesson(
 )
 
 L2 = Lesson(
-    code="U11L2", unit=11, number=2, period=78,
+    code="U11L2", unit=11, number=2, period=80,
     lesson_type="A Closer Look 1", title="Describing vehicles and inventions",
     objectives=["use ten adjectives and verbs to describe vehicles",
                 "pronounce final /l/ and three-syllable words correctly",
@@ -499,7 +499,7 @@ L2 = Lesson(
 )
 
 L3 = Lesson(
-    code="U11L3", unit=11, number=3, period=79,
+    code="U11L3", unit=11, number=3, period=81,
     lesson_type="A Closer Look 2", title="might for possibility; possessive pronouns",
     objectives=["use might and might not to talk about possibility",
                 "choose between will (sure) and might (possible)",
@@ -750,7 +750,7 @@ L3 = Lesson(
 )
 
 L4 = Lesson(
-    code="U11L4", unit=11, number=4, period=80,
+    code="U11L4", unit=11, number=4, period=82,
     lesson_type="Communication", title="Everyday English: travelling and asking for information",
     objectives=["ask for travel information at a station or bus stop",
                 "buy a ticket and understand times and platforms",
@@ -982,7 +982,7 @@ L4 = Lesson(
 )
 
 L5 = Lesson(
-    code="U11L5", unit=11, number=5, period=81,
+    code="U11L5", unit=11, number=5, period=83,
     lesson_type="Skills 1", title="Reading: Transport that solves a problem + Speaking: Pitch an idea",
     objectives=["read a 240-word article and answer gist, detail and inference questions",
                 "guess new words from context",
@@ -1250,7 +1250,7 @@ L5 = Lesson(
 )
 
 L6 = Lesson(
-    code="U11L6", unit=11, number=6, period=82,
+    code="U11L6", unit=11, number=6, period=84,
     lesson_type="Skills 2", title="Listening: Travel announcements + Writing: A future journey",
     objectives=["listen to announcements and note the key information",
                 "organise a description of a future journey",
@@ -1489,7 +1489,7 @@ L6 = Lesson(
 )
 
 L7 = Lesson(
-    code="U11L7", unit=11, number=7, period=83,
+    code="U11L7", unit=11, number=7, period=85,
     lesson_type="Looking Back & Project", title="Unit 11 review and Design the Transport of 2050",
     objectives=["recall the transport vocabulary of Unit 11",
                 "use might and possessive pronouns accurately",

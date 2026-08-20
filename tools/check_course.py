@@ -8,7 +8,7 @@ import os, re, sys, json, argparse
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
-from curriculum import all_lessons
+from curriculum import teaching_lessons, all_lessons
 from curriculum.audio_sources import AUDIO
 
 FAILS, WARNS, OKS = [], [], []
@@ -17,9 +17,15 @@ def warn(m): WARNS.append(m)
 def fail(m): FAILS.append(m)
 
 def check_wiring():
-    ls = all_lessons()
-    if len(ls) != 92: fail(f"expected 92 sessions, found {len(ls)}")
-    else: ok("92 teaching sessions present")
+    # The 92 TAUGHT sessions only. The two diagnostic periods that now open the
+    # year draw on curriculum/audio_diagnostic.py and are checked separately by
+    # tools/check_diagnostic.py.
+    ls = teaching_lessons()
+    if len(ls) != 92: fail(f"expected 92 taught sessions, found {len(ls)}")
+    else: ok("92 taught sessions present")
+    total = len(all_lessons())
+    if total != 94: fail(f"expected 94 sessions in the year, found {total}")
+    else: ok("94 sessions in the year (92 taught + 2 diagnostic)")
     unwired = [l.code for l in ls if l.listening is not AUDIO.get(l.code)]
     if unwired: fail(f"sessions not wired to a verified recording: {unwired}")
     else: ok("all 92 sessions point at a verified recording")
@@ -145,15 +151,17 @@ def check_outputs():
     out = os.path.join(ROOT, "output")
     for f in ("01_Teachers_Coursebook.docx", "02_Student_Coursebook.docx",
               "03_Exercise_and_Practice_Book.docx", "04_Homework_Book.docx",
-              "05_Teachers_Answer_Key.docx"):
+              "05_Teachers_Answer_Key.docx", "06_Diagnostic_and_Adaptive_System.docx",
+              "07_Diagnostic_Test_Papers.docx"):
         p = os.path.join(out, f)
         if not os.path.exists(p) or os.path.getsize(p) < 20000:
             fail(f"missing or truncated output: {f}")
     decks = []
     for d, _, fs in os.walk(os.path.join(out, "slides")):
         decks += [x for x in fs if x.endswith(".pptx")]
+    # 92 decks, not 94: the two diagnostic sessions are paper-based by design.
     if len(decks) != 92: fail(f"expected 92 slide decks, found {len(decks)}")
-    else: ok("5 books and 92 slide decks built")
+    else: ok("7 books and 92 slide decks built (the 2 diagnostic sessions are paper-based)")
 
 def check_urls(ls):
     import urllib.request

@@ -33,7 +33,7 @@ def _review_lesson(code, after_unit, period, units_text, title, objectives, voca
 # REVIEW 1 – after Unit 3 (Units 1–3)
 # ==========================================================================
 R1L1 = _review_lesson(
-    "REV1L1", 3, 22, "Units 1–3: hobbies, healthy living, community service",
+    "REV1L1", 3, 24, "Units 1–3: hobbies, healthy living, community service",
     "Review 1 (Units 1–3): language consolidation",
     ["revise the key vocabulary of Units 1–3 (about 70 items)",
      "use the present simple, verbs of liking + V-ing, should/shouldn't and the past simple correctly",
@@ -242,7 +242,7 @@ R1L1 = _review_lesson(
      "CENTRE: five-row grammar map", "RIGHT: wall list score; Homework H1–H4"])
 
 R1L2 = Lesson(
-    code="REV1L2", unit=3, number=2, period=23,
+    code="REV1L2", unit=3, number=2, period=25,
     lesson_type="Progress Test 1", title="Progress Test 1 (Units 1–3) — 45 minutes",
     objectives=["show what they can do in listening, language, reading and writing",
                 "complete a 45-minute test under exam conditions",
@@ -409,7 +409,7 @@ REVIEWS = [Unit(number=3, title="1 (Units 1–3)", theme="Consolidation and prog
 # REVIEW 2 – after Unit 6 (Units 4–6)
 # ==========================================================================
 R2L1 = Lesson(
-    code="REV2L1", unit=6, number=1, period=45,
+    code="REV2L1", unit=6, number=1, period=47,
     lesson_type="Review & Practice", title="Review 2 (Units 4–6): language consolidation",
     objectives=["revise the key vocabulary of Units 4–6 (about 80 items)",
                 "use comparatives, superlatives, quantifiers and both present tenses correctly",
@@ -650,7 +650,7 @@ R2L1 = Lesson(
     materials=["Review exercises", "Wall list", "Speaking cards A/B/C"])
 
 R2L2 = Lesson(
-    code="REV2L2", unit=6, number=2, period=46,
+    code="REV2L2", unit=6, number=2, period=48,
     lesson_type="Progress Test 2", title="Progress Test 2 (Units 4–6) — 45 minutes",
     objectives=["show what they can do in listening, language, reading and writing",
                 "complete a 45-minute test under exam conditions",
@@ -816,7 +816,7 @@ REVIEWS.append(Unit(number=6, title="2 (Units 4–6)", theme="Consolidation and 
 # REVIEW 3 – after Unit 9 (Units 7–9)
 # ==========================================================================
 R3L1 = Lesson(
-    code="REV3L1", unit=9, number=1, period=68,
+    code="REV3L1", unit=9, number=1, period=70,
     lesson_type="Review & Practice", title="Review 3 (Units 7–9): language consolidation",
     objectives=["revise the key vocabulary of Units 7–9 (about 80 items)",
                 "use must/mustn't, distance and time structures, contrast connectors and articles",
@@ -1065,7 +1065,7 @@ R3L1 = Lesson(
     materials=["Review exercises", "Wall list", "Speaking cards"])
 
 R3L2 = Lesson(
-    code="REV3L2", unit=9, number=2, period=69,
+    code="REV3L2", unit=9, number=2, period=71,
     lesson_type="Progress Test 3", title="Progress Test 3 (Units 7–9) — 45 minutes",
     objectives=["show what they can do in listening, language, reading and writing",
                 "complete a 45-minute test under exam conditions",
@@ -1213,7 +1213,7 @@ REVIEWS.append(Unit(number=9, title="3 (Units 7–9)", theme="Consolidation and 
 # REVIEW 4 – after Unit 12 (Units 10–12 + whole year)
 # ==========================================================================
 R4L1 = Lesson(
-    code="REV4L1", unit=12, number=1, period=91,
+    code="REV4L1", unit=12, number=1, period=93,
     lesson_type="Review & Practice", title="Review 4 (Units 10–12 and the whole year)",
     objectives=["revise the key language of Units 10–12",
                 "revise the twelve grammar points of the year in one map",
@@ -1492,7 +1492,7 @@ R4L1 = Lesson(
     materials=["The year's wall list", "Grammar map handout", "Speaking cards A–D"])
 
 R4L2 = Lesson(
-    code="REV4L2", unit=12, number=2, period=92,
+    code="REV4L2", unit=12, number=2, period=94,
     lesson_type="End-of-Year Test", title="End-of-Year Test (Units 1–12) — 45 minutes + speaking",
     objectives=["show what they can do across the whole year in four skills",
                 "complete a 45-minute test under exam conditions",

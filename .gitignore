@@ -3,3 +3,18 @@ __pycache__/
 .venv/
 venv/
 .DS_Store
+
+# Audio is NOT redistributed through this repository.
+#
+# Two reasons, either of which is sufficient:
+#   1. Licence. 50 of the 99 recordings are © ELLLO, licensed for classroom use
+#      only — "wider redistribution is not granted". This repository is public,
+#      so committing them would be redistribution. (The other 49 are VOA and are
+#      public domain, but splitting the folder in half is worse than excluding it.)
+#   2. Size. 273 MB of MP3 would live in the git history permanently.
+#
+# Every recording's source page and direct URL is recorded in
+# curriculum/audio_sources.py and curriculum/audio_diagnostic.py, and
+# planning/AUDIO_INDEX.md maps each one to its lesson. A teacher downloads them
+# once into audio/ and everything resolves.
+audio/

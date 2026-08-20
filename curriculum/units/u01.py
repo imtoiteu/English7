@@ -37,7 +37,7 @@ UNIT = Unit(
 # LESSON 1 – GETTING STARTED
 # ==========================================================================
 L1 = Lesson(
-    code="U1L1", unit=1, number=1, period=1,
+    code="U1L1", unit=1, number=1, period=3,
     lesson_type="Getting Started", title="What's your hobby?",
     objectives=[
         "name 8 common hobbies in English",
@@ -313,7 +313,7 @@ L1 = Lesson(
 # LESSON 2 – A CLOSER LOOK 1 (vocabulary + pronunciation)
 # ==========================================================================
 L2 = Lesson(
-    code="U1L2", unit=1, number=2, period=2,
+    code="U1L2", unit=1, number=2, period=4,
     lesson_type="A Closer Look 1", title="More hobbies, and the sounds /ə/ and /ɜː/",
     objectives=[
         "use 8 more hobby words and the verbs that go with them (do / go / play / collect / make)",
@@ -581,7 +581,7 @@ L2 = Lesson(
 # LESSON 3 – A CLOSER LOOK 2 (grammar)
 # ==========================================================================
 L3 = Lesson(
-    code="U1L3", unit=1, number=3, period=3,
+    code="U1L3", unit=1, number=3, period=5,
     lesson_type="A Closer Look 2", title="Verbs of liking + V-ing",
     objectives=[
         "use like, love, enjoy, don't mind, hate + V-ing to talk about free-time activities",
@@ -860,7 +860,7 @@ L3 = Lesson(
 # LESSON 4 – COMMUNICATION
 # ==========================================================================
 L4 = Lesson(
-    code="U1L4", unit=1, number=4, period=4,
+    code="U1L4", unit=1, number=4, period=6,
     lesson_type="Communication", title="Everyday English: talking about free time",
     objectives=[
         "use everyday expressions to start, keep and end a conversation about free time",
@@ -1116,7 +1116,7 @@ L4 = Lesson(
 # LESSON 5 – SKILLS 1 (Reading + Speaking)
 # ==========================================================================
 L5 = Lesson(
-    code="U1L5", unit=1, number=5, period=5,
+    code="U1L5", unit=1, number=5, period=7,
     lesson_type="Skills 1", title="Reading: Unusual hobbies + Speaking: My hobby talk",
     objectives=[
         "read a 180-word text about unusual hobbies for gist and for detail",
@@ -1392,7 +1392,7 @@ L5 = Lesson(
 # LESSON 6 – SKILLS 2 (Listening + Writing)
 # ==========================================================================
 L6 = Lesson(
-    code="U1L6", unit=1, number=6, period=6,
+    code="U1L6", unit=1, number=6, period=8,
     lesson_type="Skills 2", title="Listening: A hobby interview + Writing: A paragraph about my hobby",
     objectives=[
         "listen to a 1-minute interview and complete a note-taking table",
@@ -1653,7 +1653,7 @@ L6 = Lesson(
 # LESSON 7 – LOOKING BACK & PROJECT
 # ==========================================================================
 L7 = Lesson(
-    code="U1L7", unit=1, number=7, period=7,
+    code="U1L7", unit=1, number=7, period=9,
     lesson_type="Looking Back & Project", title="Unit 1 review and the Hobby Fair",
     objectives=[
         "recall and use all the key vocabulary of Unit 1 in a game",

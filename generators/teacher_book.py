@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
 """BOOK 1 — Teacher's Coursebook / Teaching Guide."""
 from generators.common import *
-from curriculum import load_units, load_reviews
+from curriculum import (load_units, load_reviews, load_diagnostic, load_adaptive,
+                        load_profile)
 from curriculum.course import (COURSE, PHILOSOPHY, VN_DIFFICULTIES, CLASSROOM_ROUTINES,
                                ASSESSMENT, ICONS)
 
 
 def front_matter(doc, units):
     doc.add_heading("How to use this teaching system", level=1)
-    para(doc, "This course is a complete teaching system for one school year. Six books work together "
-              "and every page is cross-referenced, so nothing has to be designed from scratch.")
+    para(doc, "This course is a complete teaching system for one school year. Seven books and a "
+              "deck per session work together, every page is cross-referenced, and the whole set "
+              "adapts to what the diagnostic finds about your class.")
     table(doc, [
         ["Book", "Who uses it", "What it contains"],
         ["1. Teacher's Coursebook", "Teacher", "Full lesson plans, procedures, timing, teacher language, "
@@ -20,7 +22,12 @@ def front_matter(doc, units):
          "Difficult for every lesson"],
         ["4. Homework Book", "Student, at home", "Homework for every lesson + revision sets after each unit"],
         ["5. Teacher's Answer Key", "Teacher", "Every answer, model writing, suggested speaking answers"],
-        ["6. Teaching Slides (PPTX)", "Teacher, in class", "One deck per session, built from these plans"],
+        ["6. Diagnostic & Adaptive System", "Teacher", "Papers A/B/C with answer keys, rubrics, "
+         "bands, triggers, decision tree, bridging lessons, extension bank"],
+        ["7. Diagnostic Test Papers", "Student", "The three papers as students see them — "
+         "no answers, photocopiable"],
+        ["Teaching Slides (PPTX)", "Teacher, in class", "One deck per taught session, built from "
+         "these plans"],
     ], widths=[4.5, 3.5, 9.0])
 
     doc.add_heading("The teaching principles behind every lesson", level=2)
@@ -189,6 +196,7 @@ def lesson_plan(doc, L):
         table(doc, rows, widths=[2.4, 9.6, 2.5, 2.5], size=9)
         rich(doc, [("Answers: see the Teacher's Answer Key, section ", {'i': True, 'size': 9}),
                    (L.code, {'i': True, 'b': True, 'size': 9}), (".", {'i': True, 'size': 9})])
+    adaptive_insert(doc, L)
     page_break(doc)
 
 
@@ -230,12 +238,107 @@ def _task(doc, e, with_answers=False):
         rich(doc, [("Note: ", {'b': True, 'c': ORANGE, 'size': 9}), (e.note, {'i': True, 'size': 9})])
 
 
+# --------------------------------------------------------------------------
+# ADAPTIVE INSERTS — stamped into a lesson plan when a trigger names it
+# --------------------------------------------------------------------------
+def _fired_triggers():
+    CP, AD = load_profile(), load_adaptive()
+    if CP is None or AD is None or not CP.DIAGNOSED:
+        return []
+    return [AD.TRIGGERS_BY_CODE[c] for c in CP.active_triggers()
+            if c in AD.TRIGGERS_BY_CODE]
+
+
+def _inserts_for(lesson_code):
+    """Which fired triggers put a full box in THIS lesson.
+
+    Only `insert_at` counts. A trigger's standing change — a daily drill, a
+    pairing rule, a marking rule — is printed once in the front matter instead.
+    Stamping 'open every lesson with a retrieval quiz' onto ninety-four lesson
+    plans does not make a teacher more likely to do it; it makes them stop
+    reading the boxes.
+    """
+    return [t for t in _fired_triggers() if lesson_code in t.insert_at]
+
+
+def adaptive_insert(doc, L):
+    for t in _inserts_for(L.code):
+        lines = [f"Fired for this class: {t.fires_when}", ""]
+        lines += [f"• {c}" for c in t.changes]
+        if t.retire_when:
+            lines += ["", f"Retire when: {t.retire_when}"]
+        box(doc, f"ADAPTIVE INSERT — {t.code}: {t.name}", lines, "warn", "⚡", size=9)
+
+
+def standing_changes(doc):
+    """Changes that run across the year, printed once."""
+    fired = _fired_triggers()
+    standing = [t for t in fired if t.standing]
+    if not standing:
+        return
+    box(doc, "STANDING CHANGES FOR THIS CLASS — every lesson, all year",
+        ["These come from the diagnostic and are not repeated on each lesson plan. "
+         "Copy them onto the inside cover of your planner.", ""]
+        + [f"{t.code}  {t.standing}" for t in standing],
+        "warn", "⚡", size=9.5)
+    per_lesson = [t for t in fired if t.insert_at]
+    if per_lesson:
+        para(doc, "The remaining changes are moment-specific and are printed as an ADAPTIVE "
+                  "INSERT box under the procedure of the lesson they belong to:",
+             size=9.5, italic=True)
+        table(doc, [["#", "Trigger", "Lessons that carry an insert"]] +
+              [[t.code, t.name, ", ".join(t.insert_at)] for t in per_lesson],
+              widths=[1.2, 5.4, 10.4], size=9)
+
+
+def diagnostic_front(doc):
+    """The two diagnostic sessions, and this class's adapted plan."""
+    D = load_diagnostic()
+    if D is None:
+        return
+    CP, AD = load_profile(), load_adaptive()
+    doc.add_heading("PERIODS 1–2: THE INITIAL DIAGNOSTIC", level=1)
+    para(doc, D.theme, italic=True, color=GREY)
+    box(doc, "Before you teach a single lesson", [
+        "The 92 teaching sessions that follow assume a starting point. These two periods find out "
+        "what the starting point actually is.",
+        "Full papers, answer keys, rubrics, bands, triggers, bridging lessons and the extension "
+        "bank are in Book 6. The photocopiable papers are in Book 7.",
+        "Nothing is taught in these two periods. Do not pre-teach, do not hint, do not help.",
+    ], "objectives", "🔍")
+    if CP is not None:
+        box(doc, "This class", [CP.summary()],
+            "note" if not CP.DIAGNOSED else "answer", "📋", size=9.5)
+        if CP.DIAGNOSED and AD is not None:
+            fired = CP.active_triggers()
+            if fired:
+                table(doc, [["#", "Trigger", "Retire when"]] +
+                      [[t.code, t.name, t.retire_when]
+                       for t in (AD.TRIGGERS_BY_CODE[c] for c in fired if c in AD.TRIGGERS_BY_CODE)],
+                      widths=[1.2, 6.0, 9.8], size=9)
+                standing_changes(doc)
+            mode = CP.bridge_mode()
+            if mode:
+                label = {"pre-course": "Bridging lessons B1–B6 run as a PRE-COURSE BLOCK, before "
+                                       "Unit 1 (Book 6).",
+                         "warm-up": "Bridging lessons B1–B6 run as WHOLE-CLASS WARM-UP INSERTS "
+                                    "inside Units 1–3 (Book 6).",
+                         "homework": "Bridging work is TARGETED HOMEWORK plus a weekly "
+                                     "ten-minute clinic (Book 6)."}
+                box(doc, "Bridging delivery for this class",
+                    [label.get(mode, mode), CP.BRIDGE_NOTE or ""], "objectives", "🧱", size=9.5)
+    page_break(doc)
+    for L in D.lessons:
+        lesson_plan(doc, L)
+
+
 def build(path):
     units = load_units()
     reviews = {r.number: r for r in load_reviews()}
     doc = new_doc(COURSE["title"], COURSE["subtitle"], "Book 1 · Teacher's Coursebook")
     add_toc(doc)
     front_matter(doc, units)
+    diagnostic_front(doc)
     for u in units:
         doc.add_heading(f"UNIT {u.number}: {u.title.upper()}", level=1)
         para(doc, u.theme, italic=True, color=GREY)
