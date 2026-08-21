@@ -8,6 +8,7 @@ from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 from pptx.enum.shapes import MSO_SHAPE
 
 from curriculum import load_units, load_reviews
+from curriculum.audio_links import lesson_audio, targets
 
 W, H = Inches(13.333), Inches(7.5)
 
@@ -322,6 +323,50 @@ def _task_slides(prs, e, section, heading):
     return out
 
 
+
+def _play_buttons(s, links):
+    """A row (or two) of clickable play buttons on a listening slide.
+
+    Every part gets its own button. A Looking Back lesson that replays a
+    four-part recording needs five buttons, so the layout wraps rather than
+    truncating — dropping the fifth would silently lose a required part.
+
+    The MP3 is linked, never embedded: a deck stays a few hundred KB instead of
+    carrying megabytes of audio, and one copy of each file is shared by the
+    books and the slides rather than duplicated into 92 decks.
+    """
+    if not links:
+        return Inches(6.7)
+    per_row = 1 if len(links) == 1 else (2 if len(links) == 2 else 3)
+    rows = (len(links) + per_row - 1) // per_row
+    usable = Inches(11.7)
+    gap = Inches(0.12)
+    bw = int((usable - gap * (per_row - 1)) / per_row)
+    bh = Inches(0.58) if rows == 1 else Inches(0.55)
+    top = Inches(5.95) if rows == 1 else Inches(5.50)
+    for i, (label, target, is_local) in enumerate(links):
+        r, c = divmod(i, per_row)
+        x = Inches(0.8) + c * (bw + gap)
+        y = top + r * (bh + Inches(0.06))
+        box = _rect(s, x, y, bw, bh, "sky", line="blue")
+        tf = box.text_frame
+        tf.margin_left = tf.margin_right = Inches(0.06)
+        tf.word_wrap = True
+        para = tf.paragraphs[0]
+        para.alignment = PP_ALIGN.CENTER
+        run = para.add_run()
+        if len(links) == 1:
+            run.text = "▶ Play audio" if is_local else "▶ Listen online"
+        else:
+            run.text = ("▶ " + label) if is_local else ("▶ online — " + label)
+        run.font.size = Pt(15 if len(links) <= 2 else 13)
+        run.font.bold = True
+        run.font.color.rgb = C["navy"]
+        run.hyperlink.address = target
+    # never push the credit line off the bottom of the slide
+    return min(top + rows * (bh + Inches(0.06)) + Inches(0.04), Inches(6.88))
+
+
 def listening_slides(prs, L):
     if not L.listening:
         return []
@@ -335,10 +380,11 @@ def listening_slides(prs, L):
            ["🎧  Listen 1: just listen — do not write.",
             "🎧  Listen 2: write your answers.",
             "🎧  Listen 3: check with your partner."], size=20, color="navy")
+    below = _play_buttons(s, targets(lesson_audio(L.code), 3))
     credit = " · ".join(x for x in (a.source, a.duration, a.speakers) if x)
     if credit:
-        _txbox(s, Inches(0.8), Inches(6.1), Inches(11.7), Inches(0.9),
-               [_clean(credit, 190)], size=12, color="grey")
+        _txbox(s, Inches(0.8), below, Inches(11.7), Inches(0.55),
+               [_clean(credit, 190)], size=11, color="grey")
     out = [s]
     for t in a.tasks:
         out += _task_slides(prs, t, "listening", "Listening task")

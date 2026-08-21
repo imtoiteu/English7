@@ -7,6 +7,7 @@ from docx.enum.section import WD_SECTION
 from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
+from docx.opc.constants import RELATIONSHIP_TYPE as RT
 
 # --- palette --------------------------------------------------------------
 NAVY = RGBColor(0x1F, 0x3B, 0x63)
@@ -268,6 +269,93 @@ def rule(doc, color=NAVY):
 
 def page_break(doc):
     doc.add_page_break()
+
+
+# --- audio hyperlinks -----------------------------------------------------
+def add_hyperlink(paragraph, text, target, size=9.5, color=BLUE, bold=True,
+                  underline=True):
+    """A real Word hyperlink (w:hyperlink + an external relationship).
+
+    `target` is stored verbatim, so a relative path like ../audio/x.mp3 is
+    resolved by Word against the document's own location on disk. That is why
+    the depth passed to curriculum.audio_links.rel_path has to match where the
+    file is actually written.
+    """
+    part = paragraph.part
+    r_id = part.relate_to(target, RT.HYPERLINK, is_external=True)
+    link = OxmlElement('w:hyperlink')
+    link.set(qn('r:id'), r_id)
+    run = OxmlElement('w:r')
+    rPr = OxmlElement('w:rPr')
+    if color is not None:
+        c = OxmlElement('w:color'); c.set(qn('w:val'), f"{color}")
+        rPr.append(c)
+    if underline:
+        u = OxmlElement('w:u'); u.set(qn('w:val'), 'single'); rPr.append(u)
+    if bold:
+        rPr.append(OxmlElement('w:b'))
+    sz = OxmlElement('w:sz'); sz.set(qn('w:val'), str(int(size * 2))); rPr.append(sz)
+    run.append(rPr)
+    t = OxmlElement('w:t')
+    t.set(qn('xml:space'), 'preserve')
+    t.text = text
+    run.append(t)
+    link.append(run)
+    paragraph._p.append(link)
+    return link
+
+
+def _link_text(label, part_label, n, is_local):
+    """What the clickable text says.
+
+    A link to the local MP3 and a link to the publisher's page do different
+    things, so they must not look identical — a teacher who clicks expecting
+    the file and gets a web page should be able to see that coming.
+    """
+    if not is_local:
+        base = "▶ Listen online"
+        return base if n == 1 else f"{base} — {part_label}"
+    return label if n == 1 else f"{label} — {part_label}"
+
+
+def audio_links(doc, links, label="▶ Listen", size=9.5, indent=0.4,
+                intro="", space_after=4, color=BLUE):
+    """One paragraph of clickable play links.
+
+    links = [(part_label, target, is_local), …] from audio_links.targets().
+    A single-part recording gets one plain button; a multipart recording gets
+    one button per part, labelled, so a teacher can play part 3 without hunting.
+    """
+    if not links:
+        return None
+    p = doc.add_paragraph()
+    p.paragraph_format.left_indent = Cm(indent)
+    p.paragraph_format.space_after = Pt(space_after)
+    if intro:
+        r = p.add_run(intro + "  ")
+        r.font.size = Pt(size); r.font.color.rgb = GREY
+    for i, (part_label, target, is_local) in enumerate(links):
+        if i:
+            sep = p.add_run("   ")
+            sep.font.size = Pt(size)
+        add_hyperlink(p, _link_text(label, part_label, len(links), is_local),
+                      target, size=size, color=color)
+    return p
+
+
+def audio_links_in_cell(cell, links, label="▶ Listen", size=9, color=BLUE):
+    """Same, but inside an existing table cell (used inside callout boxes)."""
+    if not links:
+        return None
+    p = cell.add_paragraph()
+    p.paragraph_format.space_after = Pt(1)
+    for i, (part_label, target, is_local) in enumerate(links):
+        if i:
+            sep = p.add_run("   ")
+            sep.font.size = Pt(size)
+        add_hyperlink(p, _link_text(label, part_label, len(links), is_local),
+                      target, size=size, color=color)
+    return p
 
 
 LEVEL_NAME = {"E": "Easy", "M": "Medium", "D": "Difficult"}

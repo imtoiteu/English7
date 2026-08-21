@@ -16,6 +16,7 @@ from curriculum.course import COURSE
 from curriculum.rubrics import ALL_RUBRICS
 from curriculum.audio_diagnostic import DIAG_AUDIO, DIAG_FILES
 from curriculum.diagnostic import PAPER_AUDIO
+from curriculum.audio_links import diagnostic_audio, targets
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -90,21 +91,21 @@ def front_matter(doc, A):
               "the project. None of it is synthetic and none of it is read by the teacher. Check "
               "each file plays, from the back of the room, before the students arrive.",
          size=10.5, italic=True)
-    rows = [["Paper", "Task", "Local file", "Length", "Speed", "Play"]]
-    for code, keys in PAPER_AUDIO.items():
-        for i, k in enumerate(keys, 1):
-            a = DIAG_AUDIO[k]
-            f = DIAG_FILES[k]
-            exists = "✔ on disk" if os.path.exists(os.path.join(ROOT, f)) else "✖ MISSING"
-            rows.append([code, f"{code}-L{i}", os.path.basename(f)[:34] + "…",
-                         a.duration, a.speech_rate.replace(" as heard", ""), exists])
-    for k in ("BRIDGE", "EXT"):
+    order = [(code, k, f"{code}-L{i}")
+             for code, keys in PAPER_AUDIO.items()
+             for i, k in enumerate(keys, 1)]
+    order += [("—", k, k) for k in ("BRIDGE", "EXT")]
+    rows = [["Paper", "Task", "Local file (full name)", "Length", "Speed", "On disk", "Play"]]
+    for code, k, task in order:
         a = DIAG_AUDIO[k]
         f = DIAG_FILES[k]
-        exists = "✔ on disk" if os.path.exists(os.path.join(ROOT, f)) else "✖ MISSING"
-        rows.append(["—", k, os.path.basename(f)[:34] + "…", a.duration,
-                     a.speech_rate.replace(" as heard", ""), exists])
-    table(doc, rows, widths=[1.4, 1.8, 6.6, 1.6, 3.0, 2.6], size=8.5)
+        here = "✔" if os.path.exists(os.path.join(ROOT, f)) else "✖ MISSING"
+        rows.append([code, task, os.path.basename(f), a.duration,
+                     a.speech_rate.replace(" as heard", ""), here, ""])
+    t = table(doc, rows, widths=[1.2, 1.6, 6.4, 1.4, 2.6, 1.4, 2.4], size=8.5)
+    for r, (code, k, task) in enumerate(order, start=1):
+        audio_links_in_cell(t.cell(r, 6), targets(diagnostic_audio(k), 1),
+                            label="▶ Play", size=8.5)
     box(doc, "Licence", [
         DIAG_AUDIO["D1_1"].licence,
         "",
@@ -162,7 +163,10 @@ def paper_section(doc, P):
                 if t.excerpt:
                     lines.append("EXCERPT — " + t.excerpt)
                 lines.append(f"Source: {a.source_page}")
-                box(doc, "Audio", lines, "listening", "🎧", size=9)
+                bx = box(doc, "Audio", lines, "listening", "🎧", size=9)
+                audio_links_in_cell(bx.cell(0, 0),
+                                    targets(diagnostic_audio(t.audio_key), 1),
+                                    label="▶ Play audio", size=9.5)
                 doc.add_heading("Transcript (published by the source — do NOT give to students "
                                 "before the second play)", level=4)
                 for ln in a.script:

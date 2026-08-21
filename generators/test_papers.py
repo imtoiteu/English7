@@ -11,6 +11,7 @@ measure change.
 """
 from generators.common import *
 from curriculum import load_papers
+from curriculum.audio_links import diagnostic_audio, targets
 from curriculum.course import COURSE
 
 SPEAKING_STRANDS = ("speaking", "pron")
@@ -86,6 +87,10 @@ def paper(doc, P):
                 para(doc, "🎧  You will hear this recording " +
                      ("twice." if t.plays == 2 else f"{t.plays} times."),
                      size=9.5, color=BLUE, indent=0.2)
+                # The teacher operates the audio; on a photocopy this line is
+                # simply inert. No filename, no source, no transcript.
+                audio_links(doc, targets(diagnostic_audio(t.audio_key), 1),
+                            label="▶ Play audio (teacher)", size=9, indent=0.2)
 
             if t.text:
                 if t.text_title:

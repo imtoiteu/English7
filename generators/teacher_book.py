@@ -3,6 +3,7 @@
 from generators.common import *
 from curriculum import (load_units, load_reviews, load_diagnostic, load_adaptive,
                         load_profile)
+from curriculum.audio_links import lesson_audio, diagnostic_audio, targets
 from curriculum.course import (COURSE, PHILOSOPHY, VN_DIFFICULTIES, CLASSROOM_ROUTINES,
                                ASSESSMENT, ICONS)
 
@@ -137,7 +138,7 @@ def lesson_plan(doc, L):
         a = L.listening
         doc.add_heading(f"Listening — {a.title}", level=4)
         rich(doc, [("Set the scene: ", {'b': True}), (a.context, {'i': True})])
-        _recording_panel(doc, a)
+        _recording_panel(doc, a, _audio_pairs(L))
         script_title = ("Full transcript — for your use in class (students' book prints an extract)"
                         if a.script_is_excerpt else "Full transcript (public domain — may be printed)")
         box(doc, script_title, a.script, "listening", ICONS['listening'], size=9.5)
@@ -201,7 +202,21 @@ def lesson_plan(doc, L):
 
 
 
-def _recording_panel(doc, a):
+def _audio_pairs(L):
+    """The recordings this lesson plays. D0L1/D0L2 are the diagnostic sessions,
+    whose audio lives in curriculum/audio_diagnostic.py rather than the course
+    corpus, so they resolve through a different table."""
+    if L.code == "D0L1":
+        out = []
+        for k in ("D1_1", "D1_2", "D1_3"):
+            out += diagnostic_audio(k)
+        return out
+    if L.code == "D0L2":
+        return []          # Part B is writing and speaking; no recording is played
+    return lesson_audio(L.code)
+
+
+def _recording_panel(doc, a, pairs=()):
     """Everything the teacher needs to find, play and credit the real recording."""
     rows = []
     if a.source:      rows.append(("Source", a.source))
@@ -218,7 +233,10 @@ def _recording_panel(doc, a):
     if a.licence:     rows.append(("Licence / use", a.licence))
     if a.attribution: rows.append(("Credit line", a.attribution))
     if a.teacher_note:rows.append(("Before you play", a.teacher_note))
-    box(doc, "🎧 The recording", [f"{k}: {v}" for k, v in rows], "listening", size=8.5)
+    t = box(doc, "🎧 The recording", [f"{k}: {v}" for k, v in rows], "listening", size=8.5)
+    if pairs:
+        audio_links_in_cell(t.cell(0, 0), targets(pairs, 1),
+                            label="▶ Play audio", size=9)
 
 
 def _task(doc, e, with_answers=False):

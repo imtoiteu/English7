@@ -2,6 +2,7 @@
 """BOOK 2 — Student Coursebook / Learning Materials."""
 from generators.common import *
 from curriculum import load_units, load_reviews
+from curriculum.audio_links import lesson_audio, targets
 from curriculum.course import COURSE, ICONS
 
 
@@ -64,6 +65,10 @@ def lesson_pages(doc, L):
             where.append(f"Length: {a.duration}")
         if a.source_page: where.append(f"Listen again at home: {a.source_page}")
         if a.attribution: where.append(a.attribution)
+        pairs = lesson_audio(L.code)
+        if pairs:
+            audio_links(doc, targets(pairs, 1),
+                        label="▶ Listen", size=11, indent=0.2)
         if where:
             box(doc, "🎧 Where this recording comes from", where, "listening", size=8.5)
         for t in a.tasks:
