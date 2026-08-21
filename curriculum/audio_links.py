@@ -21,6 +21,7 @@ conversations) resolves to all of its parts, in the order the source lists
 them. Nothing is ever collapsed into one file.
 """
 import os
+import re
 
 AUDIO_DIRNAME = "audio"
 
@@ -93,6 +94,36 @@ def rel_path(filename, depth):
 def exists(filename, root=None):
     root = root or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     return os.path.exists(os.path.join(root, AUDIO_DIRNAME, filename))
+
+
+def _strip_part(label):
+    return re.sub(r" part \d+$", "", label)
+
+
+def link_set(triples, depth):
+    """Both ways to reach each recording.
+
+    Returns (local, online):
+        local  = [(label, ../audio/x.mp3), …] — one per file that is on disk
+        online = [(label, https://…), …]     — one per DISTINCT official page
+
+    The two lists are deliberately different lengths. A multipart recording is
+    published by ELLLO as several conversations on ONE page, so four parts share
+    a single online source: emitting four identical links would be noise, and
+    inventing four separate URLs would be a lie. A Looking Back lesson borrows
+    from two different lessons and therefore genuinely has two pages.
+
+    Both are offered whenever both exist, because a colleague who is sent only
+    the .docx has no audio/ directory and the local link is dead for them.
+    """
+    local, online, seen = [], [], set()
+    for label, filename, page in triples:
+        if exists(filename):
+            local.append((label, rel_path(filename, depth)))
+        if page and page not in seen:
+            seen.add(page)
+            online.append((_strip_part(label), page))
+    return local, online
 
 
 def targets(triples, depth):

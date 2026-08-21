@@ -21,7 +21,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
 from curriculum import all_lessons
-from curriculum.audio_links import lesson_audio, diagnostic_audio, targets, exists
+from curriculum.audio_links import lesson_audio, diagnostic_audio, link_set, exists
 from curriculum.diagnostic import ALL_PAPERS
 
 FAILS, WARNS, OKS = [], [], []
@@ -54,6 +54,97 @@ def external_links(path):
 
 def audio_links_of(path):
     return [(part, t) for part, t in external_links(path) if t.lower().endswith(".mp3")]
+
+
+def web_links_of(path):
+    return [(part, t) for part, t in external_links(path)
+            if t.startswith(("http://", "https://"))]
+
+
+def expected_pages():
+    """lesson/task code -> set of official source pages it should link."""
+    exp = {}
+    for L in all_lessons():
+        if L.code.startswith("D0") or not L.listening:
+            continue
+        exp[L.code] = {u for _, u in link_set(lesson_audio(L.code), 1)[1]}
+    for P in ALL_PAPERS:
+        for s in P.sections:
+            if s.strand != "listening":
+                continue
+            for t in s.tasks:
+                exp[t.code] = {u for _, u in link_set(diagnostic_audio(t.audio_key), 1)[1]}
+    return exp
+
+
+def check_online():
+    """Both routes must exist, and the online one must be the exact page."""
+    from curriculum.audio_sources import AUDIO
+    from curriculum.audio_diagnostic import DIAG_AUDIO
+    legit = {a.source_page for a in AUDIO.values() if a.source_page}
+    legit |= {a.source_page for a in DIAG_AUDIO.values() if a.source_page}
+
+    generic = re.compile(r"^https?://(www\.)?(elllo\.org|learningenglish\.voanews\.com)/?$")
+    total = 0
+    for p in DOCX + PPTX:
+        for _, u in web_links_of(p):
+            total += 1
+            if generic.match(u):
+                fail(f"{os.path.relpath(p, ROOT)} links a generic homepage: {u}")
+            elif u not in legit:
+                fail(f"{os.path.relpath(p, ROOT)} links {u}, which is not a recorded source page")
+    if not [f for f in FAILS if "generic homepage" in f or "not a recorded source" in f]:
+        ok(f"{total} online links, every one an exact recorded source page (no homepages)")
+
+    # each deck's online set must be exactly its lesson's
+    exp = expected_pages()
+    wrong = 0
+    for p in PPTX:
+        code = os.path.basename(p).split("_")[0]
+        want = exp.get(code)
+        if want is None:
+            continue
+        got = {u for _, u in web_links_of(p)}
+        if got != want:
+            wrong += 1
+            fail(f"{os.path.relpath(p, ROOT)}: online links {sorted(got)} but {code} "
+                 f"needs {sorted(want)}")
+    if not wrong:
+        ok(f"every one of the {len(PPTX)} decks links exactly its lesson's official page(s)")
+
+    # both routes present wherever both are possible
+    for p in DOCX + PPTX:
+        n_local, n_web = len(audio_links_of(p)), len(web_links_of(p))
+        base = os.path.relpath(p, ROOT)
+        if n_local and not n_web:
+            fail(f"{base}: {n_local} local links but no online fallback")
+    if not [f for f in FAILS if "no online fallback" in f]:
+        ok("every document that offers a local MP3 also offers the online source")
+    return total
+
+
+def check_diagnostic_pages():
+    """A-L1…C-L3 must carry their exact official VOA pages."""
+    from curriculum.audio_diagnostic import DIAG_AUDIO
+    from curriculum.diagnostic import PAPERS
+    need = {}
+    for P in PAPERS.values():
+        for s in P.sections:
+            if s.strand != "listening":
+                continue
+            for t in s.tasks:
+                need[t.code] = DIAG_AUDIO[t.audio_key].source_page
+    for label, name in (("Book 6", "06_Diagnostic_and_Adaptive_System.docx"),
+                        ("Book 7", "07_Diagnostic_Test_Papers.docx")):
+        p = os.path.join(ROOT, "output", name)
+        if not os.path.exists(p):
+            continue
+        got = {u for _, u in web_links_of(p)}
+        gap = {c: u for c, u in need.items() if u not in got}
+        if gap:
+            fail(f"{label}: diagnostic tasks missing their official page: {sorted(gap)}")
+        else:
+            ok(f"{label}: all 8 diagnostic tasks carry their exact official VOA page")
 
 
 def resolves(doc_path, target):
@@ -220,7 +311,10 @@ def check_content_unchanged(baseline):
     # A table cell's text is one blob containing several lines, so filtering
     # whole entries would discard an entire cell just because a link was added
     # inside it. Split first, filter the added lines, then compare.
-    LINKY = re.compile(r"▶|Listen online|To check a listening answer")
+    # Link text added by this feature. 🌐 must be here as well as the words
+    # "Listen online": when a lesson has several distinct source pages the
+    # buttons are labelled per page ("🌐 U7L2"), not with the generic wording.
+    LINKY = re.compile(r"▶|🌐|Listen online|To check a listening answer")
     def flatten(seq):
         out = []
         for entry in seq:
@@ -322,6 +416,8 @@ if __name__ == "__main__":
 
     check_inventory()
     total = check_resolution()
+    check_online()
+    check_diagnostic_pages()
     check_correctness()
     check_coverage()
     check_books_have_links()

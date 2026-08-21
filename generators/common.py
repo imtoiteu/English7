@@ -305,28 +305,53 @@ def add_hyperlink(paragraph, text, target, size=9.5, color=BLUE, bold=True,
     return link
 
 
-def _link_text(label, part_label, n, is_local):
-    """What the clickable text says.
-
-    A link to the local MP3 and a link to the publisher's page do different
-    things, so they must not look identical — a teacher who clicks expecting
-    the file and gets a web page should be able to see that coming.
-    """
-    if not is_local:
-        base = "▶ Listen online"
-        return base if n == 1 else f"{base} — {part_label}"
+def _local_text(label, part_label, n):
     return label if n == 1 else f"{label} — {part_label}"
 
 
-def audio_links(doc, links, label="▶ Listen", size=9.5, indent=0.4,
-                intro="", space_after=4, color=BLUE):
-    """One paragraph of clickable play links.
+def _online_text(part_label, n):
+    return "🌐 Listen online" if n == 1 else f"🌐 Listen online — {part_label}"
 
-    links = [(part_label, target, is_local), …] from audio_links.targets().
-    A single-part recording gets one plain button; a multipart recording gets
-    one button per part, labelled, so a teacher can play part 3 without hunting.
+
+def _emit(paragraph, local, online, label, size):
+    """Both routes to the recording, on one line.
+
+    The local link is first because it is the better one when it works. The
+    online link is always offered alongside it, never instead of it: a
+    colleague who is sent only the .docx has no audio/ directory, and for them
+    the local link is dead while the publisher's page still plays the same
+    recording.
+
+    They are coloured differently and worded differently because they do
+    different things — one opens a file, the other opens the internet.
     """
-    if not links:
+    n = 0
+    for i, (part_label, target) in enumerate(local):
+        if n:
+            r = paragraph.add_run("   "); r.font.size = Pt(size)
+        add_hyperlink(paragraph, _local_text(label, part_label, len(local)),
+                      target, size=size, color=BLUE)
+        n += 1
+    if local and online:
+        r = paragraph.add_run("     |     ")
+        r.font.size = Pt(size); r.font.color.rgb = GREY
+        n = 0
+    for part_label, url in online:
+        if n:
+            r = paragraph.add_run("   "); r.font.size = Pt(size)
+        add_hyperlink(paragraph, _online_text(part_label, len(online)),
+                      url, size=size, color=TEAL)
+        n += 1
+
+
+def audio_links(doc, local, online=(), label="▶ Play audio", size=9.5, indent=0.4,
+                intro="", space_after=4):
+    """One paragraph carrying both ways to reach the recording.
+
+    local  = [(part_label, ../audio/x.mp3), …]
+    online = [(part_label, https://…), …]  — one per DISTINCT official page
+    """
+    if not local and not online:
         return None
     p = doc.add_paragraph()
     p.paragraph_format.left_indent = Cm(indent)
@@ -334,27 +359,17 @@ def audio_links(doc, links, label="▶ Listen", size=9.5, indent=0.4,
     if intro:
         r = p.add_run(intro + "  ")
         r.font.size = Pt(size); r.font.color.rgb = GREY
-    for i, (part_label, target, is_local) in enumerate(links):
-        if i:
-            sep = p.add_run("   ")
-            sep.font.size = Pt(size)
-        add_hyperlink(p, _link_text(label, part_label, len(links), is_local),
-                      target, size=size, color=color)
+    _emit(p, list(local), list(online), label, size)
     return p
 
 
-def audio_links_in_cell(cell, links, label="▶ Listen", size=9, color=BLUE):
+def audio_links_in_cell(cell, local, online=(), label="▶ Play audio", size=9):
     """Same, but inside an existing table cell (used inside callout boxes)."""
-    if not links:
+    if not local and not online:
         return None
     p = cell.add_paragraph()
     p.paragraph_format.space_after = Pt(1)
-    for i, (part_label, target, is_local) in enumerate(links):
-        if i:
-            sep = p.add_run("   ")
-            sep.font.size = Pt(size)
-        add_hyperlink(p, _link_text(label, part_label, len(links), is_local),
-                      target, size=size, color=color)
+    _emit(p, list(local), list(online), label, size)
     return p
 
 

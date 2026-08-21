@@ -3,7 +3,7 @@
 from generators.common import *
 from curriculum import (load_units, load_reviews, load_diagnostic, load_adaptive,
                         load_profile)
-from curriculum.audio_links import lesson_audio, diagnostic_audio, targets
+from curriculum.audio_links import lesson_audio, diagnostic_audio, link_set
 from curriculum.course import (COURSE, PHILOSOPHY, VN_DIFFICULTIES, CLASSROOM_ROUTINES,
                                ASSESSMENT, ICONS)
 
@@ -235,8 +235,8 @@ def _recording_panel(doc, a, pairs=()):
     if a.teacher_note:rows.append(("Before you play", a.teacher_note))
     t = box(doc, "🎧 The recording", [f"{k}: {v}" for k, v in rows], "listening", size=8.5)
     if pairs:
-        audio_links_in_cell(t.cell(0, 0), targets(pairs, 1),
-                            label="▶ Play audio", size=9)
+        loc, onl = link_set(pairs, 1)
+        audio_links_in_cell(t.cell(0, 0), loc, onl, label="▶ Play audio", size=9)
 
 
 def _task(doc, e, with_answers=False):

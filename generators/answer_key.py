@@ -2,7 +2,7 @@
 """BOOK 5 — Teacher's Answer Key."""
 from generators.common import *
 from curriculum import load_units, load_reviews
-from curriculum.audio_links import lesson_audio, targets
+from curriculum.audio_links import lesson_audio, link_set
 from curriculum.course import COURSE
 
 KIND_LABEL = {"vocab": "Vocabulary", "grammar": "Grammar", "pron": "Pronunciation",
@@ -51,7 +51,8 @@ def lesson_section(doc, L):
     if L.listening:
         pairs = lesson_audio(L.code)
         if pairs:
-            audio_links(doc, targets(pairs, 1), label="▶ Play audio", size=9,
+            loc, onl = link_set(pairs, 1)
+            audio_links(doc, loc, onl, label="▶ Play audio", size=9,
                         intro="To check a listening answer, replay it:")
     if L.pron:
         doc.add_heading("Pronunciation drill (Practice Book, " + L.code + "-PRON)", level=4)

@@ -8,7 +8,7 @@ from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 from pptx.enum.shapes import MSO_SHAPE
 
 from curriculum import load_units, load_reviews
-from curriculum.audio_links import lesson_audio, targets
+from curriculum.audio_links import lesson_audio, link_set
 
 W, H = Inches(13.333), Inches(7.5)
 
@@ -324,47 +324,68 @@ def _task_slides(prs, e, section, heading):
 
 
 
-def _play_buttons(s, links):
-    """A row (or two) of clickable play buttons on a listening slide.
-
-    Every part gets its own button. A Looking Back lesson that replays a
-    four-part recording needs five buttons, so the layout wraps rather than
-    truncating — dropping the fifth would silently lose a required part.
-
-    The MP3 is linked, never embedded: a deck stays a few hundred KB instead of
-    carrying megabytes of audio, and one copy of each file is shared by the
-    books and the slides rather than duplicated into 92 decks.
-    """
-    if not links:
-        return Inches(6.7)
-    per_row = 1 if len(links) == 1 else (2 if len(links) == 2 else 3)
-    rows = (len(links) + per_row - 1) // per_row
-    usable = Inches(11.7)
+def _button_row(s, items, y, bw, bh, fill, line, colour, fontsize, prefix, single):
+    x = Inches(0.8)
     gap = Inches(0.12)
-    bw = int((usable - gap * (per_row - 1)) / per_row)
-    bh = Inches(0.58) if rows == 1 else Inches(0.55)
-    top = Inches(5.95) if rows == 1 else Inches(5.50)
-    for i, (label, target, is_local) in enumerate(links):
-        r, c = divmod(i, per_row)
-        x = Inches(0.8) + c * (bw + gap)
-        y = top + r * (bh + Inches(0.06))
-        box = _rect(s, x, y, bw, bh, "sky", line="blue")
+    for label, target in items:
+        box = _rect(s, x, y, bw, bh, fill, line=line)
         tf = box.text_frame
-        tf.margin_left = tf.margin_right = Inches(0.06)
+        tf.margin_left = tf.margin_right = Inches(0.05)
+        tf.margin_top = tf.margin_bottom = 0
         tf.word_wrap = True
         para = tf.paragraphs[0]
         para.alignment = PP_ALIGN.CENTER
         run = para.add_run()
-        if len(links) == 1:
-            run.text = "▶ Play audio" if is_local else "▶ Listen online"
-        else:
-            run.text = ("▶ " + label) if is_local else ("▶ online — " + label)
-        run.font.size = Pt(15 if len(links) <= 2 else 13)
+        run.text = single if len(items) == 1 else f"{prefix}{label}"
+        run.font.size = Pt(fontsize)
         run.font.bold = True
-        run.font.color.rgb = C["navy"]
+        run.font.color.rgb = C[colour]
         run.hyperlink.address = target
-    # never push the credit line off the bottom of the slide
-    return min(top + rows * (bh + Inches(0.06)) + Inches(0.04), Inches(6.88))
+        x = x + bw + gap
+
+
+def _button_rows(local, online):
+    """How many rows the two tiers will need (max 3 per row)."""
+    return ((len(local) + 2) // 3 if local else 0,
+            (len(online) + 2) // 3 if online else 0)
+
+
+def _play_buttons(s, local, online, top, bh):
+    """Two routes to the recording, as two rows of clickable buttons.
+
+    Row 1 (blue)  the local MP3 — one button per part, because a Looking Back
+                  lesson replaying a four-part recording needs five of them and
+                  dropping one would silently lose a required part.
+    Row 2 (teal)  the publisher's page — one button per DISTINCT page, since a
+                  multipart recording is published as several conversations on
+                  a single page. Four identical buttons would be noise.
+
+    Both rows are always shown when both exist: a deck sent to a colleague
+    travels without audio/, and the online button is what still works for them.
+
+    Geometry is computed so the credit line below never leaves the slide.
+    """
+    if not local and not online:
+        return top
+    rows_l, rows_o = _button_rows(local, online)
+    gap_y = Inches(0.07)
+    usable = Inches(11.7)
+    gap = Inches(0.12)
+
+    y = top
+    for r in range(rows_l):
+        chunk = local[r * 3:(r + 1) * 3]
+        bw = int((usable - gap * (len(chunk) - 1)) / len(chunk))
+        _button_row(s, chunk, y, bw, bh, "sky", "blue", "navy",
+                    15 if len(chunk) == 1 else 13, "▶ ", "▶ Play audio")
+        y += bh + gap_y
+    for r in range(rows_o):
+        chunk = online[r * 3:(r + 1) * 3]
+        bw = int((usable - gap * (len(chunk) - 1)) / len(chunk))
+        _button_row(s, chunk, y, bw, bh, "mint", "teal", "teal",
+                    14 if len(chunk) == 1 else 12, "🌐 ", "🌐 Listen online")
+        y += bh + gap_y
+    return y - gap_y      # the loop adds a trailing gap after the last row
 
 
 def listening_slides(prs, L):
@@ -376,15 +397,31 @@ def listening_slides(prs, L):
     _rect(s, Inches(0.8), Inches(1.9), Inches(11.7), Inches(2.0), tint)
     _txbox(s, Inches(1.2), Inches(2.1), Inches(11.0), Inches(1.7), _clean(a.context, 260), size=21,
            anchor=MSO_ANCHOR.MIDDLE)
-    _txbox(s, Inches(0.8), Inches(4.4), Inches(11.7), Inches(1.6),
+
+    # Lay the lower half out from the top. A Looking Back lesson replaying a
+    # four-part recording needs five local buttons plus two online ones, which
+    # is three rows; the "Listen 1/2/3" block gives up the height for them
+    # rather than being overlapped by them.
+    lo, on = link_set(lesson_audio(L.code), 3)
+    rows_l, rows_o = _button_rows(lo, on)
+    rows = rows_l + rows_o
+    bh = Inches(0.52) if rows >= 3 else Inches(0.56)
+    buttons_h = rows * bh + max(rows - 1, 0) * Inches(0.07)
+    credit_h = Inches(0.42)
+    inst_top = Inches(4.05)
+    inst_h = Inches(7.45) - inst_top - Inches(0.12) - buttons_h - Inches(0.10) - credit_h
+    inst_h = max(min(inst_h, Inches(1.6)), Inches(0.95))
+    _txbox(s, Inches(0.8), inst_top, Inches(11.7), inst_h,
            ["🎧  Listen 1: just listen — do not write.",
             "🎧  Listen 2: write your answers.",
-            "🎧  Listen 3: check with your partner."], size=20, color="navy")
-    below = _play_buttons(s, targets(lesson_audio(L.code), 3))
+            "🎧  Listen 3: check with your partner."],
+           size=20 if inst_h >= Inches(1.35) else 16, color="navy")
+
+    below = _play_buttons(s, lo, on, inst_top + inst_h + Inches(0.12), bh)
     credit = " · ".join(x for x in (a.source, a.duration, a.speakers) if x)
     if credit:
-        _txbox(s, Inches(0.8), below, Inches(11.7), Inches(0.55),
-               [_clean(credit, 190)], size=11, color="grey")
+        _txbox(s, Inches(0.8), below + Inches(0.10), Inches(11.7), credit_h,
+               [_clean(credit, 170)], size=10, color="grey")
     out = [s]
     for t in a.tasks:
         out += _task_slides(prs, t, "listening", "Listening task")

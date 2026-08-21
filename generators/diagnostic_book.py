@@ -16,7 +16,7 @@ from curriculum.course import COURSE
 from curriculum.rubrics import ALL_RUBRICS
 from curriculum.audio_diagnostic import DIAG_AUDIO, DIAG_FILES
 from curriculum.diagnostic import PAPER_AUDIO
-from curriculum.audio_links import diagnostic_audio, targets
+from curriculum.audio_links import diagnostic_audio, link_set
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -104,8 +104,8 @@ def front_matter(doc, A):
                      a.speech_rate.replace(" as heard", ""), here, ""])
     t = table(doc, rows, widths=[1.2, 1.6, 6.4, 1.4, 2.6, 1.4, 2.4], size=8.5)
     for r, (code, k, task) in enumerate(order, start=1):
-        audio_links_in_cell(t.cell(r, 6), targets(diagnostic_audio(k), 1),
-                            label="▶ Play", size=8.5)
+        pl, pn = link_set(diagnostic_audio(k), 1)
+        audio_links_in_cell(t.cell(r, 6), pl, pn, label="▶ Play", size=8.5)
     box(doc, "Licence", [
         DIAG_AUDIO["D1_1"].licence,
         "",
@@ -164,8 +164,8 @@ def paper_section(doc, P):
                     lines.append("EXCERPT — " + t.excerpt)
                 lines.append(f"Source: {a.source_page}")
                 bx = box(doc, "Audio", lines, "listening", "🎧", size=9)
-                audio_links_in_cell(bx.cell(0, 0),
-                                    targets(diagnostic_audio(t.audio_key), 1),
+                dl, dn = link_set(diagnostic_audio(t.audio_key), 1)
+                audio_links_in_cell(bx.cell(0, 0), dl, dn,
                                     label="▶ Play audio", size=9.5)
                 doc.add_heading("Transcript (published by the source — do NOT give to students "
                                 "before the second play)", level=4)
