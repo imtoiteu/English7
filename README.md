@@ -52,11 +52,23 @@ sessions replay their own unit's audio for dictation.
 use but **not** redistribution, and this repository is public; and 273 MB of MP3 would sit
 in the git history forever.
 
-Every recording's source page and direct URL is recorded in `curriculum/audio_sources.py`
-and `curriculum/audio_diagnostic.py`, and `planning/AUDIO_INDEX.md` maps each file to its
-lesson with duration, speech rate and licence. Download them once into `audio/` using
-those URLs and everything resolves — `python3 tools/check_diagnostic.py --probe` will then
-confirm each file matches its declared metadata.
+Getting them takes one command:
+
+```bash
+python3 tools/fetch_audio.py            # downloads all 99 into audio/
+python3 tools/fetch_audio.py --verify   # confirms every file is present and readable
+```
+
+It skips anything already on disk, so it is safe to re-run after a dropped connection.
+Prefer clicking? `python3 tools/fetch_audio.py --html` writes `audio/DOWNLOADS.html`, a
+click-to-download index of all 99 grouped by unit, with the exact filename to save each
+one under.
+
+Nothing is lost by keeping the MP3s out of git: every source page and direct URL lives in
+`curriculum/audio_sources.py` and `curriculum/audio_diagnostic.py`, and
+`planning/AUDIO_INDEX.md` maps each file to its lesson with duration, speech rate and
+licence. After fetching, `python3 tools/check_diagnostic.py --probe` confirms each
+diagnostic recording matches its declared metadata.
 | Recycled within the unit | 12 | as the original |
 
 Each recording was **opened and machine-verified**, not trusted from its title: the audio file was
